@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp6bjj0sqv2uy"]
+
+[ext_resource type="Texture2D" uid="uid://dd4qnbqc76o8v" path="res://assets/town-8665187_1280.jpg" id="1_wjxp5"]
+
+[node name="homescreen" type="Sprite2D"]
+position = Vector2(578.25, 320.25)
+scale = Vector2(0.898047, 0.755855)
+texture = ExtResource("1_wjxp5")
+metadata/_edit_group_ = true
+
+[node name="shading" type="ColorRect" parent="."]
+offset_left = -639.0
+offset_top = -426.0
+offset_right = 642.0
+offset_bottom = 427.0
+color = Color(0, 0, 0, 0.521569)
