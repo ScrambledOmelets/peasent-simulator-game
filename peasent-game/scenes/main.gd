@@ -33,6 +33,7 @@ func _on_choice_window_choice_2() -> void:
 	$choiceWindow/choice1.hide()
 	$choiceTimer.start()
 
-
 func _on_choice_timer_timeout() -> void:
-	pass # Replace with function body.
+	$homescreen.texture = load("res://assets/ruins-8881488_1280.jpg")
+	$choiceWindow.hide()
+	#changes screen
