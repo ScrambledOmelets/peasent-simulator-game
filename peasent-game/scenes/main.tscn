@@ -7,10 +7,13 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jl1xr")
-choice_window = ExtResource("2_01bot")
 
 [node name="homescreen" parent="." instance=ExtResource("1_p8lfb")]
 
 [node name="startMenu" parent="." instance=ExtResource("2_r4yt0")]
 
+[node name="choiceWindow" parent="." instance=ExtResource("2_01bot")]
+
 [connection signal="start_game" from="startMenu" to="." method="_on_start_menu_start_game"]
+[connection signal="choice1" from="choiceWindow" to="." method="_on_choice_window_choice_1"]
+[connection signal="choice2" from="choiceWindow" to="." method="_on_choice_window_choice_2"]
