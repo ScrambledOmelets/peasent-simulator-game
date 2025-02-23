@@ -29,6 +29,7 @@ offset_bottom = 115.0
 text = "lots of wares"
 
 [node name="choice2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 76.0
 offset_top = 146.0
 offset_right = 277.0

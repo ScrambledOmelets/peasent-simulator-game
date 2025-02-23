@@ -14,3 +14,6 @@ func _process(delta: float) -> void:
 
 
 func _on_start_menu_start_game() -> void:
+	var popup = choice_window.instantiate()
+	popup.show()
+	
