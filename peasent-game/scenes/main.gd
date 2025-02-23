@@ -1,5 +1,6 @@
-extends CanvasLayer
-signal start_game
+extends Node
+
+@export var choice_window: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,12 +11,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func update_foodCounter(number):
-	$foodCounter.text = str("food remaining: ", number)
 
 
-func _on_start_button_pressed() -> void:
-	$startButton.hide()
-	$title.hide()
-	$foodCounter.show()
-	start_game.emit()
+func _on_start_menu_start_game() -> void:

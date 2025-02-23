@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/start_menu.gd" id="1_5rw8i"]
 
-[node name="startMenu" type="CanvasLayer"]
+[node name="mainMenu" type="CanvasLayer"]
 script = ExtResource("1_5rw8i")
 
 [node name="title" type="Label" parent="."]
@@ -24,5 +24,13 @@ offset_right = 771.544
 offset_bottom = 611.0
 theme_override_font_sizes/font_size = 50
 text = "start new game"
+
+[node name="foodCounter" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 38.0
+offset_right = 279.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 30
+text = "food remaining: 0"
 
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
