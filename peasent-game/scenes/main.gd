@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 
 
 func _on_start_menu_start_game() -> void:
+	print("hi")
 	var popup = choice_window.instantiate()
-	popup.show()
+	add_child(popup)
 	

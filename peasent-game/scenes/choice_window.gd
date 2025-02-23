@@ -25,3 +25,7 @@ func _on_choice_1_pressed() -> void:
 func _on_choice_2_pressed() -> void:
 	choice2.emit()
 	
+
+
+func _on_choice_1() -> void:
+	pass # Replace with function body.
