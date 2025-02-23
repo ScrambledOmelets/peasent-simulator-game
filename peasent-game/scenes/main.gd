@@ -23,17 +23,21 @@ func _on_start_menu_start_game() -> void:
 
 func _on_choice_window_choice_1() -> void:
 	$startMenu.update_foodCounter(5)
-	$choiceWindow.updateChoices("wise choice")
 	$choiceWindow/choice2.hide()
-	$choiceTimer.start()
+	
 
 func _on_choice_window_choice_2() -> void:
 	$startMenu.update_foodCounter(10)
-	$choiceWindow.updateChoices("wise choice")
 	$choiceWindow/choice1.hide()
-	$choiceTimer.start()
+	
+
 
 func _on_choice_timer_timeout() -> void:
 	$homescreen.texture = load("res://assets/ruins-8881488_1280.jpg")
 	$choiceWindow.hide()
 	#changes screen
+
+#shared choice signal for both options for ui changes
+func _on_choice_window_choice_made() -> void:
+	$choiceWindow.updateChoices("wise choice")
+	$choiceTimer.start()

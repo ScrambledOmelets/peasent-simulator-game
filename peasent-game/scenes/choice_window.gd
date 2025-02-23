@@ -2,6 +2,7 @@ extends ColorRect
 
 signal choice1
 signal choice2
+signal choice_made
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,8 +22,10 @@ func updateChoices(header):
 
 func _on_choice_1_pressed() -> void:
 	choice1.emit()
+	choice_made.emit()
 	
 	
 func _on_choice_2_pressed() -> void:
 	choice2.emit()
+	choice_made.emit()
 	

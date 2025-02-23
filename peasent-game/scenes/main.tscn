@@ -15,10 +15,10 @@ script = ExtResource("1_jl1xr")
 [node name="choiceWindow" parent="." instance=ExtResource("2_01bot")]
 
 [node name="choiceTimer" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [connection signal="start_game" from="startMenu" to="." method="_on_start_menu_start_game"]
 [connection signal="choice1" from="choiceWindow" to="." method="_on_choice_window_choice_1"]
 [connection signal="choice2" from="choiceWindow" to="." method="_on_choice_window_choice_2"]
+[connection signal="choice_made" from="choiceWindow" to="." method="_on_choice_window_choice_made"]
 [connection signal="timeout" from="choiceTimer" to="." method="_on_choice_timer_timeout"]
