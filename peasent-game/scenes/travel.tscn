@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3loaggjytoe3"]
+
+[ext_resource type="Texture2D" uid="uid://c35h2if0wpp3m" path="res://assets/painting-20401_1920.jpg" id="1_sooas"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hhbfm"]
+distance = -213.663
+
+[node name="travel" type="Sprite2D"]
+position = Vector2(576.5, 323.5)
+scale = Vector2(0.599479, 0.505469)
+texture = ExtResource("1_sooas")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1000.0
+offset_top = 432.0
+offset_right = 981.0
+offset_bottom = 640.0
+color = Color(0.29836, 0.156863, 0.0501379, 1)
+
+[node name="ground" type="Area2D" parent="."]
+position = Vector2(0.834057, 226.522)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+shape = SubResource("WorldBoundaryShape2D_hhbfm")
