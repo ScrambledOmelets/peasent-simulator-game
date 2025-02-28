@@ -32,4 +32,4 @@ position = Vector2(0.834057, 226.522)
 shape = SubResource("WorldBoundaryShape2D_hhbfm")
 
 [node name="Player" parent="." instance=ExtResource("2_65xas")]
-position = Vector2(-970.009, -301.7)
+position = Vector2(-980.018, -216.63)
