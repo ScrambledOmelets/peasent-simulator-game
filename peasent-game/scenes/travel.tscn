@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3loaggjytoe3"]
+[gd_scene load_steps=4 format=3 uid="uid://b3loaggjytoe3"]
 
 [ext_resource type="Texture2D" uid="uid://c35h2if0wpp3m" path="res://assets/painting-20401_1920.jpg" id="1_sooas"]
+[ext_resource type="PackedScene" uid="uid://dbovreymsgxm" path="res://scenes/player.tscn" id="2_65xas"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hhbfm"]
 distance = -213.663
@@ -22,3 +23,6 @@ position = Vector2(0.834057, 226.522)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
 shape = SubResource("WorldBoundaryShape2D_hhbfm")
+
+[node name="Player" parent="ground" instance=ExtResource("2_65xas")]
+position = Vector2(-949.158, -441.174)
