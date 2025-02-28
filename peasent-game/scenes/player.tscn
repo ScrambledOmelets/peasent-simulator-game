@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://dbovreymsgxm"]
+[gd_scene load_steps=21 format=3 uid="uid://dbovreymsgxm"]
 
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_kwbi7"]
 [ext_resource type="Texture2D" uid="uid://b8pf84vxmi70k" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="1_xyx2a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eiruw"]
@@ -127,6 +128,7 @@ radius = 82.0
 height = 220.0
 
 [node name="Player" type="Area2D"]
+script = ExtResource("1_kwbi7")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
