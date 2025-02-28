@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvkd6fq1ybg3i"]
+[gd_scene load_steps=6 format=3 uid="uid://dvkd6fq1ybg3i"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_jl1xr"]
 [ext_resource type="PackedScene" uid="uid://dp6bjj0sqv2uy" path="res://scenes/homescreen.tscn" id="1_p8lfb"]
 [ext_resource type="PackedScene" uid="uid://dmv2ttw8s2e2" path="res://scenes/choice_window.tscn" id="2_01bot"]
 [ext_resource type="PackedScene" uid="uid://du76yfyg2f3hh" path="res://scenes/start_menu.tscn" id="2_r4yt0"]
+[ext_resource type="PackedScene" uid="uid://b3loaggjytoe3" path="res://scenes/travel.tscn" id="5_swjpx"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jl1xr")
@@ -16,6 +17,8 @@ script = ExtResource("1_jl1xr")
 
 [node name="choiceTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="travel" parent="." instance=ExtResource("5_swjpx")]
 
 [connection signal="start_game" from="startMenu" to="." method="_on_start_menu_start_game"]
 [connection signal="choice1" from="choiceWindow" to="." method="_on_choice_window_choice_1"]
