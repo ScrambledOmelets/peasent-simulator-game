@@ -25,11 +25,11 @@ offset_right = 981.0
 offset_bottom = 640.0
 color = Color(0.29836, 0.156863, 0.0501379, 1)
 
-[node name="Player" parent="." instance=ExtResource("2_65xas")]
-position = Vector2(-948.323, -216.63)
-
 [node name="ground" type="Area2D" parent="."]
 position = Vector2(0.834057, 226.522)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
 shape = SubResource("WorldBoundaryShape2D_hhbfm")
+
+[node name="Player" parent="." instance=ExtResource("2_65xas")]
+position = Vector2(-869.922, -279.938)
