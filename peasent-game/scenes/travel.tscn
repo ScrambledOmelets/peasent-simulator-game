@@ -74,6 +74,7 @@ position = Vector2(1021.72, -186.955)
 rotation = 1.54664
 
 [node name="hazardTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="choiceWindow" parent="." instance=ExtResource("5_2bqq1")]
 offset_left = -165.977

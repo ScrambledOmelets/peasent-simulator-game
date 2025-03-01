@@ -9,6 +9,8 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_jl1xr")
 
+[node name="travel" parent="." instance=ExtResource("5_swjpx")]
+
 [node name="homescreen" parent="." instance=ExtResource("1_p8lfb")]
 
 [node name="startMenu" parent="." instance=ExtResource("2_r4yt0")]
@@ -17,8 +19,6 @@ script = ExtResource("1_jl1xr")
 
 [node name="choiceTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="travel" parent="." instance=ExtResource("5_swjpx")]
 
 [connection signal="start_game" from="startMenu" to="." method="_on_start_menu_start_game"]
 [connection signal="choice1" from="choiceWindow" to="." method="_on_choice_window_choice_1"]

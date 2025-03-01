@@ -90,11 +90,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6fhy"]
 size = Vector2(188, 179)
 
-[node name="hazard 1" type="RigidBody2D" groups=["hazard1"]]
+[node name="hazard1" type="RigidBody2D" groups=["hazard1"]]
+disable_mode = 1
 collision_layer = 2
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_hr3ex")
 gravity_scale = 2.0
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_06e2y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -105,3 +108,5 @@ sprite_frames = SubResource("SpriteFrames_mxnkl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(281, 177.5)
 shape = SubResource("RectangleShape2D_s6fhy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

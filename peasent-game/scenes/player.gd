@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 const SPEED = 200
 const JUMP_VELOCITY = -500
+signal hazard_hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,6 +43,7 @@ func _physics_process(delta: float) -> void:
 		if collider.is_in_group("hazard1"):
 			print("you hit the hazard!!")
 		
+		#need to detect collision only once
 		##extra logic testing
 		#if hazard1:
 			#print("collider as Hazard1")

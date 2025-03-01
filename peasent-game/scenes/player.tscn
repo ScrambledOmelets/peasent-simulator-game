@@ -127,7 +127,7 @@ animations = [{
 radius = 68.0
 height = 226.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_kwbi7")
 metadata/_edit_group_ = true
 
