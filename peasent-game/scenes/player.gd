@@ -41,15 +41,11 @@ func _physics_process(delta: float) -> void:
 		
 		if collider.is_in_group("hazard1"):
 			print("you hit the hazard!!")
+		
+		##extra logic testing
 		#if hazard1:
 			#print("collider as Hazard1")
 		
 	
-	#detecting collision?
-	#var collision = move_and_collide(velocity * delta)
-	#if collision and (collision.get_collider().name != "ground" || "boundary 1" || "boundary 2"):
-		#print("collided with... ", collision.get_collider().name)
-	#
-		##velocity = velocity.slide(collision.get_normal())
-		#move_and_slide()
+	
 		
