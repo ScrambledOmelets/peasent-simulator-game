@@ -2,8 +2,8 @@ extends CharacterBody2D
 ##add velocity logic and stuff
 #make custom key mapping in project settings
 
-const SPEED = 50
-const JUMP_VELOCITY = -300
+const SPEED = 200
+const JUMP_VELOCITY = -500
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	#jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		print("hi")
+		
 	
 	#input direction obtaining
 	var direction := Input.get_axis("left", "right")
