@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3loaggjytoe3"]
+[gd_scene load_steps=7 format=3 uid="uid://b3loaggjytoe3"]
 
 [ext_resource type="Texture2D" uid="uid://c35h2if0wpp3m" path="res://assets/painting-20401_1920.jpg" id="1_sooas"]
 [ext_resource type="Script" path="res://scenes/travel.gd" id="2_3dtg6"]
 [ext_resource type="PackedScene" uid="uid://dbovreymsgxm" path="res://scenes/player.tscn" id="2_65xas"]
+[ext_resource type="PackedScene" uid="uid://cv30jni8jc36b" path="res://scenes/hazard_1.tscn" id="3_73eoo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4whvm"]
 
@@ -17,6 +18,7 @@ position = Vector2(576.5, 323.5)
 scale = Vector2(0.599479, 0.505469)
 texture = ExtResource("1_sooas")
 script = ExtResource("2_3dtg6")
+hazard1 = ExtResource("3_73eoo")
 
 [node name="shading" type="ColorRect" parent="."]
 offset_left = -1030.0
@@ -68,9 +70,8 @@ curve = SubResource("Curve2D_io3pl")
 
 [node name="hazardSpawnLocation" type="PathFollow2D" parent="hazardPath"]
 position = Vector2(1021.72, -186.955)
-rotation = 1.54663
+rotation = 1.54664
 
 [node name="hazardTimer" type="Timer" parent="."]
-wait_time = 5.0
 
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]

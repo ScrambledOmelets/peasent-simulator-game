@@ -26,9 +26,10 @@ func _on_hazard_timer_timeout() -> void:
 	hazard.position = hazard_spawn_location.position
 	
 	#setting velocity
-	var velocity = Vector2(200, 0.0)
+	var velocity = Vector2(500, 0.0)
 	hazard.linear_velocity = velocity.rotated(direction)
 	
 	#add instance as child
 	add_child(hazard)
 	
+#get collision signal
