@@ -123,12 +123,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xc0ln"]
-radius = 82.0
-height = 220.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wyx0u"]
+radius = 68.0
+height = 226.0
 
-[node name="Player" type="Area2D"]
-gravity_space_override = 1
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kwbi7")
 metadata/_edit_group_ = true
 
@@ -141,5 +140,5 @@ frame = 6
 frame_progress = 0.546191
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(134, 548)
-shape = SubResource("CapsuleShape2D_xc0ln")
+position = Vector2(138, 552)
+shape = SubResource("CapsuleShape2D_wyx0u")
