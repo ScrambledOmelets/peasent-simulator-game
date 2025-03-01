@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3loaggjytoe3"]
+[gd_scene load_steps=8 format=3 uid="uid://b3loaggjytoe3"]
 
 [ext_resource type="Texture2D" uid="uid://c35h2if0wpp3m" path="res://assets/painting-20401_1920.jpg" id="1_sooas"]
 [ext_resource type="Script" path="res://scenes/travel.gd" id="2_3dtg6"]
 [ext_resource type="PackedScene" uid="uid://dbovreymsgxm" path="res://scenes/player.tscn" id="2_65xas"]
 [ext_resource type="PackedScene" uid="uid://cv30jni8jc36b" path="res://scenes/hazard_1.tscn" id="3_73eoo"]
+[ext_resource type="PackedScene" uid="uid://dmv2ttw8s2e2" path="res://scenes/choice_window.tscn" id="5_2bqq1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4whvm"]
 
@@ -73,5 +74,11 @@ position = Vector2(1021.72, -186.955)
 rotation = 1.54664
 
 [node name="hazardTimer" type="Timer" parent="."]
+
+[node name="choiceWindow" parent="." instance=ExtResource("5_2bqq1")]
+offset_left = -165.977
+offset_top = -141.453
+offset_right = 198.023
+offset_bottom = 93.5472
 
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]
