@@ -41,6 +41,7 @@ func _on_choice_timer_timeout() -> void:
 	#$homescreen.texture = load("res://assets/ruins-8881488_1280.jpg")
 	$choiceWindow.hide()
 	#changes screen
+	$travel/hazardTimer.start()
 
 #shared choice signal for both options for ui changes
 func _on_choice_window_choice_made() -> void:
