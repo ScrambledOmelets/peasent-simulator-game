@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cv30jni8jc36b"]
+[gd_scene load_steps=13 format=3 uid="uid://cv30jni8jc36b"]
 
+[ext_resource type="Script" path="res://scenes/hazard_1.gd" id="1_06e2y"]
 [ext_resource type="Texture2D" uid="uid://b0tqa81qkfu7l" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_xqnym"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhec3"]
@@ -87,7 +88,10 @@ animations = [{
 radius = 86.0
 height = 222.0
 
-[node name="hazard 1" type="Area2D"]
+[node name="hazard 1" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_06e2y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(296, 183)

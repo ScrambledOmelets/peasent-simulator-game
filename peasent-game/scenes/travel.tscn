@@ -1,9 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3loaggjytoe3"]
+[gd_scene load_steps=5 format=3 uid="uid://b3loaggjytoe3"]
 
 [ext_resource type="Texture2D" uid="uid://c35h2if0wpp3m" path="res://assets/painting-20401_1920.jpg" id="1_sooas"]
 [ext_resource type="PackedScene" uid="uid://dbovreymsgxm" path="res://scenes/player.tscn" id="2_65xas"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4whvm"]
+
+[sub_resource type="Curve2D" id="Curve2D_io3pl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1021.72, -186.955, 0, 0, 0, 0, 1036.73, 434.25)
+}
+point_count = 2
 
 [node name="travel" type="Sprite2D"]
 position = Vector2(576.5, 323.5)
@@ -26,6 +32,8 @@ color = Color(0.29836, 0.156863, 0.0501379, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_65xas")]
 position = Vector2(-869.922, -279.938)
+collision_layer = 3
+collision_mask = 3
 
 [node name="boundary 1" type="StaticBody2D" parent="."]
 position = Vector2(-966.673, -30.6646)
@@ -46,7 +54,19 @@ shape = SubResource("WorldBoundaryShape2D_4whvm")
 [node name="ground" type="StaticBody2D" parent="."]
 position = Vector2(25.8557, 483.709)
 rotation = 6.29339
+collision_layer = 3
+collision_mask = 3
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
 shape = SubResource("WorldBoundaryShape2D_4whvm")
+
+[node name="hazardPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_io3pl")
+
+[node name="hazardSpawnLocation" type="PathFollow2D" parent="hazardPath"]
+position = Vector2(1021.72, -186.955)
+rotation = 1.54663
+
+[node name="hazard timer" type="Timer" parent="."]
+wait_time = 5.0
