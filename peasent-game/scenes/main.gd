@@ -45,5 +45,5 @@ func _on_choice_timer_timeout() -> void:
 
 #shared choice signal for both options for ui changes
 func _on_choice_window_choice_made() -> void:
-	$choiceWindow.updateChoices("wise choice")
+	$choiceWindow.updateHeader("wise choice")
 	$choiceTimer.start()

@@ -13,11 +13,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func updateChoices(header):
+func updateHeader(header):
 	$choiceMessage.text = str(header)
-	#$choice1.text = str(option1)
-	#$choice2.text = str(option2)
 	
+	
+func updatedChoices(option1, option2):
+	$choice1.text = str(option1)
+	$choice2.text = str(option2)
 
 
 func _on_choice_1_pressed() -> void:
