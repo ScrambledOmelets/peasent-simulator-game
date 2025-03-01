@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	#actually detecting collision
+	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
@@ -40,7 +41,10 @@ func _physics_process(delta: float) -> void:
 		#converting class of collider var
 		var hazard1 : Hazard1 = collider as Hazard1
 		
+		#await get_tree().create_timer(1.0).timeout
 		if collider.is_in_group("hazard1"):
+			set_collision_mask_value(4, true)
+			
 			print("you hit the hazard!!")
 		
 		#need to detect collision only once
