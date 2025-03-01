@@ -30,4 +30,26 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	move_and_slide()
+	
+	#actually detecting collision
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		#converting class of collider var
+		var hazard1 : Hazard1 = collider as Hazard1
+		
+		if collider.is_in_group("hazard1"):
+			print("you hit the hazard!!")
+		#if hazard1:
+			#print("collider as Hazard1")
+		
+	
+	#detecting collision?
+	#var collision = move_and_collide(velocity * delta)
+	#if collision and (collision.get_collider().name != "ground" || "boundary 1" || "boundary 2"):
+		#print("collided with... ", collision.get_collider().name)
+	#
+		##velocity = velocity.slide(collision.get_normal())
+		#move_and_slide()
 		

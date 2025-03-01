@@ -90,7 +90,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6fhy"]
 size = Vector2(188, 179)
 
-[node name="hazard 1" type="RigidBody2D"]
+[node name="hazard 1" type="RigidBody2D" groups=["hazard1"]]
 collision_layer = 2
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_hr3ex")
