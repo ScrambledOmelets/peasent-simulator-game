@@ -1,9 +1,8 @@
 extends Node
-class_name Main
+
 
 #@export var choice_window: PackedScene
-static var gold : int
-static var food : int
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$choiceWindow.hide()
@@ -28,20 +27,20 @@ func _on_start_menu_start_game() -> void:
 
 
 func _on_choice_window_choice_1() -> void:
-	food = 5
-	gold = 10
+	globals.food = 5
+	globals.gold = 10
 	
-	$travel/HUD.update_foodCounter(food)
-	$travel/HUD.update_goldCounter(gold)
+	$travel/HUD.update_foodCounter(globals.food)
+	$travel/HUD.update_goldCounter(globals.gold)
 	$choiceWindow/choice2.hide()
 	
 
 func _on_choice_window_choice_2() -> void:
-	food = 10
-	gold = 15
+	globals.food = 10
+	globals.gold = 15
 	#$startMenu.update_foodCounter(10)
-	$travel/HUD.update_foodCounter(food)
-	$travel/HUD.update_goldCounter(gold)
+	$travel/HUD.update_foodCounter(globals.food)
+	$travel/HUD.update_goldCounter(globals.gold)
 	$choiceWindow/choice1.hide()
 	
 

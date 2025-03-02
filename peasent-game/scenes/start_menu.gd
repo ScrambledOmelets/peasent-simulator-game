@@ -17,5 +17,5 @@ func _process(delta: float) -> void:
 func _on_start_button_pressed() -> void:
 	$startButton.hide()
 	$title.hide()
-	$foodCounter.show()
+	#$foodCounter.show()
 	start_game.emit()
