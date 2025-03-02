@@ -25,4 +25,12 @@ offset_bottom = 611.0
 theme_override_font_sizes/font_size = 50
 text = "start new game"
 
+[node name="gameOver" type="Label" parent="."]
+offset_left = 524.0
+offset_top = 355.0
+offset_right = 647.0
+offset_bottom = 390.0
+theme_override_font_sizes/font_size = 30
+text = "sfsdfsdfsd"
+
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]

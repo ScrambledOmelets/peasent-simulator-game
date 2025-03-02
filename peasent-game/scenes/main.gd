@@ -9,7 +9,7 @@ func _ready() -> void:
 	$travel.hide()
 	$homescreen.show()
 	$travel/HUD.hide()
-	
+	$startMenu/gameOver.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,7 +20,6 @@ func _process(delta: float) -> void:
 
 func _on_start_menu_start_game() -> void:
 	$choiceWindow.show()
-	
 	
 	#var popup = choice_window.instantiate()
 	#add_child(popup)
@@ -44,7 +43,6 @@ func _on_choice_window_choice_2() -> void:
 	$choiceWindow/choice1.hide()
 	
 
-
 func _on_choice_timer_timeout() -> void:
 	$homescreen.hide()
 	$travel.show()
@@ -58,3 +56,10 @@ func _on_choice_timer_timeout() -> void:
 func _on_choice_window_choice_made() -> void:
 	$choiceWindow.updateHeader("wise choice")
 	$choiceTimer.start()
+
+
+func _on_travel_game_over() -> void:
+	$travel.hide()
+	
+	$startMenu/gameOver.show()
+	

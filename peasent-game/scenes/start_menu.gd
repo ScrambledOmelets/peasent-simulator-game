@@ -11,7 +11,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
+func gameoverText(text):
+	$gameOver.text = str(text)
 
 
 func _on_start_button_pressed() -> void:
