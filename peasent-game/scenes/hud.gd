@@ -15,3 +15,6 @@ func update_foodCounter(number):
 
 func update_goldCounter(number):
 	$goldCounter.text = str("gold remaining: ", number)
+
+func update_message(text):
+	$gameMessage.text = str(text)

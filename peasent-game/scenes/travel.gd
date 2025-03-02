@@ -100,5 +100,15 @@ func _on_choice_window_choice_made() -> void:
 	$Player.resetPlayer($startPosition.position)
 	
 	
+func goldLogic(gold, randomNum, message):
+	if globals.gold <= 0:
+		$HUD.update_goldCounter(0)
+		$choiceWindow.updateHeader("you've lost all your gold...")
+	else:
+		#update values and continue game
+		$HUD.update_goldCounter(gold)
+		var value = "you lost " + str(randomNum) + " gold..."
+		$choiceWindow.updateHeader(value) 
+		
 #create function to check if food is completely depleted
 #if yes, then end the game
