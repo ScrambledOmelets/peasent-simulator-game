@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3loaggjytoe3"]
+[gd_scene load_steps=9 format=3 uid="uid://b3loaggjytoe3"]
 
 [ext_resource type="Texture2D" uid="uid://c35h2if0wpp3m" path="res://assets/painting-20401_1920.jpg" id="1_sooas"]
 [ext_resource type="Script" path="res://scenes/travel.gd" id="2_3dtg6"]
 [ext_resource type="PackedScene" uid="uid://dbovreymsgxm" path="res://scenes/player.tscn" id="2_65xas"]
 [ext_resource type="PackedScene" uid="uid://cv30jni8jc36b" path="res://scenes/hazard_1.tscn" id="3_73eoo"]
 [ext_resource type="PackedScene" uid="uid://dmv2ttw8s2e2" path="res://scenes/choice_window.tscn" id="5_2bqq1"]
+[ext_resource type="PackedScene" uid="uid://cbxqrrik70mdg" path="res://scenes/hud.tscn" id="6_33ejl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4whvm"]
 
@@ -86,4 +87,8 @@ rotation = 1.54664
 [node name="hazardTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="HUD" parent="." instance=ExtResource("6_33ejl")]
+
+[connection signal="choice1" from="choiceWindow" to="." method="_on_choice_window_choice_1"]
+[connection signal="hazard_hit" from="Player" to="." method="_on_player_hazard_hit"]
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]

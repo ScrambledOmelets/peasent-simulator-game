@@ -1,19 +1,22 @@
-[gd_scene format=3 uid="uid://cbxqrrik70mdg"]
+[gd_scene load_steps=2 format=3 uid="uid://cbxqrrik70mdg"]
+
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_ff65m"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_ff65m")
 
 [node name="foodCounter" type="Label" parent="."]
-offset_left = 24.0
-offset_top = 38.0
-offset_right = 279.0
-offset_bottom = 80.0
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 272.0
+offset_bottom = 58.0
 theme_override_font_sizes/font_size = 30
 text = "food remaining: 0"
 
 [node name="goldCounter" type="Label" parent="."]
-offset_left = 26.0
-offset_top = 85.0
-offset_right = 281.0
-offset_bottom = 127.0
+offset_left = 19.0
+offset_top = 63.0
+offset_right = 274.0
+offset_bottom = 105.0
 theme_override_font_sizes/font_size = 30
 text = "gold remaining: 0"
