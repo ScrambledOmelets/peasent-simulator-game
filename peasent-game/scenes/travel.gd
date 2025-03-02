@@ -1,7 +1,7 @@
 extends Node
 @export var hazard1: PackedScene
-#@export var main : Main
 
+signal gameOver
 var hazard
 
 # Called when the node enters the scene tree for the first time.
@@ -43,7 +43,6 @@ func _on_player_hazard_hit() -> void:
 	$choiceWindow.updatedChoices("pay the price", "attempt escape")
 	
 	
-
 func _on_choice_window_choice_1() -> void:
 	#button hide
 	$choiceWindow/choice2.hide()
@@ -53,6 +52,7 @@ func _on_choice_window_choice_1() -> void:
 	#subtract from gold amt bc bandits
 	globals.gold -= num
 	
+	is_game_over(globals.food, globals.gold)
 	#logic for gold
 	$choiceWindow.updateHeader(goldLogic(globals.gold, num))
 
@@ -64,16 +64,19 @@ func _on_choice_window_choice_2() -> void:
 	globals.gold -= num1
 	globals.food -= num2
 	
+	is_game_over(globals.food, globals.gold)
 	#should update everything and return the value string to update header
 	#wtf me when the code works (im shocked and surprised)
 	$choiceWindow.updateHeader(goldLogic(globals.gold, num1) + foodLogic(globals.food, num2) + " while escaping")
 		
 	
-
-
 func _on_choice_window_choice_made() -> void:
 	$textTimer.start()
 	await $textTimer.timeout
+	
+	#checking if gameover?
+	#it works, good position
+	#is_game_over(globals.food)
 	
 	#wow this works!!!
 	remove_child(hazard)
@@ -87,6 +90,7 @@ func goldLogic(gold, randomNum):
 	
 	if gold <= 0:
 		$HUD.update_goldCounter(0)
+		gold = 0
 		$HUD.update_message("oh no! you've lost all your gold...")
 		$choiceWindow.updateHeader(value)
 	else:
@@ -109,3 +113,15 @@ func foodLogic(food, randomNum):
 	return value
 #create function to check if food is completely depleted
 #if yes, then end the game
+#check if you alr have 0 gold when you have bandit event. if it is neg number, and bandits attack, game over
+func is_game_over(food, gold):
+	if food <= 0:
+		$textTimer.start()
+		await $textTimer.timeout
+		gameOver.emit() #this works. connect signal
+		print("NO FOOD")
+	elif gold < 0:
+		$textTimer.start()
+		await $textTimer.timeout
+		gameOver.emit()
+		print("RAN OUT OF GOLD")
