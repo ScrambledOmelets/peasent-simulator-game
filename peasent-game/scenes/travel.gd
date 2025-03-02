@@ -1,6 +1,6 @@
 extends Node
 @export var hazard1: PackedScene
-@export var main : Main
+#@export var main : Main
 
 
 
@@ -52,4 +52,5 @@ func _on_choice_window_choice_1() -> void:
 		$choiceWindow.updateHeader("you've lost all your gold...")
 	else:
 		$HUD.update_goldCounter(globals.gold)
-		$choiceWindow.updateHeader("you lost ", num, " gold...") 
+		var value = "you lost" + str(num) + "gold..."
+		$choiceWindow.updateHeader(value) 
