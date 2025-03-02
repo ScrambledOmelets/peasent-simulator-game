@@ -2,7 +2,7 @@ extends Node
 @export var hazard1: PackedScene
 #@export var main : Main
 
-
+var hazard
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 func _on_hazard_timer_timeout() -> void:
 	#instance
-	var hazard = hazard1.instantiate()
+	hazard = hazard1.instantiate()
 	
 	#getting spawn location (random)
 	var hazard_spawn_location = $hazardPath/hazardSpawnLocation
@@ -38,7 +38,7 @@ func _on_player_hazard_hit() -> void:
 	#so mobs dont spawn when ur in choice
 	$hazardTimer.stop()
 	
-	$choiceWindow.show()
+	$choiceWindow.newChoiceWindow()
 	$choiceWindow.updateHeader("oh no a bandit!")
 	$choiceWindow.updatedChoices("pay the price", "attempt escape")
 	
@@ -90,10 +90,15 @@ func _on_choice_window_choice_2() -> void:
 
 
 func _on_choice_window_choice_made() -> void:
-	pass # Replace with function body.
-	#delete hazard child
-	#restart hazard timer
-	#hide choice window
+	$textTimer.start()
+	await $textTimer.timeout
+	
+	#wow this works!!!
+	remove_child(hazard)
+	$hazardTimer.start()
+	$choiceWindow.hide()
+	$Player.resetPlayer($startPosition.position)
+	
 	
 #create function to check if food is completely depleted
 #if yes, then end the game

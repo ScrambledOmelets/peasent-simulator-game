@@ -21,11 +21,17 @@ func updatedChoices(option1, option2):
 	$choice1.text = str(option1)
 	$choice2.text = str(option2)
 
+func newChoiceWindow():
+	#show all buttons
+	$choice1.show()
+	$choice2.show()
+	
+	#show actual window
+	show()
 
 func _on_choice_1_pressed() -> void:
 	choice1.emit()
 	choice_made.emit()
-	
 	
 func _on_choice_2_pressed() -> void:
 	choice2.emit()

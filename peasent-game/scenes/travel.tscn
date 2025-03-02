@@ -89,6 +89,13 @@ one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource("6_33ejl")]
 
+[node name="startPosition" type="Marker2D" parent="."]
+position = Vector2(-731.469, 274.003)
+
+[node name="textTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="choice1" from="choiceWindow" to="." method="_on_choice_window_choice_1"]
 [connection signal="choice2" from="choiceWindow" to="." method="_on_choice_window_choice_2"]
 [connection signal="choice_made" from="choiceWindow" to="." method="_on_choice_window_choice_made"]
