@@ -53,15 +53,8 @@ func _on_choice_window_choice_1() -> void:
 	#subtract from gold amt bc bandits
 	globals.gold -= num
 	
-	#logic to see if its game over
-	if globals.gold == 0:
-		$HUD.update_goldCounter(globals.gold)
-		$choiceWindow.updateHeader("you've lost all your gold...")
-	else:
-		#update values and continue game
-		$HUD.update_goldCounter(globals.gold)
-		var value = "you lost " + str(num) + " gold..."
-		$choiceWindow.updateHeader(value) 
+	#logic for gold
+	$choiceWindow.updateHeader(goldLogic(globals.gold, num))
 
 func _on_choice_window_choice_2() -> void:
 	#hide button
@@ -71,21 +64,10 @@ func _on_choice_window_choice_2() -> void:
 	globals.gold -= num1
 	globals.food -= num2
 	
-	#this could probably be made into a function but im tired and dgaf rn
-	if globals.gold == 0:
-		$HUD.update_goldCounter(globals.gold)
-		$choiceWindow.updateHeader("you've lost all your gold...")
-	else:
-		$HUD.update_goldCounter(globals.gold)
+	#should update everything and return the value string to update header
+	#wtf me when the code works (im shocked and surprised)
+	$choiceWindow.updateHeader(goldLogic(globals.gold, num1) + foodLogic(globals.food, num2) + " while escaping")
 		
-	if globals.food == 0:
-		$choiceWindow.updateHeader("you've lost all your food and cannot continue...")
-		$HUD.update_foodCounter(globals.food)
-	else:
-		$HUD.update_goldCounter(globals.gold)
-		$HUD.update_foodCounter(globals.food)
-		var value = "you lost " + str(num1) + " gold and " + str(num2) + " food escaping"
-		$choiceWindow.updateHeader(value)
 	
 
 
@@ -100,15 +82,30 @@ func _on_choice_window_choice_made() -> void:
 	$Player.resetPlayer($startPosition.position)
 	
 	
-func goldLogic(gold, randomNum, message):
-	if globals.gold <= 0:
+func goldLogic(gold, randomNum):
+	var value = "you lost " + str(randomNum) + " gold..."
+	
+	if gold <= 0:
 		$HUD.update_goldCounter(0)
-		$choiceWindow.updateHeader("you've lost all your gold...")
+		$HUD.update_message("oh no! you've lost all your gold...")
+		$choiceWindow.updateHeader(value)
 	else:
 		#update values and continue game
 		$HUD.update_goldCounter(gold)
-		var value = "you lost " + str(randomNum) + " gold..."
-		$choiceWindow.updateHeader(value) 
+	
+	return value
+
+func foodLogic(food, randomNum):
+	var value = str(randomNum) + " food..."
+	
+	if food <= 0:
+		#emit gameover signal and handle the function in main
+		$HUD.update_message("you cannot continue this journey...")
+		$choiceWindow.updateHeader("you've lost all your food!")
+		$HUD.update_foodCounter(0)
+	else:
+		$HUD.update_foodCounter(food)
 		
+	return value
 #create function to check if food is completely depleted
 #if yes, then end the game
