@@ -3,38 +3,41 @@
 [ext_resource type="Script" path="res://scenes/choice_window.gd" id="1_16uxf"]
 
 [node name="choiceWindow" type="ColorRect" groups=["windows"]]
-offset_left = 409.0
-offset_top = 213.0
-offset_right = 773.0
-offset_bottom = 448.0
+offset_left = 283.0
+offset_top = 114.0
+offset_right = 787.0
+offset_bottom = 420.0
 script = ExtResource("1_16uxf")
-metadata/_edit_group_ = true
 
 [node name="choiceMessage" type="Label" parent="."]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 7.0
-offset_right = 253.0
-offset_bottom = 42.0
+offset_left = 94.0
+offset_right = 416.0
+offset_bottom = 49.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 35
 text = "what do you bring?"
+horizontal_alignment = 1
 
 [node name="choice1" type="Button" parent="."]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 76.0
-offset_right = 279.0
-offset_bottom = 115.0
+offset_left = 157.0
+offset_top = 96.0
+offset_right = 358.0
+offset_bottom = 135.0
+theme_override_font_sizes/font_size = 20
 text = "lots of wares"
+autowrap_mode = 2
 
 [node name="choice2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 76.0
-offset_top = 146.0
-offset_right = 277.0
-offset_bottom = 185.0
+offset_left = 153.0
+offset_top = 179.0
+offset_right = 354.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 20
 text = "many food"
+autowrap_mode = 2
 
 [connection signal="pressed" from="choice1" to="." method="_on_choice_1_pressed"]
 [connection signal="pressed" from="choice2" to="." method="_on_choice_2_pressed"]

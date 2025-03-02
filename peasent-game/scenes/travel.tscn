@@ -35,6 +35,12 @@ offset_right = 981.0
 offset_bottom = 640.0
 color = Color(0.29836, 0.156863, 0.0501379, 1)
 
+[node name="choiceWindow" parent="." instance=ExtResource("5_2bqq1")]
+offset_left = -254.388
+offset_top = -137.496
+offset_right = 249.612
+offset_bottom = 168.504
+
 [node name="Player" parent="." instance=ExtResource("2_65xas")]
 position = Vector2(-869.922, -279.938)
 collision_layer = 7
@@ -79,11 +85,5 @@ rotation = 1.54664
 
 [node name="hazardTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="choiceWindow" parent="." instance=ExtResource("5_2bqq1")]
-offset_left = -165.977
-offset_top = -141.453
-offset_right = 198.023
-offset_bottom = 93.5472
 
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]

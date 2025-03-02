@@ -16,6 +16,10 @@ script = ExtResource("1_jl1xr")
 [node name="startMenu" parent="." instance=ExtResource("2_r4yt0")]
 
 [node name="choiceWindow" parent="." instance=ExtResource("2_01bot")]
+offset_left = 325.0
+offset_top = 169.0
+offset_right = 829.0
+offset_bottom = 475.0
 
 [node name="choiceTimer" type="Timer" parent="."]
 one_shot = true

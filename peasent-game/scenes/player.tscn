@@ -142,3 +142,12 @@ frame_progress = 0.546191
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(138, 552)
 shape = SubResource("CapsuleShape2D_wyx0u")
+
+[node name="playerObserver" type="Area2D" parent="."]
+
+[node name="area2dObserver" type="CollisionShape2D" parent="playerObserver"]
+position = Vector2(138, 552)
+shape = SubResource("CapsuleShape2D_wyx0u")
+
+[connection signal="area_entered" from="playerObserver" to="." method="_on_player_observer_area_entered"]
+[connection signal="body_entered" from="playerObserver" to="." method="_on_player_observer_body_entered"]
