@@ -130,3 +130,4 @@ func new_game():
 	$hazardTimer.start()
 	$choiceWindow.hide()
 	$Player.resetPlayer($startPosition.position)
+	$HUD.update_message("")

@@ -14,8 +14,6 @@ script = ExtResource("1_jl1xr")
 
 [node name="homescreen" parent="." instance=ExtResource("1_p8lfb")]
 
-[node name="startMenu" parent="." instance=ExtResource("2_r4yt0")]
-
 [node name="choiceWindow" parent="." instance=ExtResource("2_01bot")]
 offset_left = 325.0
 offset_top = 169.0
@@ -28,9 +26,11 @@ one_shot = true
 [node name="scripts" type="Node" parent="."]
 script = ExtResource("6_vlrml")
 
+[node name="startMenu" parent="." instance=ExtResource("2_r4yt0")]
+
 [connection signal="gameOver" from="travel" to="." method="_on_travel_game_over"]
-[connection signal="start_game" from="startMenu" to="." method="_on_start_menu_start_game"]
 [connection signal="choice1" from="choiceWindow" to="." method="_on_choice_window_choice_1"]
 [connection signal="choice2" from="choiceWindow" to="." method="_on_choice_window_choice_2"]
 [connection signal="choice_made" from="choiceWindow" to="." method="_on_choice_window_choice_made"]
 [connection signal="timeout" from="choiceTimer" to="." method="_on_choice_timer_timeout"]
+[connection signal="start_game" from="startMenu" to="." method="_on_start_menu_start_game"]
