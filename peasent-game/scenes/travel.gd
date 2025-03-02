@@ -12,7 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
+#hazard generation
 func _on_hazard_timer_timeout() -> void:
 	#instance
 	hazard = hazard1.instantiate()
@@ -52,6 +52,7 @@ func _on_choice_window_choice_1() -> void:
 	#subtract from gold amt bc bandits
 	globals.gold -= num
 	
+	
 	is_game_over(globals.food, globals.gold)
 	#logic for gold
 	$choiceWindow.updateHeader(goldLogic(globals.gold, num))
@@ -79,10 +80,8 @@ func _on_choice_window_choice_made() -> void:
 	#is_game_over(globals.food)
 	
 	#wow this works!!!
-	remove_child(hazard)
-	$hazardTimer.start()
-	$choiceWindow.hide()
-	$Player.resetPlayer($startPosition.position)
+	#reset the scene
+	new_game()
 	
 	
 func goldLogic(gold, randomNum):
@@ -125,3 +124,9 @@ func is_game_over(food, gold):
 		await $textTimer.timeout
 		gameOver.emit()
 		print("RAN OUT OF GOLD")
+
+func new_game():
+	remove_child(hazard)
+	$hazardTimer.start()
+	$choiceWindow.hide()
+	$Player.resetPlayer($startPosition.position)

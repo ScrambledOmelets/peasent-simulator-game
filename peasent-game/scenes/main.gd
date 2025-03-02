@@ -16,7 +16,9 @@ func _process(delta: float) -> void:
 
 
 func _on_start_menu_start_game() -> void:
-	$choiceWindow.show()
+	$startMenu/gameOver.hide()
+	$choiceWindow.newChoiceWindow()
+	$choiceWindow.updateHeader("what do you bring?")
 	
 	#var popup = choice_window.instantiate()
 	#add_child(popup)
@@ -45,9 +47,11 @@ func _on_choice_timer_timeout() -> void:
 	$travel.show()
 	#$homescreen.texture = load("res://assets/ruins-8881488_1280.jpg")
 	$choiceWindow.hide()
+	$travel.new_game()
 	#changes screen
 	$travel/hazardTimer.start()
 	$travel/HUD.show()
+	
 
 #shared choice signal for both options for ui changes
 func _on_choice_window_choice_made() -> void:
@@ -61,5 +65,6 @@ func _on_travel_game_over() -> void:
 	$homescreen.show()
 	$startMenu.gameoverText("you ran out of food or bandits killed you over gold :c")
 	$startMenu/gameOver.show()
+	$startMenu/startButton.show()
 	$startMenu/startButton.text = str("play again?")
 	

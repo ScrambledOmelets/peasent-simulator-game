@@ -93,7 +93,7 @@ one_shot = true
 position = Vector2(-726.464, 161.236)
 
 [node name="textTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [connection signal="choice1" from="choiceWindow" to="." method="_on_choice_window_choice_1"]
