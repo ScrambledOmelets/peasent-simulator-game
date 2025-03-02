@@ -1,8 +1,5 @@
 extends Node
 
-
-#@export var choice_window: PackedScene
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$choiceWindow.hide()
@@ -60,6 +57,9 @@ func _on_choice_window_choice_made() -> void:
 
 func _on_travel_game_over() -> void:
 	$travel.hide()
-	
+	$travel/HUD.hide()
+	$homescreen.show()
+	$startMenu.gameoverText("you ran out of food or bandits killed you over gold :c")
 	$startMenu/gameOver.show()
+	$startMenu/startButton.text = str("play again?")
 	

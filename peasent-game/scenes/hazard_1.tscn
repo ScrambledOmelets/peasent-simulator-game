@@ -99,10 +99,11 @@ gravity_scale = 2.0
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_06e2y")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(296, 183)
-scale = Vector2(15, 15)
+scale = Vector2(13, 13)
 sprite_frames = SubResource("SpriteFrames_mxnkl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
