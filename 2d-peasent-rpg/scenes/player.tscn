@@ -105,16 +105,20 @@ radius = 7.0
 height = 18.0
 
 [node name="player" type="CharacterBody2D"]
+position = Vector2(49, 56)
 scale = Vector2(3, 3)
 script = ExtResource("1_nc65u")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(273, 133)
+position = Vector2(1.66666, -5.33334)
 sprite_frames = SubResource("SpriteFrames_7q8jg")
 animation = &"running"
 frame = 2
 frame_progress = 0.942457
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(272, 136)
+position = Vector2(0.666656, -2.33334)
 shape = SubResource("CapsuleShape2D_yxj4v")
+
+[node name="Camera2D" type="Camera2D" parent="."]
