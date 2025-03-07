@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://choemiyb2p42x"]
+
+[ext_resource type="Texture2D" uid="uid://b201bup8485l8" path="res://assets/town-8665187_1280.jpg" id="1_s4wx4"]
+
+[node name="homescreen" type="Sprite2D"]
+position = Vector2(576, 324)
+scale = Vector2(0.9, 0.758782)
+texture = ExtResource("1_s4wx4")
+
+[node name="shading" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -427.0
+offset_right = -640.0
+offset_bottom = -427.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0, 0, 0, 0.352941)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.484375
+anchor_top = 0.486534
+anchor_right = 0.515625
+anchor_bottom = 0.513466
+offset_left = -637.778
+offset_top = -600.006
+offset_right = -637.778
+offset_bottom = -600.006
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "a formidable journey... to market"
+
+[node name="startButton" type="Button" parent="."]
+offset_left = -142.222
+offset_top = 237.222
+offset_right = 133.778
+offset_bottom = 295.222
+theme_override_font_sizes/font_size = 45
+text = "start game"
