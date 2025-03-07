@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://3hs2il4leyks"]
+[gd_scene load_steps=6 format=4 uid="uid://3hs2il4leyks"]
 
 [ext_resource type="Texture2D" uid="uid://d2eyc106dhste" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_mbj6s"]
+[ext_resource type="Script" path="res://scripts/game_base.gd" id="1_mxyj4"]
 [ext_resource type="PackedScene" uid="uid://deitd64bd7qqx" path="res://scenes/player.tscn" id="2_q3i5o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c035p"]
@@ -140,6 +141,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_c035p")
 
 [node name="gameBase" type="Node"]
+script = ExtResource("1_mxyj4")
 
 [node name="map" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)

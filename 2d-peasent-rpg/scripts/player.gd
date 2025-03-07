@@ -19,7 +19,7 @@ extends CharacterBody2D
 func _ready() -> void:
 	$AnimatedSprite2D.play("standing")
 
-
+#from godot documentation for player movement
 func get_input():
 	var input_direction = Input.get_vector("move_left","move_right","move_up","move_down")
 	velocity = input_direction * speed
@@ -31,7 +31,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	#sprite animation
-	#idk if any of these work yet but this is a issue for another time
 	if velocity.length() > 0:
 		$AnimatedSprite2D.play("running")
 	else:
