@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 300
+@export var speed = 300
 
 #funny movement from tutorial thing
 #func player_input() -> void:
@@ -20,30 +20,28 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("standing")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var v  = Vector2.ZERO
-	if Input.is_action_pressed("move_right"):
-		v.x += 1
-	if Input.is_action_pressed("move_left"):
-		v.x -= 1
-	if Input.is_action_pressed("move_down"):
-		v.y += 1
-	if Input.is_action_pressed("move_up"):
-		v.y -= 1
+func get_input():
+	var input_direction = Input.get_vector("move_left","move_right","move_up","move_down")
+	velocity = input_direction * speed
 
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	get_input()
+	move_and_slide()
+	
 	#sprite animation
 	#idk if any of these work yet but this is a issue for another time
-	if v.length() > 0:
-		v = v.normalized() * speed
+	if velocity.length() > 0:
 		$AnimatedSprite2D.play("running")
 	else:
 		$AnimatedSprite2D.play("standing")
 		
 	#sprite animation direction
-	if v.x < 0:
+	if velocity.x < 0:
 		#if walk left, then flip sprite to turn left
 		$AnimatedSprite2D.flip_h = true
-	else:
+	elif velocity.x > 0:
 		$AnimatedSprite2D.flip_h = false
+	
 		

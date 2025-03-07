@@ -107,6 +107,7 @@ height = 18.0
 [node name="player" type="CharacterBody2D"]
 position = Vector2(49, 56)
 scale = Vector2(3, 3)
+motion_mode = 1
 script = ExtResource("1_nc65u")
 metadata/_edit_group_ = true
 
