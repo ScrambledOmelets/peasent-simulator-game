@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://choemiyb2p42x"]
+[gd_scene load_steps=3 format=3 uid="uid://choemiyb2p42x"]
 
 [ext_resource type="Texture2D" uid="uid://b201bup8485l8" path="res://assets/town-8665187_1280.jpg" id="1_s4wx4"]
+[ext_resource type="Script" path="res://scripts/homescreen.gd" id="2_aocts"]
 
 [node name="homescreen" type="Sprite2D"]
 position = Vector2(576, 324)
 scale = Vector2(0.9, 0.758782)
 texture = ExtResource("1_s4wx4")
+script = ExtResource("2_aocts")
 
 [node name="shading" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -42,3 +44,5 @@ offset_right = 133.778
 offset_bottom = 295.222
 theme_override_font_sizes/font_size = 45
 text = "start game"
+
+[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
