@@ -15,9 +15,21 @@ func _ready() -> void:
 	$hud.update_message("")
 	#checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)
+	SignalBus.choice1.connect(_on_first_choice1)
+	SignalBus.choice2.connect(_on_first_choice2)
+	SignalBus.choice_made.connect(_any_choice_made)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	pass
+
+func _on_first_choice1() -> void:
+	pass
+
+func _on_first_choice2() -> void:
+	pass
+
+func _any_choice_made() -> void:
 	pass
 
 #this works
@@ -25,8 +37,7 @@ func _on_player_hit() -> void:
 	pass
 	print("signal recieved")
 	
-#this doesnt always work??????
-#only spawns hazards like every other time????
+#this also works fine
 func _on_hazard_timer_timeout() -> void:
 	#instance
 	hazard = hazard2.instantiate()
@@ -40,6 +51,8 @@ func _on_hazard_timer_timeout() -> void:
 	
 	#setting spawn to random
 	hazard.position = hazard_spawn_location.position
+	
+	##VELOCITY/MOVEMENT HANDLED IN HAZARD SCRIPT
 	
 	#var velocity = Vector2(200, 0.0)
 	#hazard.linear_velocity = velocity.rotated(direction)

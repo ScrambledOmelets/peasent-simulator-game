@@ -168,6 +168,7 @@ position = Vector2(187, 151)
 
 [node name="hazardTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 autostart = true
 
 [node name="hazardPath" type="Path2D" parent="."]

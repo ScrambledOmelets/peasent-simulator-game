@@ -12,13 +12,8 @@ func _process(delta: float) -> void:
 	var direction = (SignalBus.player_location - global_position).normalized()
 	position += speed * direction * delta 
 	
-	
-	###updates position each frame
-	#
-	
 
-
-
+#signal works too
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		SignalBus.playerHit.emit()

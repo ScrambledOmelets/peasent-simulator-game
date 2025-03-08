@@ -39,12 +39,16 @@ offset_left = 730.0
 offset_top = 380.0
 offset_right = 1036.0
 offset_bottom = 425.0
+theme_override_font_sizes/font_size = 25
+text = "this is choice one"
 
 [node name="choice2" type="Button" parent="."]
 offset_left = 730.0
 offset_top = 436.0
 offset_right = 1036.0
 offset_bottom = 481.0
+theme_override_font_sizes/font_size = 25
+text = "this is choice 2"
 
 [connection signal="pressed" from="choice1" to="." method="_on_choice_1_pressed"]
 [connection signal="pressed" from="choice2" to="." method="_on_choice_2_pressed"]
