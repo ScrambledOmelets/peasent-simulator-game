@@ -154,3 +154,7 @@ tile_set = SubResource("TileSet_l44tj")
 
 [node name="player" parent="." instance=ExtResource("2_q3i5o")]
 position = Vector2(187, 151)
+
+[node name="choiceTimer" type="Timer" parent="."]
+
+[node name="hazardTimer" type="Timer" parent="."]
