@@ -13,7 +13,8 @@ extends CharacterBody2D
 	#elif Input.is_action_just_pressed("move_down"):
 		#velocity = Vector2.DOWN
 		#
-
+func resetPlayer(pos):
+	position = pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

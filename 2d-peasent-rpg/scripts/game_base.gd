@@ -2,6 +2,7 @@ extends Node
 
 @export var hazard1: PackedScene
 @export var choiceWindow: PackedScene
+@export var speed = 300
 
 var dialouge
 var hazard
@@ -10,12 +11,42 @@ var hazard
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$player.resetPlayer($startPosition.position)
+	$hud.update_message("")
+	#checks for signals???
+	hazard1.playerHit.connect(_on_player_hit.bind(self))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _on_player_hit() -> void:
+	pass
+	
+func _on_hazard_timer_timeout() -> void:
+	#instance
+	hazard = hazard1.instantiate()
+	
+	#getting spawn location (random)
+	var hazard_spawn_location = $hazardPath/hazardSpawnLocation
+	hazard_spawn_location.progress_ratio = randf()
+	
+	#perpendicular angling???
+	var direction = hazard_spawn_location.rotation + PI/2
+	
+	#setting spawn to random
+	hazard.position = hazard_spawn_location.position
+	
+	#hopefully this makes the thing move to the player
+	var player_location = hazard.look_at($player.position)
+	
+	#setting velocity
+	var velocity = Vector2(500, 0.0)
+	hazard.linear_velocity = velocity.rotated(player_location)
+	
+	#add instance as child
+	add_child(hazard)
 
 
 #spawning of new choice
@@ -30,5 +61,3 @@ func dialougeSpawn(header: String, option1: String, option2: String):
 	dialouge.newChoiceWindow()
 	dialouge.updateHeader(header)
 	dialouge.updatedChoices(option1, option2)
-	
-	
