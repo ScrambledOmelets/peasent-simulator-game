@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://3hs2il4leyks"]
+[gd_scene load_steps=11 format=4 uid="uid://3hs2il4leyks"]
 
 [ext_resource type="Texture2D" uid="uid://d2eyc106dhste" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_mbj6s"]
 [ext_resource type="Script" path="res://scripts/game_base.gd" id="1_mxyj4"]
 [ext_resource type="PackedScene" uid="uid://cv30jni8jc36b" path="res://scenes/hazard_1.tscn" id="2_g3ysk"]
 [ext_resource type="PackedScene" uid="uid://deitd64bd7qqx" path="res://scenes/player.tscn" id="2_q3i5o"]
+[ext_resource type="PackedScene" uid="uid://mkigtmd6tj2b" path="res://scenes/hazard_2.tscn" id="3_fcjpk"]
 [ext_resource type="PackedScene" uid="uid://by1vx5a716qwf" path="res://scenes/dialouge_box.tscn" id="3_vag2n"]
 [ext_resource type="PackedScene" uid="uid://bwtcr4yo0iq4" path="res://scenes/hud.tscn" id="6_vimn4"]
 
@@ -152,6 +153,7 @@ point_count = 5
 [node name="gameBase" type="Node"]
 script = ExtResource("1_mxyj4")
 hazard1 = ExtResource("2_g3ysk")
+hazard2 = ExtResource("3_fcjpk")
 choiceWindow = ExtResource("3_vag2n")
 
 [node name="map" type="TileMapLayer" parent="."]

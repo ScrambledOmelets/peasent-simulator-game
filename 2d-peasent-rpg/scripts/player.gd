@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	#get player position
-	SignalBus.player_location = position
+	SignalBus.player_location = global_position
 	
 	#sprite animation
 	if velocity.length() > 0:

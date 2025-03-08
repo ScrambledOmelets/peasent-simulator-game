@@ -1,6 +1,7 @@
 extends Node
 
 @export var hazard1: PackedScene
+@export var hazard2: PackedScene
 @export var choiceWindow: PackedScene
 
 var dialouge
@@ -28,7 +29,7 @@ func _on_player_hit() -> void:
 #only spawns hazards like every other time????
 func _on_hazard_timer_timeout() -> void:
 	#instance
-	hazard = hazard1.instantiate()
+	hazard = hazard2.instantiate()
 	
 	#getting spawn location (random)
 	var hazard_spawn_location = $hazardPath/hazardSpawnLocation
@@ -40,8 +41,8 @@ func _on_hazard_timer_timeout() -> void:
 	#setting spawn to random
 	hazard.position = hazard_spawn_location.position
 	
-	var velocity = Vector2(200, 0.0)
-	hazard.linear_velocity = velocity.rotated(direction)
+	#var velocity = Vector2(200, 0.0)
+	#hazard.linear_velocity = velocity.rotated(direction)
 	
 	#hopefully this makes the thing move to the player
 	#var dir = ($player.global_position - hazard.position).normalized()

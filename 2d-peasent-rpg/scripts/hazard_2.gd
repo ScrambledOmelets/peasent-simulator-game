@@ -2,25 +2,21 @@ extends Area2D
 #signal playerHit
 @export var speed = 500
 
+
 func _ready() -> void:
-	$AnimatedSprite2D.play("default")
-	look_at(SignalBus.player_location)
+	$AnimatedSprite2D.play("coin")
+	
 
 func _process(delta: float) -> void:
-	pass
-	#var v  = Vector2.ZERO
+	#wtf this is so simple and it makes the object follow the player
+	var direction = (SignalBus.player_location - global_position).normalized()
+	position += speed * direction * delta 
 	
 	
 	###updates position each frame
 	#
 	
 
-func _physics_process(delta: float) -> void:
-	pass
-	var velocity = Vector2.ZERO
-	var dir = (SignalBus.player_location - global_position).normalized()
-	velocity = transform.x * dir * speed
-	position += velocity * delta
 
 
 func _on_body_entered(body: Node2D) -> void:
