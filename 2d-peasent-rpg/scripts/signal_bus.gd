@@ -8,3 +8,6 @@ signal choice_made
 
 #hazard signal
 signal playerHit
+
+#player global variable
+var player_location

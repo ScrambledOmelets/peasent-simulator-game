@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://mkigtmd6tj2b"]
+
+[ext_resource type="Texture2D" uid="uid://b0tqa81qkfu7l" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_03jvd"]
+[ext_resource type="Script" path="res://scripts/hazard_2.gd" id="1_edavr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1htj"]
+atlas = ExtResource("1_03jvd")
+region = Rect2(2, 8, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euwtx"]
+atlas = ExtResource("1_03jvd")
+region = Rect2(25, 8, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0tno"]
+atlas = ExtResource("1_03jvd")
+region = Rect2(48, 8, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4ql8"]
+atlas = ExtResource("1_03jvd")
+region = Rect2(71, 8, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qjov"]
+atlas = ExtResource("1_03jvd")
+region = Rect2(2, 31, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hgh5"]
+atlas = ExtResource("1_03jvd")
+region = Rect2(25, 31, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hn68"]
+atlas = ExtResource("1_03jvd")
+region = Rect2(71, 31, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w67qu"]
+atlas = ExtResource("1_03jvd")
+region = Rect2(48, 31, 23, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n2xoy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1htj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euwtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0tno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4ql8")
+}],
+"loop": true,
+"name": &"awake",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qjov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hgh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hn68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w67qu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w67qu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hn68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hgh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qjov")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwfy1"]
+size = Vector2(31, 32)
+
+[node name="hazard1" type="Area2D"]
+position = Vector2(69, 34)
+script = ExtResource("1_edavr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.5, -1.5)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_n2xoy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_iwfy1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,7 +2,6 @@ extends Node
 
 @export var hazard1: PackedScene
 @export var choiceWindow: PackedScene
-@export var speed = 300
 
 var dialouge
 var hazard
@@ -14,16 +13,19 @@ func _ready() -> void:
 	$player.resetPlayer($startPosition.position)
 	$hud.update_message("")
 	#checks for signals???
-	hazard1.playerHit.connect(_on_player_hit.bind(self))
-
+	SignalBus.playerHit.connect(_on_player_hit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
+#this works
 func _on_player_hit() -> void:
 	pass
+	print("signal recieved")
 	
+#this doesnt always work??????
+#only spawns hazards like every other time????
 func _on_hazard_timer_timeout() -> void:
 	#instance
 	hazard = hazard1.instantiate()
@@ -38,15 +40,19 @@ func _on_hazard_timer_timeout() -> void:
 	#setting spawn to random
 	hazard.position = hazard_spawn_location.position
 	
+	var velocity = Vector2(200, 0.0)
+	hazard.linear_velocity = velocity.rotated(direction)
+	
 	#hopefully this makes the thing move to the player
-	var player_location = hazard.look_at($player.position)
-	
-	#setting velocity
-	var velocity = Vector2(500, 0.0)
-	hazard.linear_velocity = velocity.rotated(player_location)
-	
+	#var dir = ($player.global_position - hazard.position).normalized()
+	#
+	##setting velocity
+	#var velocity = Vector2(500, 0.0)
+	#hazard.position += velocity * dir
+	#
 	#add instance as child
 	add_child(hazard)
+	print("child added...")
 
 
 #spawning of new choice

@@ -31,6 +31,9 @@ func _physics_process(delta: float) -> void:
 	get_input()
 	move_and_slide()
 	
+	#get player position
+	SignalBus.player_location = position
+	
 	#sprite animation
 	if velocity.length() > 0:
 		$AnimatedSprite2D.play("running")
