@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://by1vx5a716qwf"]
+[gd_scene load_steps=2 format=3 uid="uid://by1vx5a716qwf"]
+
+[ext_resource type="Script" path="res://scripts/dialouge_box.gd" id="1_d0eqt"]
 
 [node name="dialougeBox" type="CanvasLayer"]
+script = ExtResource("1_d0eqt")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = -1
@@ -15,7 +18,7 @@ offset_bottom = 8.31195
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+[node name="choiceMessage" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.072
@@ -29,6 +32,7 @@ offset_bottom = -0.0881195
 theme_override_font_sizes/normal_font_size = 35
 bbcode_enabled = true
 text = "graaaaa"
+scroll_following = true
 
 [node name="choice1" type="Button" parent="."]
 offset_left = 730.0
@@ -41,3 +45,6 @@ offset_left = 730.0
 offset_top = 436.0
 offset_right = 1036.0
 offset_bottom = 481.0
+
+[connection signal="pressed" from="choice1" to="." method="_on_choice_1_pressed"]
+[connection signal="pressed" from="choice2" to="." method="_on_choice_2_pressed"]
