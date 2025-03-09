@@ -226,7 +226,9 @@ metadata/_edit_group_ = true
 position = Vector2(-8, 7)
 shape = SubResource("RectangleShape2D_0g31p")
 
+[connection signal="gameOver" from="." to="." method="_on_game_over"]
 [connection signal="timeout" from="choiceTimer" to="." method="_on_choice_timer_timeout"]
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]
+[connection signal="villageEntered" from="villageTransition" to="." method="_on_village_transition_village_entered"]
 
 [editable path="randomSign2"]

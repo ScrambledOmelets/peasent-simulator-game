@@ -4,11 +4,13 @@ extends Node #must handle all game code here
 @export var hazard2: PackedScene
 @export var choiceWindow: PackedScene
 
+signal gameOver
 #instanced scene variables
 var dialouge
 var hazard
 
 #game values
+#might need to make these global...
 var gold : int
 var food : int
 
@@ -23,6 +25,9 @@ func _ready() -> void:
 	SignalBus.choice2.connect(_on_first_choice2)
 	#keep this one enabled
 	SignalBus.choice_made.connect(_any_choice_made)
+	#all the village entered signals going to the same function
+	$villageTransition2.villageEntered.connect(_on_village_transition_village_entered)
+	$villageTransition3.villageEntered.connect(_on_village_transition_village_entered)
 	
 	#disabling player movement for the talking thing to appear
 	$player.set_physics_process(false)
@@ -30,6 +35,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#hopefully checks for gameover without being buggy
+	#it was buggy
 	pass
 
 #very first choice made to determine things
@@ -70,9 +77,9 @@ func _choice1_made() -> void:
 	#subtract from gold amt bc bandits
 	gold -= num
 	
-	#is_game_over(globals.food, globals.gold)
 	#logic for gold
 	dialouge.updateHeader(goldLogic(gold, num))
+	is_game_over(food, gold)
 	
 func _choice2_made() -> void:
 	var num1 = randi_range(1, 5)
@@ -80,10 +87,11 @@ func _choice2_made() -> void:
 	gold -= num1
 	food -= num2
 	
-	#is_game_over(globals.food, globals.gold)
+	
 	#should update everything and return the value string to update header
 	#wtf me when the code works (im shocked and surprised)
 	dialouge.updateHeader(goldLogic(gold, num1) + foodLogic(food, num2) + " while escaping")
+	is_game_over(food, gold)
 	
 #this works
 func _on_player_hit() -> void:
@@ -145,8 +153,8 @@ func _on_choice_timer_timeout() -> void:
 	remove_child(dialouge)
 	#hopefully removes hazard w/o error
 	remove_child(hazard)
-	#spawn enemies
-	$hazardTimer.start()
+	#spawn enemies at a random time (hopefully)
+	$hazardTimer.start(randi_range(1, 5))
 	$player.set_physics_process(true)
 	
 func goldLogic(gold, randomNum):
@@ -167,12 +175,39 @@ func foodLogic(food, randomNum):
 	var value = str(randomNum) + " food..."
 	
 	if food <= 0:
-		#emit gameover signal and handle the function in main
+		food = 0
 		$hud.update_message("you cannot continue this journey...")
 		dialouge.updateHeader("you've lost all your food!")
-		$hud.update_foodCounter(0)
+		$hud.update_foodCounter(food)
 	else:
 		$hud.update_foodCounter(food)
 		
 	return value
+
+func is_game_over(food, gold):
+	if food == 0:
+		$choiceTimer.start()
+		await $choiceTimer.timeout
+		gameOver.emit() #this works. connect signal
+		print("NO FOOD")
 	
+	##this is glitchy, i don't like it
+	elif gold == 0:
+		$choiceTimer.start()
+		await $choiceTimer.timeout
+		gameOver.emit()
+		print("RAN OUT OF GOLD")
+
+#when player enters a village
+func _on_village_transition_village_entered() -> void:
+	$choiceTimer.start()
+	$hud.update_message("now entering a village")
+	$player.set_physics_process(false)
+	#waiting for timer
+	await $choiceTimer.timeout
+	get_tree().change_scene_to_file("res://scenes/transition_scene.tscn")
+
+#when the game ends
+func _on_game_over() -> void:
+	SignalBus.bring_to_end_screen.emit(food, gold)
+	get_tree().change_scene_to_file("res://scenes/transition_scene.tscn")

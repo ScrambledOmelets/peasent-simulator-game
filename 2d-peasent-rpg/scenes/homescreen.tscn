@@ -21,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 color = Color(0, 0, 0, 0.352941)
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = -1
