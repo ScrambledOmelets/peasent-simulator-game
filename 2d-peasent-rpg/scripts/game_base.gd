@@ -42,6 +42,9 @@ func _on_first_choice1() -> void:
 	dialouge.updateHeader("wonderful choice!")
 	SignalBus.choice1.disconnect(_on_first_choice1)
 	SignalBus.choice1.connect(_choice1_made)
+	
+	SignalBus.choice2.disconnect(_on_first_choice2)
+	SignalBus.choice2.connect(_choice2_made)
 
 func _on_first_choice2() -> void:
 	food = 5
@@ -49,8 +52,12 @@ func _on_first_choice2() -> void:
 	$hud.update_foodCounter(food)
 	$hud.update_goldCounter(gold)
 	dialouge.updateHeader("lovely choice!")
+	#connecting and disconnecting other signals
+	SignalBus.choice1.disconnect(_on_first_choice1)
+	SignalBus.choice1.connect(_choice1_made)
+	#they have to connect and disconnect for both
+	#this is very complicated
 	SignalBus.choice2.disconnect(_on_first_choice2)
-	
 	SignalBus.choice2.connect(_choice2_made)
 
 func _any_choice_made() -> void:

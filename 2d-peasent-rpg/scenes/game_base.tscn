@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://3hs2il4leyks"]
+[gd_scene load_steps=14 format=4 uid="uid://3hs2il4leyks"]
 
 [ext_resource type="Texture2D" uid="uid://d2eyc106dhste" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_mbj6s"]
 [ext_resource type="Script" path="res://scripts/game_base.gd" id="1_mxyj4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://by1vx5a716qwf" path="res://scenes/dialouge_box.tscn" id="3_vag2n"]
 [ext_resource type="PackedScene" uid="uid://bwtcr4yo0iq4" path="res://scenes/hud.tscn" id="6_vimn4"]
 [ext_resource type="PackedScene" uid="uid://cfpbc7sk4rq6j" path="res://scenes/random_sign.tscn" id="8_m8a50"]
+[ext_resource type="PackedScene" uid="uid://b6d5w2k3mfnkx" path="res://scenes/villageTransition.tscn" id="9_4l0ep"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c035p"]
 texture = ExtResource("1_mbj6s")
@@ -151,6 +152,9 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g31p"]
+size = Vector2(440, 94)
+
 [node name="gameBase" type="Node"]
 script = ExtResource("1_mxyj4")
 hazard1 = ExtResource("2_g3ysk")
@@ -196,6 +200,31 @@ metadata/_edit_group_ = true
 
 [node name="helperText" parent="randomSign2" index="2"]
 text = "this is one type of village"
+
+[node name="villageTransition" parent="." instance=ExtResource("9_4l0ep")]
+position = Vector2(1955, 1277)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="villageTransition"]
+position = Vector2(-8, 7)
+shape = SubResource("RectangleShape2D_0g31p")
+
+[node name="villageTransition2" parent="." instance=ExtResource("9_4l0ep")]
+position = Vector2(2051, -404)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="villageTransition2"]
+position = Vector2(-8, 7)
+shape = SubResource("RectangleShape2D_0g31p")
+
+[node name="villageTransition3" parent="." instance=ExtResource("9_4l0ep")]
+position = Vector2(3239, 375)
+rotation = -1.56895
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="villageTransition3"]
+position = Vector2(-8, 7)
+shape = SubResource("RectangleShape2D_0g31p")
 
 [connection signal="timeout" from="choiceTimer" to="." method="_on_choice_timer_timeout"]
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]
