@@ -3,7 +3,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SignalBus.bring_to_end_screen.connect(_from_gameover)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -12,5 +12,6 @@ signal playerHit
 #player global variable
 var player_location
 
-#gameover signal to carry info to another scene??
+
+##gameover signal to carry info to another scene??
 signal bring_to_end_screen(foodLeft, goldLeft)

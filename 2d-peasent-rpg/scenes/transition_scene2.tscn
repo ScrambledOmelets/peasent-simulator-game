@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxa81qtj8wcqu"]
+[gd_scene load_steps=3 format=3 uid="uid://buhq3o38uyypq"]
 
-[ext_resource type="Script" path="res://scripts/transition_scene.gd" id="1_rt440"]
-[ext_resource type="Texture2D" uid="uid://cjbnc2fq2nnt4" path="res://assets/ruins-8881488_1280.jpg" id="2_luo1g"]
+[ext_resource type="Script" path="res://scripts/transition_scene.gd" id="1_phcpt"]
+[ext_resource type="Texture2D" uid="uid://cjbnc2fq2nnt4" path="res://assets/ruins-8881488_1280.jpg" id="2_onjs3"]
 
-[node name="transitionScene" type="Node2D"]
-script = ExtResource("1_rt440")
+[node name="transitionScene2" type="Node2D"]
+script = ExtResource("1_phcpt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(577, 323.5)
 scale = Vector2(0.898438, 0.759953)
-texture = ExtResource("2_luo1g")
+texture = ExtResource("2_onjs3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -36,8 +36,8 @@ offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
-text = "you've made it to a village!!!
-(this isn't programmed yet so, you've essentially beat the game for now)"
+text = "you either ran out of gold or food :(
+would you journey again?"
 horizontal_alignment = 1
 autowrap_mode = 2
 

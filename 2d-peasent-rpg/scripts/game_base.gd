@@ -77,9 +77,9 @@ func _choice1_made() -> void:
 	#subtract from gold amt bc bandits
 	gold -= num
 	
+	is_game_over(food, gold)
 	#logic for gold
 	dialouge.updateHeader(goldLogic(gold, num))
-	is_game_over(food, gold)
 	
 func _choice2_made() -> void:
 	var num1 = randi_range(1, 5)
@@ -87,11 +87,10 @@ func _choice2_made() -> void:
 	gold -= num1
 	food -= num2
 	
-	
+	is_game_over(food, gold)
 	#should update everything and return the value string to update header
 	#wtf me when the code works (im shocked and surprised)
 	dialouge.updateHeader(goldLogic(gold, num1) + foodLogic(food, num2) + " while escaping")
-	is_game_over(food, gold)
 	
 #this works
 func _on_player_hit() -> void:
@@ -185,14 +184,14 @@ func foodLogic(food, randomNum):
 	return value
 
 func is_game_over(food, gold):
-	if food == 0:
+	if food <= 0:
 		$choiceTimer.start()
 		await $choiceTimer.timeout
 		gameOver.emit() #this works. connect signal
 		print("NO FOOD")
 	
 	##this is glitchy, i don't like it
-	elif gold == 0:
+	elif gold < 0:
 		$choiceTimer.start()
 		await $choiceTimer.timeout
 		gameOver.emit()
@@ -203,11 +202,18 @@ func _on_village_transition_village_entered() -> void:
 	$choiceTimer.start()
 	$hud.update_message("now entering a village")
 	$player.set_physics_process(false)
+	$hazardTimer.stop()
 	#waiting for timer
 	await $choiceTimer.timeout
+	#this would change to the village scene when i expand the game
 	get_tree().change_scene_to_file("res://scenes/transition_scene.tscn")
+	
 
 #when the game ends
 func _on_game_over() -> void:
+	#this signal is never recieved bc this scene is deleted
 	SignalBus.bring_to_end_screen.emit(food, gold)
-	get_tree().change_scene_to_file("res://scenes/transition_scene.tscn")
+	
+	$player.set_physics_process(false)
+	$hazardTimer.stop()
+	get_tree().change_scene_to_file("res://scenes/transition_scene2.tscn")
