@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://3hs2il4leyks"]
+[gd_scene load_steps=12 format=4 uid="uid://3hs2il4leyks"]
 
 [ext_resource type="Texture2D" uid="uid://d2eyc106dhste" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_mbj6s"]
 [ext_resource type="Script" path="res://scripts/game_base.gd" id="1_mxyj4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://mkigtmd6tj2b" path="res://scenes/hazard_2.tscn" id="3_fcjpk"]
 [ext_resource type="PackedScene" uid="uid://by1vx5a716qwf" path="res://scenes/dialouge_box.tscn" id="3_vag2n"]
 [ext_resource type="PackedScene" uid="uid://bwtcr4yo0iq4" path="res://scenes/hud.tscn" id="6_vimn4"]
+[ext_resource type="PackedScene" uid="uid://cfpbc7sk4rq6j" path="res://scenes/random_sign.tscn" id="8_m8a50"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c035p"]
 texture = ExtResource("1_mbj6s")
@@ -186,5 +187,17 @@ position = Vector2(188, 147)
 
 [node name="hud" parent="." instance=ExtResource("6_vimn4")]
 
+[node name="randomSign" parent="." instance=ExtResource("8_m8a50")]
+position = Vector2(402, 124)
+
+[node name="randomSign2" parent="." instance=ExtResource("8_m8a50")]
+position = Vector2(1697, 721)
+metadata/_edit_group_ = true
+
+[node name="helperText" parent="randomSign2" index="2"]
+text = "this is one type of village"
+
 [connection signal="timeout" from="choiceTimer" to="." method="_on_choice_timer_timeout"]
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]
+
+[editable path="randomSign2"]

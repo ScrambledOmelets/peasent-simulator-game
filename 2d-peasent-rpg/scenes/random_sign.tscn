@@ -7,22 +7,24 @@
 radius = 92.1358
 
 [node name="randomSign" type="Area2D"]
+position = Vector2(125, 88)
+scale = Vector2(0.503616, 0.459997)
 script = ExtResource("1_ymvax")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(519, 283)
+position = Vector2(4, 34)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_yj1sy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(519, 359)
+position = Vector2(4, 110)
 shape = SubResource("CircleShape2D_rx1uh")
 
 [node name="helperText" type="Label" parent="."]
-offset_left = 383.0
-offset_top = 31.0
-offset_right = 714.0
-offset_bottom = 142.0
+offset_left = -132.0
+offset_top = -218.0
+offset_right = 199.0
+offset_bottom = -107.0
 theme_override_font_sizes/font_size = 25
 text = "hi! follow the path to one of the other towns without running out of food"
 autowrap_mode = 2
