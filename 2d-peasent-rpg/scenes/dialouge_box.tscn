@@ -30,7 +30,6 @@ offset_top = 0.104
 offset_right = -0.0419922
 offset_bottom = -0.0881195
 theme_override_font_sizes/normal_font_size = 35
-bbcode_enabled = true
 text = "graaaaa"
 scroll_following = true
 

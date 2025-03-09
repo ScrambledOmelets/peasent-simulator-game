@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	pass
 
 func updateHeader(header):
-	$choiceMessage.text = str(header)
+	$Panel/choiceMessage.text = str(header)
 	
 	
 func updatedChoices(option1, option2):
