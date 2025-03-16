@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv6ccudpgrf3d"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_4tt2b"]
+[ext_resource type="PackedScene" uid="uid://choemiyb2p42x" path="res://scenes/homescreen.tscn" id="1_jjq1t"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_4tt2b")
+
+[node name="homescreen" parent="." instance=ExtResource("1_jjq1t")]
+
+[connection signal="start" from="homescreen" to="." method="_on_homescreen_start"]

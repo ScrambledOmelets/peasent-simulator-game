@@ -1,4 +1,5 @@
-extends ColorRect
+extends CanvasLayer
+
 
 signal choice1
 signal choice2
@@ -14,7 +15,7 @@ func _process(delta: float) -> void:
 	pass
 
 func updateHeader(header):
-	$choiceMessage.text = str(header)
+	$Panel/choiceMessage.text = str(header)
 	
 	
 func updatedChoices(option1, option2):
@@ -27,13 +28,15 @@ func newChoiceWindow():
 	$choice2.show()
 	
 	#show actual window
-	show()
+	#show()
+
 
 func _on_choice_1_pressed() -> void:
-	choice1.emit()
-	choice_made.emit()
-	
+	SignalBus.choice1.emit()
+	SignalBus.choice_made.emit()
+	$choice2.hide()
+
 func _on_choice_2_pressed() -> void:
-	choice2.emit()
-	choice_made.emit()
-	
+	SignalBus.choice2.emit()
+	SignalBus.choice_made.emit()
+	$choice1.hide()

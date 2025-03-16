@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gtwntatgqr16"
-path="res://.godot/imported/ruins-8881488_1280.jpg-09ff32cd08359bb9aeb1ab16371ce1e0.ctex"
+uid="uid://bwtm8ff1by4tn"
+path="res://.godot/imported/painting-20401_1920.jpg-30bbdb868295c8d81d0a9963ce40d6ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ruins-8881488_1280.jpg"
-dest_files=["res://.godot/imported/ruins-8881488_1280.jpg-09ff32cd08359bb9aeb1ab16371ce1e0.ctex"]
+source_file="res://assets/painting-20401_1920.jpg"
+dest_files=["res://.godot/imported/painting-20401_1920.jpg-30bbdb868295c8d81d0a9963ce40d6ea.ctex"]
 
 [params]
 

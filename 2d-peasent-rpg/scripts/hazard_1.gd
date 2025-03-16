@@ -11,14 +11,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("player"):
 		#makes it frozen!!
-		set_deferred("freeze", true)
-		print("frozen???")
-		
+		set_deferred("freeze", true)		
 		#disables hazard's collision shape
 		$CollisionShape2D.set_deferred("disabled", true) #shouldn't fal through ground now bc its frozen
+		
+		SignalBus.playerHit.emit()
+		print("they hit")
+
 		
 	
