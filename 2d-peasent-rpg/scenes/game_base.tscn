@@ -5,19 +5,19 @@
 [ext_resource type="PackedScene" uid="uid://deitd64bd7qqx" path="res://scenes/player.tscn" id="2_q3i5o"]
 [ext_resource type="PackedScene" uid="uid://mkigtmd6tj2b" path="res://scenes/hazard_2.tscn" id="3_fcjpk"]
 [ext_resource type="PackedScene" uid="uid://by1vx5a716qwf" path="res://scenes/dialouge_box.tscn" id="3_vag2n"]
-[ext_resource type="Texture2D" uid="uid://6n8ph074qpnq" path="res://Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Floors_Tiles.png" id="6_repwv"]
+[ext_resource type="Texture2D" uid="uid://6n8ph074qpnq" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Floors_Tiles.png" id="6_repwv"]
 [ext_resource type="PackedScene" uid="uid://bwtcr4yo0iq4" path="res://scenes/hud.tscn" id="6_vimn4"]
-[ext_resource type="Texture2D" uid="uid://c12bbabjx1yxi" path="res://Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Walls.png" id="7_d7qkx"]
-[ext_resource type="Texture2D" uid="uid://cyl3khxqopcx2" path="res://Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Shadows.png" id="8_jg4i3"]
+[ext_resource type="Texture2D" uid="uid://c12bbabjx1yxi" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Walls.png" id="7_d7qkx"]
+[ext_resource type="Texture2D" uid="uid://cyl3khxqopcx2" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Shadows.png" id="8_jg4i3"]
 [ext_resource type="PackedScene" uid="uid://cfpbc7sk4rq6j" path="res://scenes/random_sign.tscn" id="8_m8a50"]
 [ext_resource type="PackedScene" uid="uid://b6d5w2k3mfnkx" path="res://scenes/villageTransition.tscn" id="9_4l0ep"]
-[ext_resource type="Texture2D" uid="uid://bak7txnqjhg87" path="res://Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Roofs.png" id="9_skb1j"]
-[ext_resource type="Texture2D" uid="uid://crg0bl65dvfq3" path="res://Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Floors.png" id="10_vaw4l"]
-[ext_resource type="Texture2D" uid="uid://br2ytsulwnqgh" path="res://Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Props.png" id="11_mpuq8"]
-[ext_resource type="Texture2D" uid="uid://b0ppsghq5el11" path="res://Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Wall_Tiles.png" id="12_d4b3y"]
-[ext_resource type="Texture2D" uid="uid://bwg5ubnmmimnh" path="res://Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Props/Static/Shadows.png" id="13_7km7a"]
-[ext_resource type="Texture2D" uid="uid://d1i3sqvgovrn3" path="res://Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Water_tiles.png" id="13_lw2j3"]
-[ext_resource type="Texture2D" uid="uid://fparogrrhgjc" path="res://Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Props/Static/Vegetation.png" id="14_4i6c1"]
+[ext_resource type="Texture2D" uid="uid://bak7txnqjhg87" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Roofs.png" id="9_skb1j"]
+[ext_resource type="Texture2D" uid="uid://crg0bl65dvfq3" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Floors.png" id="10_vaw4l"]
+[ext_resource type="Texture2D" uid="uid://br2ytsulwnqgh" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Props.png" id="11_mpuq8"]
+[ext_resource type="Texture2D" uid="uid://b0ppsghq5el11" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Wall_Tiles.png" id="12_d4b3y"]
+[ext_resource type="Texture2D" uid="uid://bwg5ubnmmimnh" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Props/Static/Shadows.png" id="13_7km7a"]
+[ext_resource type="Texture2D" uid="uid://d1i3sqvgovrn3" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Water_tiles.png" id="13_lw2j3"]
+[ext_resource type="Texture2D" uid="uid://fparogrrhgjc" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Props/Static/Vegetation.png" id="14_4i6c1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u6wjd"]
 texture = ExtResource("6_repwv")
@@ -2433,6 +2433,7 @@ tile_set = SubResource("TileSet_0t66g")
 
 [node name="shadow_map" type="TileMapLayer" parent="maps"]
 scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAATAAIABgAAAAsAAAA=")
 tile_set = SubResource("TileSet_wrhe7")
 
 [node name="flower_map" type="TileMapLayer" parent="maps"]
