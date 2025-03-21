@@ -15,8 +15,13 @@ var hazard
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#spawn mobs?
+	banditSpawn()
+	
+	#setting up game
 	$player.resetPlayer($startPosition.position)
 	$hud.update_message("")
+	
 	#checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)
 	#might have to diable these two signals later..
@@ -101,24 +106,7 @@ func _on_player_hit() -> void:
 	
 #this also works fine
 func _on_hazard_timer_timeout() -> void:
-	#instance
-	hazard = hazard2.instantiate()
-	
-	#getting spawn location (random)
-	var hazard_spawn_location = $hazardPath/hazardSpawnLocation
-	hazard_spawn_location.progress_ratio = randf()
-	
-	#perpendicular angling???
-	var direction = hazard_spawn_location.rotation + PI/2
-	
-	#setting spawn to random
-	hazard.position = hazard_spawn_location.position
-	
-	##VELOCITY/MOVEMENT HANDLED IN HAZARD SCRIPT
-	
-	
-	add_child(hazard)
-	print("child added...")
+	banditSpawn()
 
 
 #spawning of new choice
@@ -135,6 +123,20 @@ func dialougeSpawn(header: String, option1: String, option2: String):
 	dialouge.updateHeader(header)
 	dialouge.updatedChoices(option1, option2)
 
+func banditSpawn():
+	#instance
+	hazard = hazard2.instantiate()
+	
+	#getting spawn location (random)
+	var hazard_spawn_location = $hazardPath/hazardSpawnLocation
+	hazard_spawn_location.progress_ratio = randf()
+	
+	#setting spawn to random
+	hazard.position = hazard_spawn_location.position
+	
+	##VELOCITY/MOVEMENT HANDLED IN HAZARD SCRIPT
+	add_child(hazard)
+	print("child added...")
 
 func _on_choice_timer_timeout() -> void:
 	#removes the dialouge
