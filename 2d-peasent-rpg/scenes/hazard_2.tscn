@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://mkigtmd6tj2b"]
+[gd_scene load_steps=38 format=3 uid="uid://mkigtmd6tj2b"]
 
 [ext_resource type="Texture2D" uid="uid://b0tqa81qkfu7l" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_03jvd"]
 [ext_resource type="Script" path="res://scripts/hazard_2.gd" id="1_edavr"]
 [ext_resource type="Texture2D" uid="uid://b06phbj6nloqy" path="res://assets/brackeys_platformer_assets/sprites/coin.png" id="3_so6te"]
+[ext_resource type="Texture2D" uid="uid://drwf3ndao4ep5" path="res://assets/MinifolksVillagers/Blue/Outline/MiniThief.png" id="4_l85wk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1htj"]
 atlas = ExtResource("1_03jvd")
@@ -83,6 +84,46 @@ region = Rect2(71, 31, 23, 21)
 [sub_resource type="AtlasTexture" id="AtlasTexture_w67qu"]
 atlas = ExtResource("1_03jvd")
 region = Rect2(48, 31, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc7fu"]
+atlas = ExtResource("4_l85wk")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbomh"]
+atlas = ExtResource("4_l85wk")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08svw"]
+atlas = ExtResource("4_l85wk")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di5fg"]
+atlas = ExtResource("4_l85wk")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gupsx"]
+atlas = ExtResource("4_l85wk")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n4pr"]
+atlas = ExtResource("4_l85wk")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3c7q"]
+atlas = ExtResource("4_l85wk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5o7l"]
+atlas = ExtResource("4_l85wk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtva2"]
+atlas = ExtResource("4_l85wk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajvj3"]
+atlas = ExtResource("4_l85wk")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n2xoy"]
 animations = [{
@@ -172,10 +213,53 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc7fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbomh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08svw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di5fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gupsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n4pr")
+}],
+"loop": true,
+"name": &"running",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3c7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5o7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtva2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajvj3")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwfy1"]
 size = Vector2(31, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_elheo"]
+radius = 125.936
 
 [node name="hazard1" type="Area2D"]
 position = Vector2(69, 34)
@@ -185,10 +269,18 @@ script = ExtResource("1_edavr")
 position = Vector2(3.5, -1.5)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_n2xoy")
-animation = &"coin"
+animation = &"standing"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, -1)
+position = Vector2(4, 23)
 shape = SubResource("RectangleShape2D_iwfy1")
 
+[node name="playerInRange" type="Area2D" parent="."]
+
+[node name="playerRange" type="CollisionShape2D" parent="playerInRange"]
+position = Vector2(5, 23)
+shape = SubResource("CircleShape2D_elheo")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="playerInRange" to="." method="_on_player_in_range_body_entered"]
+[connection signal="body_exited" from="playerInRange" to="." method="_on_player_in_range_body_exited"]

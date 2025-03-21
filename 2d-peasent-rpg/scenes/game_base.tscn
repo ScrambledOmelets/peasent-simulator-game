@@ -2406,9 +2406,9 @@ sources/0 = SubResource("TileSetAtlasSource_5m641")
 
 [sub_resource type="Curve2D" id="Curve2D_76i8d"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -317.502, -196.092, 0, 0, 0, 0, -1074.62, -242.232, 0, 0, 0, 0, -976.93, 138.418, 0, 0, 0, 0, -683.852, 138.418, 0, 0, 0, 0, -891.449, 611.346, 0, 0, 0, 0, 305.291, -461.393, 0, 0, 0, 0, -2161.46, -449.859)
+"points": PackedVector2Array(0, 0, 0, 0, -1416.55, -103.813, 0, 0, 0, 0, -598.369, -103.813, 0, 0, 0, 0, -586.158, 276.836, 0, 0, 0, 0, -1404.34, 253.766, 0, 0, 0, 0, -1404.34, -115.348, 0, 0, 0, 0, -1416.55, -103.813)
 }
-point_count = 7
+point_count = 6
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g31p"]
 size = Vector2(440, 94)
@@ -2458,8 +2458,7 @@ scale = Vector2(0.0818892, 0.0866939)
 curve = SubResource("Curve2D_76i8d")
 
 [node name="hazardSpawnLocation" type="PathFollow2D" parent="hazardPath"]
-position = Vector2(-317.502, -196.092)
-rotation = -3.08073
+position = Vector2(-1416.55, -103.813)
 
 [node name="startPosition" type="Marker2D" parent="."]
 position = Vector2(188, 147)
