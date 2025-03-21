@@ -1,11 +1,33 @@
-~ this_is_a_node_title
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => this_is_a_node_title
-- End the conversation => END
-Nathan: For more information see the online documentation.
+~ game_start
+Your Consciousness: You are [[starting out|embarking]] on a new journey to reach the market to sell your wares!
+Your Consciousness: You've never had to travel these roads before as your father would make the trip for you.
+Your Consciousness: You feel...
+- Nervous
+	Your Consciousness: Who wouldn't be nervous? You'll get the hang of it soon enough though.
+	set SignalBus.luck = 0
+- Determined
+	Your Consciousness: That's the spirit! You won't let your father down.
+	set SignalBus.luck = 1
+- Bored
+	Your Consciousness: You don't really want to be out here anyways...
+	set SignalBus.luck = -1
+Your Consciousness: Oh! You almost forgot to double check your item pouch.
+Your Consciousness: You remember packing...
+- Lightly
+	set SignalBus.food = 4
+	set SignalBus.gold = 5
+	Your Consciousness: This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
+- Moderately
+	set SignalBus.food = 5
+	set SignalBus.gold = 8
+	Your Consciousness: This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
+- Heavily
+	set SignalBus.food = 10
+	set SignalBus.gold = 10
+	Your Consciousness: This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
+Your Consciousness: There is a counter at the top right corner to help you rememember your items.
+Your Consciousness: Follow the path to reach a village while staying safe!
+Your Consciousness: You'll be forced to return home if you run out of food, so keep an eye on it!
+Your Consciousness: You hope your journey is a sucessful one...
+
 => END

@@ -30,7 +30,8 @@ func _process(delta: float) -> void:
 			$AnimatedSprite2D.flip_h = false
 	else:
 		velocity = 0
-		position += velocity
+		#this is glitched out
+		#position = velocity
 		$AnimatedSprite2D.play("standing")
 	
 

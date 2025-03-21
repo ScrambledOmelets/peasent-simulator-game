@@ -22,26 +22,41 @@ func _ready() -> void:
 	$player.resetPlayer($startPosition.position)
 	$hud.update_message("")
 	
-	#checks for signals???
-	SignalBus.playerHit.connect(_on_player_hit)
-	#might have to diable these two signals later..
-	SignalBus.choice1.connect(_on_first_choice1)
-	SignalBus.choice2.connect(_on_first_choice2)
-	#keep this one enabled
-	SignalBus.choice_made.connect(_any_choice_made)
+	##checks for signals???
+	#SignalBus.playerHit.connect(_on_player_hit)
+	##might have to diable these two signals later..
+	#SignalBus.choice1.connect(_on_first_choice1)
+	#SignalBus.choice2.connect(_on_first_choice2)
+	##keep this one enabled
+	#SignalBus.choice_made.connect(_any_choice_made)
 	#all the village entered signals going to the same function
 	$villageTransition2.villageEntered.connect(_on_village_transition_village_entered)
 	$villageTransition3.villageEntered.connect(_on_village_transition_village_entered)
 	
-	#disabling player movement for the talking thing to appear
-	$player.set_physics_process(false)
-	dialougeSpawn("you have set out on a new journey! what do you remember bringing?", "heavy load", "light load")
+	#ok this is properly connected
+	DialogueManager.dialogue_ended.connect(_on_dialouge_ended)
+	DialogueManager.dialogue_started.connect(_on_dialouge_started)
+	
+	
+	
+	DialogueManager.show_dialogue_balloon(load("res://scripts/dialogue.dialogue"), "game_start")
+	#dialougeSpawn("you have set out on a new journey! what do you remember bringing?", "heavy load", "light load")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#hopefully checks for gameover without being buggy
 	#it was buggy
 	pass
+	 
+
+#start and stop player movement when dialouge
+func _on_dialouge_started(resource: DialogueResource):
+	$player.set_physics_process(false)
+
+func _on_dialouge_ended(resource: DialogueResource):
+	$player.set_physics_process(true)
+	$hud.update_foodCounter(SignalBus.food)
+	$hud.update_goldCounter(SignalBus.gold)
 
 #very first choice made to determine things
 #i should probably have this in the main file and make the variables global again
