@@ -1,6 +1,6 @@
 extends Area2D
 #signal playerHit
-@export var speed = 500
+@export var speed = 200
 
 var velocity
 var playerPresent = false
@@ -20,10 +20,21 @@ func _process(delta: float) -> void:
 		
 	else:
 		walkPointList = [SignalBus.marker1, SignalBus.marker2, SignalBus.marker3]
+		var ranPoint = walkPointList.pick_random()
+		var direction = (ranPoint - global_position).normalized()
 		
-		var direction = (walkPointList.pick_random() - global_position).normalized()
 		velocity = speed * direction * delta
 		position += velocity
+		
+		#bro looks so glitchy lmao
+		if ranPoint == global_position:
+			await get_tree().create_timer(2).timeout
+			ranPoint = walkPointList.pick_random()
+			velocity = speed * direction * delta
+			position += velocity
+		else:
+			velocity = speed * direction * delta
+			position += velocity
 		
 	#sprite animation
 	if velocity.length() > 0:

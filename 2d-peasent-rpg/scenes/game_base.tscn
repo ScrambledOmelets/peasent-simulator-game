@@ -2499,7 +2499,7 @@ position = Vector2(1865, 13)
 [node name="banditWalk2" type="Marker2D" parent="banditWalkingMarkers"]
 position = Vector2(2244, 17)
 
-[node name="banditwalk3" type="Marker2D" parent="banditWalkingMarkers"]
+[node name="banditWalk3" type="Marker2D" parent="banditWalkingMarkers"]
 position = Vector2(2036, -193)
 
 [connection signal="gameOver" from="." to="." method="_on_game_over"]

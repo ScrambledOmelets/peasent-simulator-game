@@ -23,7 +23,8 @@ func _ready() -> void:
 	$hud.update_message("")
 	
 	##checks for signals???
-	#SignalBus.playerHit.connect(_on_player_hit)
+	SignalBus.playerHit.connect(_on_player_hit)
+	
 	##might have to diable these two signals later..
 	#SignalBus.choice1.connect(_on_first_choice1)
 	#SignalBus.choice2.connect(_on_first_choice2)
@@ -57,9 +58,15 @@ func _on_dialouge_ended(resource: DialogueResource):
 	$player.set_physics_process(true)
 	$hud.update_foodCounter(SignalBus.food)
 	$hud.update_goldCounter(SignalBus.gold)
+	
+	if resource == load("res://scripts/bandit_dialouge.dialogue"):
+		remove_child(hazard)
+		$hud.update_foodCounter(SignalBus.food)
+		$hud.update_goldCounter(SignalBus.gold)
 
 #very first choice made to determine things
-#i should probably have this in the main file and make the variables global again
+#gotta delete these all  later
+
 func _on_first_choice1() -> void:
 	SignalBus.food = 10
 	SignalBus.gold = 15
@@ -71,7 +78,6 @@ func _on_first_choice1() -> void:
 	
 	SignalBus.choice2.disconnect(_on_first_choice2)
 	SignalBus.choice2.connect(_choice2_made)
-
 func _on_first_choice2() -> void:
 	SignalBus.food = 5
 	SignalBus.gold = 10
@@ -85,11 +91,9 @@ func _on_first_choice2() -> void:
 	#this is very complicated
 	SignalBus.choice2.disconnect(_on_first_choice2)
 	SignalBus.choice2.connect(_choice2_made)
-
 func _any_choice_made() -> void:
 	
 	$choiceTimer.start()
-	
 func _choice1_made() -> void:
 	#gen random number
 	var num = randi_range(1, 5)
@@ -99,7 +103,6 @@ func _choice1_made() -> void:
 	is_game_over(SignalBus.food, SignalBus.gold)
 	#logic for gold
 	dialouge.updateHeader(goldLogic(SignalBus.gold, num))
-	
 func _choice2_made() -> void:
 	var num1 = randi_range(1, 5)
 	var num2 = randi_range(1,3)
@@ -117,11 +120,11 @@ func _on_player_hit() -> void:
 	$hazardTimer.stop()
 	#stop player movement
 	#should be handled when dialouge ends
-	
+	print("uh, this should do something")
 	SignalBus.goldReduction = randi_range(1, 5)
 	SignalBus.foodReduction = randi_range(1,2)
 	
-	DialogueManager.show_dialogue_balloon(load("res://scripts/dialogue.dialogue"), "bandit_attack")
+	DialogueManager.show_dialogue_balloon(load("res://scripts/bandit_dialouge.dialogue"), "bandit_attack")
 	#dialougeSpawn("oh no a bandit", "pay what they demand", "attempt escape")
 	
 #this also works fine
