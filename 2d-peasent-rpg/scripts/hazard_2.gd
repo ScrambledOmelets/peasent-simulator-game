@@ -2,6 +2,7 @@ extends Area2D
 #signal playerHit
 @export var speed = 500
 
+var velocity
 var playerPresent = false
 
 func _ready() -> void:
@@ -9,12 +10,28 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	#wtf this is so simple and it makes the object follow the player
+	#if player in range it will follow them
 	if playerPresent == true:
 		var direction = (SignalBus.player_location - global_position).normalized()
-		position += speed * direction * delta 
+		velocity = speed * direction * delta 
+		position += velocity
+		
+		#sprite animation
+		if velocity.length() > 0:
+			$AnimatedSprite2D.play("running")
+		else:
+			$AnimatedSprite2D.play("standing")
+			
+		#sprite animation direction
+		if velocity.x < 0:
+			#if walk left, then flip sprite to turn left
+			$AnimatedSprite2D.flip_h = true
+		elif velocity.x > 0:
+			$AnimatedSprite2D.flip_h = false
 	else:
-		pass
+		velocity = 0
+		position += velocity
+		$AnimatedSprite2D.play("standing")
 	
 
 #signal works too
@@ -27,8 +44,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_player_in_range_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-
+	playerPresent = true
 
 func _on_player_in_range_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
+	playerPresent = false
