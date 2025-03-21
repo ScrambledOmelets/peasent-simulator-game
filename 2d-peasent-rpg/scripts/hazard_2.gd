@@ -1,6 +1,6 @@
 extends Area2D
 #signal playerHit
-@export var speed = 200
+@export var speed = 100
 
 var velocity
 var playerPresent = false
