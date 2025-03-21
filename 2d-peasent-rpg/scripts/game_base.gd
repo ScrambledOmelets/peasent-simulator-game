@@ -11,8 +11,7 @@ var hazard
 
 #game values
 #might need to make these global...
-var gold : int
-var food : int
+#mde them global
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,10 +41,10 @@ func _process(delta: float) -> void:
 #very first choice made to determine things
 #i should probably have this in the main file and make the variables global again
 func _on_first_choice1() -> void:
-	food = 10
-	gold = 15
-	$hud.update_foodCounter(food)
-	$hud.update_goldCounter(gold)
+	SignalBus.food = 10
+	SignalBus.gold = 15
+	$hud.update_foodCounter(SignalBus.food)
+	$hud.update_goldCounter(SignalBus.gold)
 	dialouge.updateHeader("wonderful choice!")
 	SignalBus.choice1.disconnect(_on_first_choice1)
 	SignalBus.choice1.connect(_choice1_made)
@@ -54,10 +53,10 @@ func _on_first_choice1() -> void:
 	SignalBus.choice2.connect(_choice2_made)
 
 func _on_first_choice2() -> void:
-	food = 5
-	gold = 10
-	$hud.update_foodCounter(food)
-	$hud.update_goldCounter(gold)
+	SignalBus.food = 5
+	SignalBus.gold = 10
+	$hud.update_foodCounter(SignalBus.food)
+	$hud.update_goldCounter(SignalBus.gold)
 	dialouge.updateHeader("lovely choice!")
 	#connecting and disconnecting other signals
 	SignalBus.choice1.disconnect(_on_first_choice1)
@@ -75,22 +74,22 @@ func _choice1_made() -> void:
 	#gen random number
 	var num = randi_range(1, 5)
 	#subtract from gold amt bc bandits
-	gold -= num
+	SignalBus.gold -= num
 	
-	is_game_over(food, gold)
+	is_game_over(SignalBus.food, SignalBus.gold)
 	#logic for gold
-	dialouge.updateHeader(goldLogic(gold, num))
+	dialouge.updateHeader(goldLogic(SignalBus.gold, num))
 	
 func _choice2_made() -> void:
 	var num1 = randi_range(1, 5)
 	var num2 = randi_range(1,3)
-	gold -= num1
-	food -= num2
+	SignalBus.gold -= num1
+	SignalBus.food -= num2
 	
-	is_game_over(food, gold)
+	is_game_over(SignalBus.food, SignalBus.gold)
 	#should update everything and return the value string to update header
 	#wtf me when the code works (im shocked and surprised)
-	dialouge.updateHeader(goldLogic(gold, num1) + foodLogic(food, num2) + " while escaping")
+	dialouge.updateHeader(goldLogic(SignalBus.gold, num1) + foodLogic(SignalBus.food, num2) + " while escaping")
 	
 #this works
 func _on_player_hit() -> void:
@@ -117,17 +116,7 @@ func _on_hazard_timer_timeout() -> void:
 	
 	##VELOCITY/MOVEMENT HANDLED IN HAZARD SCRIPT
 	
-	#var velocity = Vector2(200, 0.0)
-	#hazard.linear_velocity = velocity.rotated(direction)
 	
-	#hopefully this makes the thing move to the player
-	#var dir = ($player.global_position - hazard.position).normalized()
-	#
-	##setting velocity
-	#var velocity = Vector2(500, 0.0)
-	#hazard.position += velocity * dir
-	#
-	#add instance as child
 	add_child(hazard)
 	print("child added...")
 
@@ -212,7 +201,7 @@ func _on_village_transition_village_entered() -> void:
 #when the game ends
 func _on_game_over() -> void:
 	#this signal is never recieved bc this scene is deleted
-	SignalBus.bring_to_end_screen.emit(food, gold)
+	SignalBus.bring_to_end_screen.emit(SignalBus.food, SignalBus.gold)
 	
 	$player.set_physics_process(false)
 	$hazardTimer.stop()
