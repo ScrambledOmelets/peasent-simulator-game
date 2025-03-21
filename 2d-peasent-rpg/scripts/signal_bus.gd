@@ -12,10 +12,17 @@ signal playerHit
 #player global variable
 var player_location
 
+#walking marker global positions
+var marker1
+var marker2
+var marker3
+
 #game variables
 var gold : int
 var food : int
 var luck : int
+var goldReduction :int
+var foodReduction : int
 
 
 ##gameover signal to carry info to another scene??

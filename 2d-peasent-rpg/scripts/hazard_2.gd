@@ -4,35 +4,40 @@ extends Area2D
 
 var velocity
 var playerPresent = false
+var walkPointList
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("standing")
 	
 
 func _process(delta: float) -> void:
+	#i wanna make it so that he kind of patrolls around
 	#if player in range it will follow them
 	if playerPresent == true:
 		var direction = (SignalBus.player_location - global_position).normalized()
 		velocity = speed * direction * delta 
 		position += velocity
 		
-		#sprite animation
-		if velocity.length() > 0:
-			$AnimatedSprite2D.play("running")
-		else:
-			$AnimatedSprite2D.play("standing")
-			
-		#sprite animation direction
-		if velocity.x < 0:
-			#if walk left, then flip sprite to turn left
-			$AnimatedSprite2D.flip_h = true
-		elif velocity.x > 0:
-			$AnimatedSprite2D.flip_h = false
 	else:
-		velocity = 0
-		#this is glitched out
-		#position = velocity
+		walkPointList = [SignalBus.marker1, SignalBus.marker2, SignalBus.marker3]
+		
+		var direction = (walkPointList.pick_random() - global_position).normalized()
+		velocity = speed * direction * delta
+		position += velocity
+		
+	#sprite animation
+	if velocity.length() > 0:
+		$AnimatedSprite2D.play("running")
+	else:
 		$AnimatedSprite2D.play("standing")
+		
+	#sprite animation direction
+	if velocity.x < 0:
+		#if walk left, then flip sprite to turn left
+		$AnimatedSprite2D.flip_h = true
+	elif velocity.x > 0:
+		$AnimatedSprite2D.flip_h = false
+	
 	
 
 #signal works too

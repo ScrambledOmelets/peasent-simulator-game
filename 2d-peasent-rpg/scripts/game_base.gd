@@ -116,8 +116,13 @@ func _on_player_hit() -> void:
 	#so mobs dont spawn when ur in choice
 	$hazardTimer.stop()
 	#stop player movement
-	$player.set_physics_process(false)
-	dialougeSpawn("oh no a bandit", "pay what they demand", "attempt escape")
+	#should be handled when dialouge ends
+	
+	SignalBus.goldReduction = randi_range(1, 5)
+	SignalBus.foodReduction = randi_range(1,2)
+	
+	DialogueManager.show_dialogue_balloon(load("res://scripts/dialogue.dialogue"), "bandit_attack")
+	#dialougeSpawn("oh no a bandit", "pay what they demand", "attempt escape")
 	
 #this also works fine
 func _on_hazard_timer_timeout() -> void:
@@ -143,11 +148,11 @@ func banditSpawn():
 	hazard = hazard2.instantiate()
 	
 	#getting spawn location (random)
-	var hazard_spawn_location = $hazardPath/hazardSpawnLocation
-	hazard_spawn_location.progress_ratio = randf()
+	#var hazard_spawn_location = $hazardPath/hazardSpawnLocation
+	#hazard_spawn_location.progress_ratio = randf()
 	
-	#setting spawn to random
-	hazard.position = hazard_spawn_location.position
+	#setting spawn the marker location
+	hazard.position = $banditSpawn.position
 	
 	##VELOCITY/MOVEMENT HANDLED IN HAZARD SCRIPT
 	add_child(hazard)
