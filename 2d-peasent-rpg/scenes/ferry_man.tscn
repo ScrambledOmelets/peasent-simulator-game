@@ -46,6 +46,8 @@ size = Vector2(30.25, 44.5)
 radius = 112.0
 
 [node name="ferryMan" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_8nfm6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -61,8 +63,6 @@ shape = SubResource("RectangleShape2D_4jn7u")
 
 [node name="conversationRange" type="Area2D" parent="."]
 position = Vector2(0, 32)
-collision_layer = 2
-collision_mask = 2
 
 [node name="convoRangeCollision" type="CollisionShape2D" parent="conversationRange"]
 shape = SubResource("CircleShape2D_2xcvr")
