@@ -57,6 +57,7 @@ func _on_body_entered(body: Node2D) -> void:
 		SignalBus.playerHit.emit()
 		print("they hit")
 		#disable movement
+		velocity = 0 #this should actually stop movement
 		set_physics_process(false)
 
 

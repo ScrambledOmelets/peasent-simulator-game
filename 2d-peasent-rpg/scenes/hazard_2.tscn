@@ -261,7 +261,7 @@ size = Vector2(31, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_elheo"]
 radius = 80.025
 
-[node name="hazard1" type="Area2D"]
+[node name="bandit" type="Area2D"]
 position = Vector2(69, 34)
 script = ExtResource("1_edavr")
 

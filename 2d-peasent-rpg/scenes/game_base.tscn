@@ -2863,8 +2863,15 @@ position = Vector2(188, 147)
 [node name="hud" parent="." instance=ExtResource("6_vimn4")]
 
 [node name="randomSign" parent="." instance=ExtResource("8_m8a50")]
-visible = false
-position = Vector2(402, 124)
+position = Vector2(1811, 1748)
+
+[node name="helperText" parent="randomSign" index="2"]
+offset_left = -158.851
+offset_top = -217.393
+offset_right = 172.149
+offset_bottom = -106.393
+text = "village entrance"
+horizontal_alignment = 1
 
 [node name="randomSign2" parent="." instance=ExtResource("8_m8a50")]
 position = Vector2(2221, 563)
@@ -2918,4 +2925,5 @@ position = Vector2(2036, -193)
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]
 [connection signal="villageEntered" from="villageTransition" to="." method="_on_village_transition_village_entered"]
 
+[editable path="randomSign"]
 [editable path="randomSign2"]
