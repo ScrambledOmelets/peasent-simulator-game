@@ -19,11 +19,15 @@ var marker3
 
 #game variables
 var gold : int
-var food : int
+var food : int 
 var luck : int
 var goldReduction :int
 var foodReduction : int
 
+#character variables
+var metBeggar : bool
+var beggarsFavor : bool
+var gaveGift : bool
 
 ##gameover signal to carry info to another scene??
 signal bring_to_end_screen(foodLeft, goldLeft)

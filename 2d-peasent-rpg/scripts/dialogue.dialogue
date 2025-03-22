@@ -54,6 +54,39 @@ Ferry Runner: Hello there. Looking to cross the river?
 			=> END
 		
 - No
+	Ferry Runner: Feel free to come back if you change your mind.
 	=> END
 
+=> END
+
+~ beggar_speak
+if SignalBus.metBeggar == false
+	Strange Person: ...Hey. Could you spare me some food?
+	- I can't. 
+		Strange Person: You are a cruel person... Whatever happened to helping your fellow man?
+		set SignalBus.luck -= 1
+		- I need all my food, okay?
+		- I'm sorry...
+		Strange Person: *They turn away from you, saying nothing else.*
+		set SignalBus.metBeggar = true
+		=> END
+	- Sure. [if SignalBus.food > 2]
+		Strange Person: Oh bless you. I shall remember you.
+		Your Consciousness: They took 2 of your food.
+		set SignalBus.food -= 2
+		set SignalBus.metBeggar = true
+		set SignalBus.beggarsFavor = true
+		=> END 
+else
+	if SignalBus.beggarsFavor == true && SignalBus.gaveGift == false
+		Strange Person: Hello! I have something to pay you back.
+		Strange Person: *They give you 2 gold.*
+		Strange Person: Thank you again for your kindness.
+		set SignalBus.gaveGift = true
+		=> END
+	elif SignalBus.gaveGift == true
+		Strange Person: I just can't stop thanking you! Best wishes on your journey.
+		=> END
+Strange Person: Don't speak to me. Heartless heathen.
+	
 => END
