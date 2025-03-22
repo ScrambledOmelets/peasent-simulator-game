@@ -2783,6 +2783,9 @@ scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAGAAgAAAAKABcAAAAHAAgAAAAKABcAAGAHAAkAAAAKABcAAFAIAAkAAAAKABcAADAQAA0AAAAFABoAAAARAAwAAAAFABoAAAAPAAwAAAAFABoAAAASAA4AAAAFABoAAAARAAkAAAADAAkAAAATAAEAAAAAAAAAAAAKAAYAAAAAAAAAAAAeAAIAAAAAAAAAAAAYAP//AAAAAAAAAAD6/wMAAAAAAAYAAAD+/wgAAAAAAAYAAAA=")
 tile_set = SubResource("TileSet_vrakv")
 
+[node name="ferryMan" parent="." instance=ExtResource("20_8f0t6")]
+position = Vector2(3126, 287)
+
 [node name="player" parent="." instance=ExtResource("2_q3i5o")]
 position = Vector2(187, 151)
 
@@ -2856,9 +2859,6 @@ position = Vector2(2244, 17)
 
 [node name="banditWalk3" type="Marker2D" parent="banditWalkingMarkers"]
 position = Vector2(2036, -193)
-
-[node name="ferryMan" parent="." instance=ExtResource("20_8f0t6")]
-position = Vector2(3126, 287)
 
 [connection signal="gameOver" from="." to="." method="_on_game_over"]
 [connection signal="timeout" from="choiceTimer" to="." method="_on_choice_timer_timeout"]
