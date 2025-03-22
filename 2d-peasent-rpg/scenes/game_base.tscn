@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://3hs2il4leyks"]
+[gd_scene load_steps=40 format=4 uid="uid://3hs2il4leyks"]
 
 [ext_resource type="Script" path="res://scripts/game_base.gd" id="1_mxyj4"]
 [ext_resource type="PackedScene" uid="uid://cv30jni8jc36b" path="res://scenes/hazard_1.tscn" id="2_g3ysk"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://d1i3sqvgovrn3" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Water_tiles.png" id="13_lw2j3"]
 [ext_resource type="Texture2D" uid="uid://fparogrrhgjc" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Props/Static/Vegetation.png" id="14_4i6c1"]
 [ext_resource type="Script" path="res://scripts/bandit_walking_markers.gd" id="19_bcyct"]
+[ext_resource type="PackedScene" uid="uid://dl3ouht3t7d6t" path="res://scenes/ferry_man.tscn" id="20_8f0t6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u6wjd"]
 texture = ExtResource("6_repwv")
@@ -2805,7 +2806,6 @@ position = Vector2(2036, -155)
 position = Vector2(188, 147)
 
 [node name="hud" parent="." instance=ExtResource("6_vimn4")]
-visible = false
 
 [node name="randomSign" parent="." instance=ExtResource("8_m8a50")]
 position = Vector2(402, 124)
@@ -2856,6 +2856,9 @@ position = Vector2(2244, 17)
 
 [node name="banditWalk3" type="Marker2D" parent="banditWalkingMarkers"]
 position = Vector2(2036, -193)
+
+[node name="ferryMan" parent="." instance=ExtResource("20_8f0t6")]
+position = Vector2(3126, 287)
 
 [connection signal="gameOver" from="." to="." method="_on_game_over"]
 [connection signal="timeout" from="choiceTimer" to="." method="_on_choice_timer_timeout"]

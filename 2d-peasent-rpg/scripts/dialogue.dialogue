@@ -32,3 +32,28 @@ Your Consciousness: You hope your journey is a sucessful one...
 
 => END
 
+~ ferry_man
+Ferry Runner: Hello there. Looking to cross the river?
+- Yes
+	Ferry Runner: Ah, well, that would be 1 gold.
+	- Okay
+		Your Consciousness: You pay the Ferry Runner 1 gold and he takes you across the river.
+		Your Consciousness: You're one step closer to a village!
+		set SignalBus.luck += 1
+	- Actually nevermind
+		Ferry Runner: I'll still be here if you change your mind. My ferry is the only way to cross the river.
+		=> END
+	- Could I trade you some of my food instead? [if SignalBus.gold <= 1]
+		if SignalBus.luck >= 2
+			Ferry Runner: Hmm, perhaps. I could use some lunch.
+			Your Consciousness: You trade 1 food with the Ferry Runner for a ride across the river.
+			set SignalBus.food  -= 1
+		else
+			Ferry Runner: Do you take me for some starving old man? I got a profit to make.
+			Ferry Runner: If you can't pay up then leave me be.
+			=> END
+		
+- No
+	=> END
+
+=> END

@@ -40,23 +40,23 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jn7u"]
-size = Vector2(28.5, 25)
+size = Vector2(30.25, 44.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2xcvr"]
-radius = 80.0
+radius = 112.0
 
 [node name="ferryMan" type="CharacterBody2D"]
 script = ExtResource("1_8nfm6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kfu48")
 animation = &"standing"
 frame = 2
 frame_progress = 0.164185
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 24)
+position = Vector2(0.875, 33.75)
 shape = SubResource("RectangleShape2D_4jn7u")
 
 [node name="conversationRange" type="Area2D" parent="."]
@@ -67,9 +67,9 @@ shape = SubResource("CircleShape2D_2xcvr")
 
 [node name="toolTip" type="Label" parent="."]
 offset_left = -72.0
-offset_top = 56.0
+offset_top = 80.0
 offset_right = 70.0
-offset_bottom = 79.0
+offset_bottom = 103.0
 text = "press enter to talk"
 
 [connection signal="body_entered" from="conversationRange" to="." method="_on_conversation_range_body_entered"]

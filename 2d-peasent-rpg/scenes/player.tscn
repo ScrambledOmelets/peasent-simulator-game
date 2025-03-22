@@ -92,13 +92,14 @@ height = 15.3333
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(51, 57)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 motion_mode = 1
 script = ExtResource("1_nc65u")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.66666, -5.33334)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_7q8jg")
 animation = &"standing"
 
