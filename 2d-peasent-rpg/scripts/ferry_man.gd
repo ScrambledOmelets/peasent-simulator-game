@@ -21,10 +21,14 @@ func _on_dialouge_ended(resource: DialogueResource):
 	$toolTip.show()
 
 func _on_conversation_range_body_entered(body: Node2D) -> void:
-	$toolTip.show()
-	inRange  = true
+	if body.is_in_group("player"):
+		print("this is detecting the other enter signal")
+		$toolTip.show()
+		inRange  = true
 	
 
 func _on_conversation_range_body_exited(body: Node2D) -> void:
-	$toolTip.hide()
-	inRange = false
+	if body.is_in_group("player"):
+		print("exiting ferry body too")
+		$toolTip.hide()
+		inRange = false

@@ -20,6 +20,7 @@ else
 	if SignalBus.beggarsFavor == true && SignalBus.gaveGift == false
 		Strange Person: Hello! I have something to pay you back.
 		Strange Person: *They give you 2 gold.*
+		set SignalBus.gold += 2
 		Strange Person: Thank you again for your kindness.
 		set SignalBus.gaveGift = true
 		=> END
