@@ -71,57 +71,6 @@ func _on_player_farried():
 	$player.position = $ferryLocation.position
 	$ferryMan.position = $newFerryGuySpot.position
 	
-
-#very first choice made to determine things
-#gotta delete these all  later
-
-func _on_first_choice1() -> void:
-	SignalBus.food = 10
-	SignalBus.gold = 15
-	$hud.update_foodCounter(SignalBus.food)
-	$hud.update_goldCounter(SignalBus.gold)
-	dialouge.updateHeader("wonderful choice!")
-	SignalBus.choice1.disconnect(_on_first_choice1)
-	SignalBus.choice1.connect(_choice1_made)
-	
-	SignalBus.choice2.disconnect(_on_first_choice2)
-	SignalBus.choice2.connect(_choice2_made)
-func _on_first_choice2() -> void:
-	SignalBus.food = 5
-	SignalBus.gold = 10
-	$hud.update_foodCounter(SignalBus.food)
-	$hud.update_goldCounter(SignalBus.gold)
-	dialouge.updateHeader("lovely choice!")
-	#connecting and disconnecting other signals
-	SignalBus.choice1.disconnect(_on_first_choice1)
-	SignalBus.choice1.connect(_choice1_made)
-	#they have to connect and disconnect for both
-	#this is very complicated
-	SignalBus.choice2.disconnect(_on_first_choice2)
-	SignalBus.choice2.connect(_choice2_made)
-func _any_choice_made() -> void:
-	
-	$choiceTimer.start()
-func _choice1_made() -> void:
-	#gen random number
-	var num = randi_range(1, 5)
-	#subtract from gold amt bc bandits
-	SignalBus.gold -= num
-	
-	is_game_over(SignalBus.food, SignalBus.gold)
-	#logic for gold
-	dialouge.updateHeader(goldLogic(SignalBus.gold, num))
-func _choice2_made() -> void:
-	var num1 = randi_range(1, 5)
-	var num2 = randi_range(1,3)
-	SignalBus.gold -= num1
-	SignalBus.food -= num2
-	
-	is_game_over(SignalBus.food, SignalBus.gold)
-	#should update everything and return the value string to update header
-	#wtf me when the code works (im shocked and surprised)
-	dialouge.updateHeader(goldLogic(SignalBus.gold, num1) + foodLogic(SignalBus.food, num2) + " while escaping")
-	
 #this works
 func _on_player_hit() -> void:
 	#so mobs dont spawn when ur in choice
@@ -169,7 +118,7 @@ func banditSpawn():
 	add_child(hazard)
 	print("child added...")
 
-func _on_choice_timer_timeout() -> void:
+
 	#removes the dialouge
 	remove_child(dialouge)
 	#hopefully removes hazard w/o error
