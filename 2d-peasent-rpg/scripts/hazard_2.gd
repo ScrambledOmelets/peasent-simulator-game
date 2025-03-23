@@ -5,6 +5,7 @@ extends Area2D
 var velocity
 var playerPresent = false
 var walkPointList
+var direction
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("standing")
@@ -14,27 +15,33 @@ func _process(delta: float) -> void:
 	#i wanna make it so that he kind of patrolls around
 	#if player in range it will follow them
 	if playerPresent == true:
-		var direction = (SignalBus.player_location - global_position).normalized()
+		direction = (SignalBus.player_location - global_position).normalized()
 		velocity = speed * direction * delta 
 		position += velocity
 		
-	else:
-		walkPointList = [SignalBus.marker1, SignalBus.marker2, SignalBus.marker3]
-		var ranPoint = walkPointList.pick_random()
-		var direction = (ranPoint - global_position).normalized()
-		
-		velocity = speed * direction * delta
-		position += velocity
-		
-		#bro looks so glitchy lmao
-		if ranPoint == global_position:
-			await get_tree().create_timer(2).timeout
-			ranPoint = walkPointList.pick_random()
-			velocity = speed * direction * delta
+		#should stop moving if near player?
+		if direction == 0:
+			velocity = 0
 			position += velocity
-		else:
-			velocity = speed * direction * delta
-			position += velocity
+	
+	#scrapped patrolling animations	
+	#else:
+		#walkPointList = [SignalBus.marker1, SignalBus.marker2, SignalBus.marker3]
+		#var ranPoint = walkPointList.pick_random()
+		#var direction = (ranPoint - global_position).normalized()
+		#
+		#velocity = speed * direction * delta
+		#position += velocity
+		#
+		##bro looks so glitchy lmao
+		#if ranPoint == global_position:
+			#await get_tree().create_timer(2).timeout
+			#ranPoint = walkPointList.pick_random()
+			#velocity = speed * direction * delta
+			#position += velocity
+		#else:
+			#velocity = speed * direction * delta
+			#position += velocity
 		
 	#sprite animation
 	if velocity.length() > 0:

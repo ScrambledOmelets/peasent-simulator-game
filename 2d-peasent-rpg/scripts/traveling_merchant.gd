@@ -13,7 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and inChat2 == false and inRange2 == true:
 		$toolTip.hide()
-		DialogueManager.show_dialogue_balloon(load("res://scripts/dialogue.dialogue"), "ferry_man")
+		DialogueManager.show_dialogue_balloon(load("res://scripts/dialogue.dialogue"), "merchant")
 		inChat2 = true
 		
 func _on_dialouge_ended(resource: DialogueResource):

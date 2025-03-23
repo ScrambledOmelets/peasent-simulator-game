@@ -53,6 +53,7 @@ func _process(delta: float) -> void:
 #start and stop player movement when dialouge
 func _on_dialouge_started(resource: DialogueResource):
 	$player.set_physics_process(false)
+	SignalBus.goldReduction = randi_range(1, 5)
 
 func _on_dialouge_ended(resource: DialogueResource):
 	$player.set_physics_process(true)

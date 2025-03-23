@@ -61,6 +61,81 @@ Ferry Runner: Hello there. Looking to cross the river?
 
 => END
 
+~ merchant
+Traveling Merchant: [[Hello there!|Welcome!]] Looking to buy anything? I offer 1 food per 1 gold coin.
+% Traveling Merchant: I think my prices are much better than that other merchant's across the river, ugh. [[Curses upon him.|Simply highway robbery.]]
+- I'd like some more food.
+	Traveling Merchant: [[Of course!|Certainly!]] How many?
+	- One
+		set SignalBus.gold -= 1
+		set SignalBus.food += 1
+	- Two
+		set SignalBus.gold -= 2
+		set SignalBus.food += 2
+	- Three
+		set SignalBus.gold -= 3
+		set SignalBus.food += 3
+	Traveling Merchant: Here you go. You're all set.
+	- Thank you!
+	Traveling Merchant: Nice doing business with you. You're a well mannered peasent!
+	Your Consciousness: ???
+	=> END
+	
+- Can I trade food for gold?
+	if SignalBus.luck >= 1
+		Traveling Merchant: You're in luck! I am looking to buy back some rations currently.
+		Traveling Merchant: How many would you like to trade?
+		- One
+			set SignalBus.food -= 1
+			set SignalBus.gold += 1
+		- Two
+			set SignalBus.food -= 2
+			set SignalBus.gold += 2
+		- Three
+			set SignalBus.food -= 3
+			set SignalBus.gold += 3
+		Traveling Merchant: Here you go. You're all set.
+		- Thank you!
+			Traveling Merchant: Nice doing business with you. You're a well mannered peasent!
+			Your Consciousness: ???
+			=> END
+			
+	Traveling Merchant: I'm sorry. I'm not looking to buy back rations currently.
+	Traveling Merchant: Yours might be a bit moldy as well.
+	Your Consciousness: Moldy? Just who does this guy think he is?
+	Traveling Merchant: So do you want to buy food or not?
+	- Yes
+		Traveling Merchant: [[Of course!|Certainly!]] How many?
+		- One
+			set SignalBus.gold -= 1
+			set SignalBus.food += 1
+		- Two
+			set SignalBus.gold -= 2
+			set SignalBus.food += 2
+		- Three
+			set SignalBus.gold -= 3
+			set SignalBus.food += 3
+		Traveling Merchant: Here you go. You're all set.
+		- Thank you!
+		Traveling Merchant: Nice doing business with you. You're a well mannered peasent!
+		Your Consciousness: ???
+		=> END
+	- No
+		Traveling Merchant: Okay, well come back later. And to me only, not the other merchant.
+		=> END
+	
+- Want to buy some of my produce off of me? [if SignalBus.luck >= 2]
+	Traveling Merchant: Ah, how interesting. What fine produce. Don't mind if I do.
+	Your Consciousness: The merchant buys {{SignalBus.goldReduction}} of your produce for {{SignalBus.goldReduction}} gold.
+	set SignalBus.gold += SignalBus.goldReduction
+	- Thank you so much!
+		Traveling Merchant: No thank you for such lovely produce! I can definitely resell these for much higher.
+		Your Consciousness: Uh... 
+- Just browsing
+	Traveling Merchant: I don't apprecieate "browsers." Either buy something or leave. Goodbye.
+	
+=> END
+
 ~ village_scene
 Your Consciousness: You've made it to a village!
 if SignalBus.hasPlague == false
@@ -89,4 +164,7 @@ else
 	- Yes I am getting out of here.
 		=> END
 			
+=> END
+
+~ randomizer
 => END
