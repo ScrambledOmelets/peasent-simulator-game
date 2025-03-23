@@ -10,6 +10,7 @@ Bandit: Give me {{SignalBus.goldReduction}} gold!
 		Your Consciousness: The bandit took {{SignalBus.goldReduction}} of your gold and left...
 - Okay! Just please leave me alone!
 	Your Consciousness: You give the bandit what he demands. And he leaves you be.
+	set SignalBus.gold -= SignalBus.goldReduction
 	set SignalBus.luck  += 1
 	Your Consciousness: You lost {{SignalBus.goldReduction}} gold.
 - *Try to run away*

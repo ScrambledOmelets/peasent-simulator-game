@@ -259,7 +259,7 @@ animations = [{
 size = Vector2(54, 54)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_elheo"]
-radius = 80.025
+radius = 210.021
 
 [node name="bandit" type="Area2D"]
 position = Vector2(69, 34)

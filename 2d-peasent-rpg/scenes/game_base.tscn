@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://3hs2il4leyks"]
+[gd_scene load_steps=42 format=4 uid="uid://3hs2il4leyks"]
 
 [ext_resource type="Script" path="res://scripts/game_base.gd" id="1_mxyj4"]
 [ext_resource type="PackedScene" uid="uid://cv30jni8jc36b" path="res://scenes/hazard_1.tscn" id="2_g3ysk"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bwg5ubnmmimnh" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Props/Static/Shadows.png" id="13_7km7a"]
 [ext_resource type="Texture2D" uid="uid://d1i3sqvgovrn3" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Water_tiles.png" id="13_lw2j3"]
 [ext_resource type="Texture2D" uid="uid://fparogrrhgjc" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Props/Static/Vegetation.png" id="14_4i6c1"]
+[ext_resource type="PackedScene" uid="uid://dya8x7lbkk707" path="res://scenes/traveling_merchant.tscn" id="16_nfvu1"]
 [ext_resource type="PackedScene" uid="uid://coglbcstsgt2p" path="res://scenes/beggar.tscn" id="16_uncsi"]
 [ext_resource type="Script" path="res://scripts/bandit_walking_markers.gd" id="19_bcyct"]
 [ext_resource type="PackedScene" uid="uid://dl3ouht3t7d6t" path="res://scenes/ferry_man.tscn" id="20_8f0t6"]
@@ -2839,6 +2840,12 @@ tile_set = SubResource("TileSet_vrakv")
 [node name="ferryMan" parent="." instance=ExtResource("20_8f0t6")]
 position = Vector2(3126, 287)
 
+[node name="merchant" parent="." instance=ExtResource("16_nfvu1")]
+position = Vector2(2045, 584)
+
+[node name="merchant2" parent="." instance=ExtResource("16_nfvu1")]
+position = Vector2(4154, 628)
+
 [node name="beggarGuy" parent="." instance=ExtResource("16_uncsi")]
 position = Vector2(2286, 1630)
 
@@ -2850,13 +2857,12 @@ scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAB6AHgAAAABAAcAAAB6AHkAAAABAAgAAAB6AHoAAAABAAkAAAB6AHsAAAABAAoAAAB7AHcAAAACAAYAAAB7AHgAAAACAAcAAAB7AHkAAAACAAgAAAB7AHoAAAACAAkAAAB8AHYAAAADAAUAAAB8AHcAAAADAAYAAAB8AHgAAAADAAcAAAB8AHkAAAADAAgAAAB9AHYAAAAEAAUAAAB9AHcAAAAEAAYAAAB9AHgAAAAEAAcAAAB9AHkAAAAEAAgAAAB+AHcAAAAFAAYAAAB+AHgAAAAFAAcAAAB+AHkAAAAFAAgAAAB+AHoAAAAFAAkAAAB/AHgAAAAGAAcAAAB/AHkAAAAGAAgAAAB/AHoAAAAGAAkAAAB/AHsAAAAGAAoAAAAnACgAAAABAAcAAAAnACkAAAABAAgAAAAnACoAAAABAAkAAAAnACsAAAACAAcAAAAnACwAAAABAAgAAAAnAC0AAAABAAkAAAAoACcAAAACAAYAAAAoACgAAAACAAcAAAAoACkAAAACAAgAAAAoACoAAAACAAcAAAAoACsAAAACAAcAAAAoACwAAAACAAgAAAApACYAAAADAAUAAAApACcAAAADAAYAAAApACgAAAADAAcAAAApACkAAAADAAcAAAApACoAAAADAAYAAAApACsAAAADAAcAAAApACwAAAADAAgAAAAqACcAAAAEAAYAAAAqACgAAAAEAAcAAAAqACkAAAAEAAcAAAAqACoAAAAEAAYAAAAqACsAAAAEAAcAAAAqACwAAAAEAAgAAAArACgAAAAFAAcAAAArACkAAAAFAAgAAAArACoAAAAFAAcAAAArACsAAAAFAAcAAAArACwAAAAFAAgAAAArAC0AAAAFAAkAAAAnAC4AAAABAAoAAAAoAC0AAAACAAkAAAAqACYAAAAEAAUAAAArACcAAAAFAAYAAAAsACgAAAAGAAcAAAAsACkAAAAGAAgAAAAsACoAAAAGAAkAAAAsACsAAAAFAAcAAAAsACwAAAAGAAgAAAAsAC0AAAAGAAkAAAAsAC4AAAAGAAoAAAA+AAYAAQAGAAMAAAA/AAYAAQAHAAMAAAA8AAEAAAABAAcAAAA8AAIAAAABAAgAAAA8AAMAAAABAAkAAAA8AAQAAAABAAoAAAA9AAAAAAACAAYAAAA9AAEAAAACAAcAAAA9AAIAAAACAAgAAAA9AAMAAAACAAkAAAA+AP//AAADAAUAAAA+AAAAAAADAAYAAAA+AAEAAAADAAcAAAA+AAIAAAADAAgAAAA/AP//AAAEAAUAAAA/AAAAAAAEAAYAAAA/AAEAAAAEAAcAAAA/AAIAAAAEAAgAAABAAAAAAAAFAAYAAABAAAEAAAAFAAcAAABAAAIAAAAFAAgAAABAAAMAAAAFAAkAAABBAAEAAAAGAAcAAABBAAIAAAAGAAgAAABBAAMAAAAGAAkAAABBAAQAAAAGAAoAAAA+AAQAAQAGAAEAAAA/AAQAAQAHAAEAAAA+AAUAAQAGAAIAAAA/AAUAAQAHAAIAAABgAA4AAQAAAAoAAABgAA0AAQAAAAkAAABgAAwAAQAAAAgAAABgAAsAAAAKAAwAAABgAAgAAAAKAAoAAABgAAkAAAAKAAsAAABhAAgAAAALAAoAAABhAAkAAAALAAsAAABiAAgAAAAMAAoAAABiAAkAAAAMAAsAAABjAAgAAAAMAAoAAABjAAkAAAAMAAsAAABgAAoAAAAKAAsAAABhAAoAAAALAAsAAABiAAoAAAAMAAsAAABjAAoAAAALAAsAAABhAAsAAAALAAwAAABiAAsAAAAMAAwAAABjAAsAAAALAAwAAABkAAgAAAAMAAoAAABkAAkAAAAMAAsAAABkAAoAAAAMAAsAAABlAAgAAAANAAoAAABlAAkAAAANAAsAAABlAAoAAAANAAsAAABkAAsAAAALAAwAAABlAAsAAAANAAwAAABlAA4AAQAAAAoAAABlAA0AAQAAAAkAAABlAAwAAQAAAAgAAAAnAPb/AAAIAAMAAAAnAPf/AAAIAAQAAAAnAPj/AAAIAAUAAAAoAPX/AAAJAAIAAAAoAPb/AAAJAAMAAAAoAPf/AAAJAAQAAAAoAPj/AAAJAAUAAAApAPX/AAAKAAIAAAApAPb/AAAKAAMAAAApAPf/AAAKAAQAAAAqAPT/AAALAAEAAAAqAPX/AAALAAIAAAAqAPb/AAALAAMAAAAqAPf/AAALAAQAAAArAPT/AAAMAAEAAAArAPX/AAAMAAIAAAArAPb/AAAMAAMAAAArAPf/AAAMAAQAAAAsAPX/AAANAAIAAAAsAPb/AAANAAMAAAAsAPf/AAANAAQAAAAtAPX/AAAOAAIAAAAtAPb/AAAOAAMAAAAtAPf/AAAOAAQAAAAtAPj/AAAOAAUAAAAuAPb/AAAPAAMAAAAuAPf/AAAPAAQAAAAuAPj/AAAPAAUAAAAnAPX/AAAIAAIAAAAoAPT/AAAJAAEAAAApAPT/AAAKAAEAAAAqAPP/AAALAAAAAAArAPP/AAAMAAAAAAAsAPT/AAANAAEAAAAtAPT/AAAOAAEAAAAuAPX/AAAPAAIAAAA=")
 tile_set = SubResource("TileSet_skmyw")
 
-[node name="choiceTimer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="hazardTimer" type="Timer" parent="."]
+wait_time = 90.0
 one_shot = true
 
-[node name="hazardTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
+[node name="foodTimer" type="Timer" parent="."]
+wait_time = 5.0
 
 [node name="banditSpawn" type="Marker2D" parent="."]
 position = Vector2(2036, -155)
@@ -2932,8 +2938,8 @@ position = Vector2(4127, 511)
 position = Vector2(4099, 369)
 
 [connection signal="gameOver" from="." to="." method="_on_game_over"]
-[connection signal="timeout" from="choiceTimer" to="." method="_on_choice_timer_timeout"]
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]
+[connection signal="timeout" from="foodTimer" to="." method="_on_food_timer_timeout"]
 [connection signal="villageEntered" from="villageTransition" to="." method="_on_village_transition_village_entered"]
 
 [editable path="signs/randomSign2"]

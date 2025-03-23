@@ -1,8 +1,8 @@
 extends Area2D
 #signal playerHit
-@export var speed = 100
+@export var speed = 150
 
-var velocity
+var velocity : Vector2
 var playerPresent = false
 var walkPointList
 var direction
@@ -20,9 +20,10 @@ func _process(delta: float) -> void:
 		position += velocity
 		
 		#should stop moving if near player?
-		if direction == 0:
-			velocity = 0
-			position += velocity
+		#glitchy
+		#if direction == 0:
+			#velocity = Vector2.ZERO
+			#position += velocity
 	
 	#scrapped patrolling animations	
 	#else:
@@ -64,7 +65,6 @@ func _on_body_entered(body: Node2D) -> void:
 		SignalBus.playerHit.emit()
 		print("they hit")
 		#disable movement
-		velocity = 0 #this should actually stop movement
 		set_physics_process(false)
 
 
