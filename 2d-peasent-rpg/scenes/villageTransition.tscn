@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6d5w2k3mfnkx"]
-
-[ext_resource type="Script" path="res://scripts/village.gd" id="1_hxbpv"]
-
-[node name="villageTransition" type="Area2D"]
-script = ExtResource("1_hxbpv")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
