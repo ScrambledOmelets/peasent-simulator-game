@@ -93,6 +93,8 @@ height = 31.0
 [node name="player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(51, 57)
 scale = Vector2(2, 2)
+collision_layer = 3
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_nc65u")
 metadata/_edit_group_ = true
@@ -110,6 +112,6 @@ shape = SubResource("CapsuleShape2D_yxj4v")
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = -420
 limit_top = -406
-limit_right = 4330
+limit_right = 4565
 limit_bottom = 2030
 position_smoothing_enabled = true

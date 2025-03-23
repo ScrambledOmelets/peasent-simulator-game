@@ -24,7 +24,7 @@ func _ready() -> void:
 	
 	##checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)
-	
+	SignalBus.farried.connect(_on_player_farried)
 	##might have to diable these two signals later..
 	#SignalBus.choice1.connect(_on_first_choice1)
 	#SignalBus.choice2.connect(_on_first_choice2)
@@ -63,6 +63,13 @@ func _on_dialouge_ended(resource: DialogueResource):
 		remove_child(hazard)
 		$hud.update_foodCounter(SignalBus.food)
 		$hud.update_goldCounter(SignalBus.gold)
+	
+#ingame event of player farry
+#this is currently not set up for the player to go back from the farried location!
+func _on_player_farried():
+	$player.position = $ferryLocation.position
+	$ferryMan.position = $newFerryGuySpot.position
+	
 
 #very first choice made to determine things
 #gotta delete these all  later

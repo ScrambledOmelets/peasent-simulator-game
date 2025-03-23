@@ -6,11 +6,14 @@ signal choice1
 signal choice2
 signal choice_made
 
+#game signals
+signal farried
+
 #hazard signal
 signal playerHit
 
 #player global variable
-var player_location
+var player_location : Vector2
 
 #walking marker global positions
 var marker1
@@ -28,6 +31,7 @@ var foodReduction : int
 var metBeggar : bool
 var beggarsFavor : bool
 var gaveGift : bool
+var beenFarried : bool
 
 ##gameover signal to carry info to another scene??
 signal bring_to_end_screen(foodLeft, goldLeft)
