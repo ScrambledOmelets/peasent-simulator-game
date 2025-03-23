@@ -55,6 +55,7 @@ func _process(delta: float) -> void:
 		
 func _on_dialouge_ended(resource: DialogueResource):
 	inChat1 = false
+	$toolTip.show()
 
 func _on_conversation_range_body_entered(body: Node2D) -> void:
 	$toolTip.show()
