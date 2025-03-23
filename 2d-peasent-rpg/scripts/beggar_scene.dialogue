@@ -13,6 +13,7 @@ if SignalBus.metBeggar == false
 		Strange Person: Oh bless you. I shall remember you.
 		Your Consciousness: They took 2 of your food.
 		set SignalBus.food -= 2
+		set SignalBus.luck += 1
 		set SignalBus.metBeggar = true
 		set SignalBus.beggarsFavor = true
 		=> END 

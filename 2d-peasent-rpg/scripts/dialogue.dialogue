@@ -61,3 +61,32 @@ Ferry Runner: Hello there. Looking to cross the river?
 
 => END
 
+~ village_scene
+Your Consciousness: You've made it to a village!
+if SignalBus.hasPlague == false
+	Your Consciousness: Let's set up shop somewhere!
+	- In the village center
+		#change the background of the scene depending on where you choose
+		#determine how well sales are depending on your luck
+	- At the village entrance
+	- Tucked into a corner at the market
+	- In a good spot at the market [if SignalBus.luck >= 3]
+else
+	Your Consciousness: A stench hangs in the air of this village... It appears they have the plague.
+	Your Consciousness: Should you leave?
+	- No, they could use some extra produce
+		match SignalBus.luck
+		 	when 3
+				Your Consciousness: You hand out your wares for free, helping to brighten a few people's days.
+				Your Consciousness: You are very careful when you hand them items as to not catch the plague.
+				Your Consciousness: You have given away all your wares, made 0 gold, and are not sick.
+			when 2
+				Your Consciousness: You attempt to sell your items. You take gold from patrons.
+				Your Consciousness: One of the coins was contaiminated and before long, you catch the plague.
+			else
+				Your Consciousness: You wander into the village and you catch the plague.
+				=> END
+	- Yes I am getting out of here.
+		=> END
+			
+=> END
