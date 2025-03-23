@@ -87,8 +87,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxj4v"]
-radius = 9.0
-height = 31.0
+radius = 2.92911
+height = 19.9984
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(51, 57)
@@ -106,7 +106,8 @@ sprite_frames = SubResource("SpriteFrames_7q8jg")
 animation = &"standing"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, 11.5)
+position = Vector2(2, 23)
+rotation = -1.55795
 shape = SubResource("CapsuleShape2D_yxj4v")
 
 [node name="Camera2D" type="Camera2D" parent="."]
