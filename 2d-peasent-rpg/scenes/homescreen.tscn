@@ -20,7 +20,7 @@ offset_bottom = -427.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-color = Color(0, 0, 0, 0.352941)
+color = Color(0, 0, 0, 0.4)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]

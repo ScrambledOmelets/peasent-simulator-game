@@ -5,14 +5,12 @@ extends Node
 func _ready() -> void:
 	$hud.update_foodCounter(SignalBus.food)
 	$hud.update_goldCounter(SignalBus.gold)
-	SignalBus.bring_to_end_screen.connect(_from_gameover)
+	DialogueManager.show_dialogue_balloon(load("res://scripts/village.dialogue"), "village_entrance")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$hud.update_foodCounter(SignalBus.food)
 	$hud.update_goldCounter(SignalBus.gold)
-
-
 
 
 
@@ -23,4 +21,4 @@ func _from_gameover(foodAmount, goldAmount):
 
 
 func _on_nopeout_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
