@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://dl3ouht3t7d6t"]
+
+[ext_resource type="Script" path="res://scripts/ferry_man.gd" id="1_8nfm6"]
+[ext_resource type="Texture2D" uid="uid://vvfqsb3165av" path="res://assets/MinifolksVillagers/MinifolksVillagers/Outline/MiniOldMan.png" id="2_lbb72"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4kxb"]
+atlas = ExtResource("2_lbb72")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6dak"]
+atlas = ExtResource("2_lbb72")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtlfe"]
+atlas = ExtResource("2_lbb72")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqmm3"]
+atlas = ExtResource("2_lbb72")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kfu48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4kxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6dak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtlfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqmm3")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jn7u"]
+size = Vector2(30.25, 44.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xcvr"]
+radius = 112.0
+
+[node name="ferryMan" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_8nfm6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_kfu48")
+animation = &"standing"
+frame = 2
+frame_progress = 0.164185
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.875, 33.75)
+shape = SubResource("RectangleShape2D_4jn7u")
+
+[node name="conversationRange" type="Area2D" parent="."]
+position = Vector2(0, 32)
+
+[node name="convoRangeCollision" type="CollisionShape2D" parent="conversationRange"]
+shape = SubResource("CircleShape2D_2xcvr")
+
+[node name="toolTip" type="Label" parent="."]
+offset_left = -72.0
+offset_top = 80.0
+offset_right = 70.0
+offset_bottom = 103.0
+text = "press enter to talk"
+
+[connection signal="body_entered" from="conversationRange" to="." method="_on_conversation_range_body_entered"]
+[connection signal="body_exited" from="conversationRange" to="." method="_on_conversation_range_body_exited"]

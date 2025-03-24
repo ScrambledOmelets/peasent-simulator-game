@@ -1,17 +1,32 @@
 extends Node
 #holds all signals..
 
-#choice window signal
-signal choice1
-signal choice2
-signal choice_made
+#village signals
+signal leftVillage
+
+#game signals
+signal farried
 
 #hazard signal
 signal playerHit
 
 #player global variable
-var player_location
+var player_location : Vector2
 
+#walking marker global positions
+var marker1
+var marker2
+var marker3
 
-##gameover signal to carry info to another scene??
-signal bring_to_end_screen(foodLeft, goldLeft)
+#game variables
+var gold : int
+var food : int 
+var luck : int
+var goldReduction :int
+var foodReduction : int
+
+#character variables
+var metBeggar : bool
+var beggarsFavor : bool
+var gaveGift : bool
+var beenFarried : bool

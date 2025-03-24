@@ -21,12 +21,14 @@ position = Vector2(4, 110)
 shape = SubResource("CircleShape2D_rx1uh")
 
 [node name="helperText" type="Label" parent="."]
-offset_left = -132.0
-offset_top = -218.0
-offset_right = 199.0
-offset_bottom = -107.0
+offset_left = -160.837
+offset_top = -217.393
+offset_right = 170.163
+offset_bottom = -106.393
 theme_override_font_sizes/font_size = 25
-text = "hi! follow the path to one of the other towns without running out of food"
+text = "village entrance"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 

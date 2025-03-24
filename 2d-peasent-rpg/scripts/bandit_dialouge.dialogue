@@ -1,0 +1,28 @@
+~ bandit_attack
+Bandit: Give me {{SignalBus.goldReduction}} gold!
+- What? No way!
+	if SignalBus.luck >= 1
+		Your Consciousness: The bandit listened to you! It looks like he is walking away
+		Your Consciousness: You lost no gold.
+	else
+		Bandit: Like that's going to stop me.
+		set SignalBus.gold -= SignalBus.goldReduction
+		Your Consciousness: The bandit took {{SignalBus.goldReduction}} of your gold and left...
+- Okay! Just please leave me alone!
+	Your Consciousness: You give the bandit what he demands. And he leaves you be.
+	set SignalBus.gold -= SignalBus.goldReduction
+	set SignalBus.luck  += 1
+	Your Consciousness: You lost {{SignalBus.goldReduction}} gold.
+- *Try to run away*
+	if SignalBus.luck >= 1
+		Your Consciousness: You manage to outrun the bandit! He quickly gives up and goes away.
+		Your Consciousness: You lost nothing.
+	else
+		Bandit: Hey get back here!
+		Your Consciousness: While running away, you trip on a rock and {{SignalBus.foodReduction}} of your food falls out your pack.
+		Your Consciousness: The bandit catches up to you and takes the gold he demanded of you... At least he is honest.
+		set SignalBus.gold -= SignalBus.goldReduction
+		set SignalBus.food -= SignalBus.foodReduction
+		Your Consciousness: You [[have lost|are down]] {{SignalBus.goldReduction}} gold and {{SignalBus.foodReduction}} food.
+		
+=> END
