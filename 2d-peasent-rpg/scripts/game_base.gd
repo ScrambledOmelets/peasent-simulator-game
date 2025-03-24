@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 	#setting up game
 	$player.resetPlayer($startPosition.position)
-	
+	$music/travelMusic.play()
 	
 	##checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)
@@ -173,6 +173,10 @@ func _on_village_transition_village_entered() -> void:
 #when the game ends
 func _on_game_over() -> void:
 	$foodTimer.stop()
+	$music/travelMusic.stop()
+	#$music/gameOverMusic.play() don't play whole music. just a sound effect - which i don't have rn
+	
+	
 	$hud.update_message("you've run out of food...")
 	$player.set_physics_process(false)
 	

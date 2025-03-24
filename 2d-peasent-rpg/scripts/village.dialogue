@@ -1,0 +1,93 @@
+~ village_entrance
+Your Consciousness: You've finally made it! Now it is time to sell your produce.
+Your Consciousness: You can stay in a village for as long as you have gold, or else the innkeeper will kick you out!
+Your Consciousness: Make sure you keep an eye on it.
+Your Consciousness: Now... Where should you set up shop?
+- In the village center
+	Your Consciousness: This looks like a nice spot... Right at the center of everything!
+	Your Consciousness: Look, here comes your first interested person.
+	Little Girl: Hi. What are you doing?
+	- Selling produce
+		Little Girl: Oh. Do you have anything good?
+		You describe what you're selling, including wheat and potatoes. The little girl seems to light up.
+		Little Girl: I think my mom could use some of those. Here!
+		set SignalBus.gold += 1
+		She hands you 1 gold coin in exchange for 1 potato.
+		- Thank you so much!
+			Little Girl: You're welcome! I'll tell everyone else about you too. Bye bye!
+			Your Consciousness: Success! You feel better about having traveled to the market.
+			
+	- I don't know
+		Little Girl: Well I don't either. That's why I asked you.
+		Little Girl: You're silly! You can have this.
+		She hands you 1 gold coin.
+		- Please take it back.
+			Little Girl: No it's ok! Silly people deserve it.
+			Your Consciousness: You gain 1 gold.
+			set SignalBus.gold += 1
+			set SignalBus.luck += 1
+			Your Consciousness: Aw that was sweet of her. It really brightened your day!
+		- Oh thanks.
+			You take her gold coin and she smiles before skipping off.
+			Your Consciousness: You gain 1 gold.
+			set SignalBus.gold += 1
+			Your Consciousness: Did you just scam a little girl? Maybe you should have tried harder to tell her to keep it.
+			set SignalBus.luck -= 1
+			=> END
+	- Where's your parents?
+		Little Girl: I'm big enough to get around on my own!
+		Little Girl: I had even brought some gold with me today. But I don't want your stinky veggies now anyways!
+		Your Consciousness: Oh no... You feel kind of bad about offending her, but she's already stomped off.
+		=> END
+	=> end_of_day
+		#change the background of the scene depending on where you choose
+		#determine how well sales are depending on your luck
+- At the village entrance
+- Tucked into a corner at the market
+- In a good spot at the market [if SignalBus.luck >= 3]
+I'm sorry these other options don't do anything yet!
+
+=> village_entrance
+
+~ end_of_day
+Your Consciousness: Whew, that was a long day of selling and shilling. At least this inn is kind of comfy.
+set SignalBus.gold -= 1
+Your Consciousness: Should you leave the village tomorrow morning or stay to try selling one more time?
+- I'm leaving
+	You tuck into bed with plans to leave the village tomorrow.
+	Early next morning, you pack everything up and leave.
+	do SignalBus.leftVillage.emit()
+	=> END
+- I want to try tomorrow
+	this would start another day with meeting more people in the village to sell
+	=> END
+
+~ village_scene_scrapped
+Your Consciousness: You've made it to a village!
+if SignalBus.hasPlague == false
+	Your Consciousness: Let's set up shop somewhere!
+	- In the village center
+		#change the background of the scene depending on where you choose
+		#determine how well sales are depending on your luck
+	- At the village entrance
+	- Tucked into a corner at the market
+	- In a good spot at the market [if SignalBus.luck >= 3]
+else
+	Your Consciousness: A stench hangs in the air of this village... It appears they have the plague.
+	Your Consciousness: Should you leave?
+	- No, they could use some extra produce
+		match SignalBus.luck
+		 	when 3
+				Your Consciousness: You hand out your wares for free, helping to brighten a few people's days.
+				Your Consciousness: You are very careful when you hand them items as to not catch the plague.
+				Your Consciousness: You have given away all your wares, made 0 gold, and are not sick.
+			when 2
+				Your Consciousness: You attempt to sell your items. You take gold from patrons.
+				Your Consciousness: One of the coins was contaiminated and before long, you catch the plague.
+			else
+				Your Consciousness: You wander into the village and you catch the plague.
+				=> END
+	- Yes I am getting out of here.
+		=> END
+			
+=> END

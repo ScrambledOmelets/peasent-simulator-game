@@ -1,10 +1,8 @@
 extends Node
 #holds all signals..
 
-#choice window signal
-signal choice1
-signal choice2
-signal choice_made
+#village signals
+signal leftVillage
 
 #game signals
 signal farried
@@ -32,6 +30,3 @@ var metBeggar : bool
 var beggarsFavor : bool
 var gaveGift : bool
 var beenFarried : bool
-
-##gameover signal to carry info to another scene??
-signal bring_to_end_screen(foodLeft, goldLeft)
