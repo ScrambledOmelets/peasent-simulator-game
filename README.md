@@ -1,3 +1,12 @@
+**next time pt2**
+- incorperate story of the player being some sort of time traveler and having to behave normally like a peasent in that time
+- just add more npcs in the traveling map
+- alter village scene (turn it into another transversable map?)
+- update dialogue to be more educational and informational about the time period (it is a good game but very generic rpg style rn)
+- luck aspect should be more apparent (either add a sound affect or a cue in the dialogue after you gain luck)
+- convert .wav to .mp3 files (so the sound can work properly)
+- 
+
 **things to change for next time**
 - add a mechanic that will add to ur resources instead of just removing them (ex. wandering merchant)
 - program village scenes (they'd have to be different for each village... so 3 scenes i guess)
