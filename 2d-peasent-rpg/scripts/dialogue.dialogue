@@ -25,7 +25,7 @@ Your Consciousness: You remember packing...
 	set SignalBus.food = 10
 	set SignalBus.gold = 10
 	Your Consciousness: This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
-Your Consciousness: There is a counter at the top right corner to help you rememember your items.
+Your Consciousness: There is a counter at the top left corner to help you rememember your items.
 Your Consciousness: Follow the path to reach a village while staying safe!
 Your Consciousness: You'll be forced to return home if you run out of food, so keep an eye on it!
 Your Consciousness: You hope your journey is a sucessful one...

@@ -182,9 +182,7 @@ func _on_game_over() -> void:
 	
 	await get_tree().create_timer(3).timeout
 	
-	#this signal is never recieved bc this scene is deleted
-	SignalBus.bring_to_end_screen.emit(SignalBus.food, SignalBus.gold)
-	
+
 	get_tree().change_scene_to_file("res://scenes/transition_scene2.tscn")
 
 
