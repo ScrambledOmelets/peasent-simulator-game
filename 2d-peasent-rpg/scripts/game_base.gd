@@ -1,6 +1,5 @@
 extends Node #must handle all game code here
 
-
 @export var hazard2: PackedScene
 @export var choiceWindow: PackedScene
 
