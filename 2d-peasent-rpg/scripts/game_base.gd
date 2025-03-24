@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 	#setting up game
 	$player.resetPlayer($startPosition.position)
-	$hud.update_message("")
+	
 	
 	##checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxa81qtj8wcqu"]
+[gd_scene load_steps=4 format=3 uid="uid://dxa81qtj8wcqu"]
 
 [ext_resource type="Script" path="res://scripts/transition_scene.gd" id="1_rt440"]
 [ext_resource type="Texture2D" uid="uid://d16l3hxkxlbnr" path="res://assets/painted-village.png" id="2_1icie"]
+[ext_resource type="PackedScene" uid="uid://bwtcr4yo0iq4" path="res://scenes/hud.tscn" id="3_8yvc3"]
 
 [node name="transitionScene" type="Node2D"]
 script = ExtResource("1_rt440")
@@ -11,41 +12,17 @@ position = Vector2(576, 324)
 scale = Vector2(1.84615, 1.52471)
 texture = ExtResource("2_1icie")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -312.001
+offset_top = -212.499
+offset_right = -312.001
+offset_bottom = -212.499
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
-color = Color(0, 0, 0, 0.482353)
+color = Color(0, 0, 0, 0.207843)
 
-[node name="Label" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 296.0
-offset_top = 192.0
-offset_right = 848.0
-offset_bottom = 324.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "you've made it to a village!!!
-(this isn't programmed yet so, you've essentially beat the game for now)"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="restartButton" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 436.0
-offset_top = 390.5
-offset_right = 716.0
-offset_bottom = 433.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 25
-text = "to title"
-
-[connection signal="pressed" from="restartButton" to="." method="_on_restart_button_pressed"]
+[node name="hud" parent="." instance=ExtResource("3_8yvc3")]
