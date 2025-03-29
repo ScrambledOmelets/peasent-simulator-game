@@ -1,34 +1,36 @@
 ~ game_start
-Your Consciousness: You are [[starting out|embarking]] on a new journey to reach the market to sell your wares!
-Your Consciousness: You've never had to travel these roads before as your father would make the trip for you.
-Your Consciousness: You feel...
+The year is circa 1580 and Queen Elizabeth I of England is on the throne.
+You are going to market today to sell some of the excess produce from your farm.
+The recent rainstorms have changed up the path and you need to proceed carefully.
+You feel...
 - Nervous
-	Your Consciousness: Who wouldn't be nervous? You'll get the hang of it soon enough though.
-	set SignalBus.luck = 0
+	Who wouldn't be nervous? You'll get the hang of it soon enough though.
+	set SignalBus.luck = 1
 - Determined
-	Your Consciousness: That's the spirit! You won't let your father down.
+	That's the spirit!
 	set SignalBus.luck = 1
 - Bored
 	Your Consciousness: You don't really want to be out here anyways...
 	set SignalBus.luck = -1
-Your Consciousness: Oh! You almost forgot to double check your item pouch.
-Your Consciousness: You remember packing...
+Oh! You almost forgot to double check your item pouch. You remember packing...
 - Lightly
 	set SignalBus.food = 4
 	set SignalBus.gold = 5
-	Your Consciousness: This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
+	set SignalBus.playerSpeedMultiplier = 1.5
+	This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
 - Moderately
 	set SignalBus.food = 5
 	set SignalBus.gold = 8
-	Your Consciousness: This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
+	This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
 - Heavily
 	set SignalBus.food = 10
 	set SignalBus.gold = 10
-	Your Consciousness: This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
-Your Consciousness: There is a counter at the top left corner to help you rememember your items.
-Your Consciousness: Follow the path to reach a village while staying safe!
-Your Consciousness: You'll be forced to return home if you run out of food, so keep an eye on it!
-Your Consciousness: You hope your journey is a sucessful one...
+	set SignalBus.playerSpeedMultiplier = 0.8
+	This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
+Follow the path to get to a village safetly and sell your produce.
+There is a counter at the top left corner to help you rememember your items.
+You won’t be able to make it if you run out of food, so keep an eye on your resources.
+Hopefully your journey is a successful one!
 
 => END
 
@@ -37,9 +39,9 @@ Ferry Runner: Hello there. Looking to cross the river?
 - Yes
 	Ferry Runner: Ah, well, that would be 1 gold.
 	- Okay
-		Your Consciousness: You pay the Ferry Runner 1 gold and he takes you across the river.
+		You pay the Ferry Runner 1 gold and he takes you across the river.
 		do SignalBus.farried.emit()
-		Your Consciousness: You're one step closer to a village!
+		You're one step closer to a village!
 		set SignalBus.luck += 1
 	- Actually nevermind
 		Ferry Runner: I'll still be here if you change your mind. My ferry is the only way to cross the river.
@@ -47,9 +49,9 @@ Ferry Runner: Hello there. Looking to cross the river?
 	- Could I trade you some of my food instead? [if SignalBus.gold <= 1]
 		if SignalBus.luck >= 2
 			Ferry Runner: Hmm, perhaps. I could use some lunch.
-			Your Consciousness: You trade 1 food with the Ferry Runner for a ride across the river.
+			You trade 1 food with the Ferry Runner for a ride across the river.
 			do SignalBus.farried.emit()
-			Your Consciousness: You're one step closer to a village!
+			You're one step closer to a village!
 			set SignalBus.food  -= 1
 		else
 			Ferry Runner: Do you take me for some starving old man? I got a profit to make.
@@ -126,7 +128,7 @@ Traveling Merchant: [[Hello there!|Welcome!]] Looking to buy anything? I offer 1
 	
 - Want to buy some of my produce off of me? [if SignalBus.luck >= 2]
 	Traveling Merchant: Ah, how interesting. What fine produce. Don't mind if I do.
-	Your Consciousness: The merchant buys {{SignalBus.goldReduction}} of your produce for {{SignalBus.goldReduction}} gold.
+	The merchant buys {{SignalBus.goldReduction}} of your produce for {{SignalBus.goldReduction}} gold.
 	set SignalBus.gold += SignalBus.goldReduction
 	- Thank you so much!
 		Traveling Merchant: No thank you for such lovely produce! I can definitely resell these for much higher.

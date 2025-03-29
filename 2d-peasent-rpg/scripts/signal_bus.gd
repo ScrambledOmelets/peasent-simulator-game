@@ -6,6 +6,7 @@ signal leftVillage
 
 #game signals
 signal farried
+signal unFarry
 
 #hazard signal
 signal playerHit
@@ -30,3 +31,4 @@ var metBeggar : bool
 var beggarsFavor : bool
 var gaveGift : bool
 var beenFarried : bool
+var playerSpeedMultiplier : int = 1
