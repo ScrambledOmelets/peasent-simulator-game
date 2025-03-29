@@ -1,9 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://os6xbadn1tjg"]
-
-[ext_resource type="Texture2D" uid="uid://dn8tbqm4tthli" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Village.png" id="1_gwdmi"]
+[gd_scene format=3 uid="uid://c6akhawt5d681"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Village" type="Sprite2D" parent="."]
 position = Vector2(769, 519)
-texture = ExtResource("1_gwdmi")

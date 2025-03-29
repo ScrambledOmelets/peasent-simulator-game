@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://bafnjf0egjc5w"]
+[gd_scene load_steps=37 format=4 uid="uid://bnsvekhn0cl1m"]
 
 [ext_resource type="Texture2D" uid="uid://6n8ph074qpnq" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Floors_Tiles.png" id="1_fxnoe"]
 [ext_resource type="Texture2D" uid="uid://gc4ngmnnjg0m" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Stations/Cooking Station/Butchery/Butchery_02.png" id="2_oha5q"]
