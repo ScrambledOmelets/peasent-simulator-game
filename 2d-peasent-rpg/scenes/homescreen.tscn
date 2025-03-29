@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://choemiyb2p42x"]
+[gd_scene load_steps=5 format=3 uid="uid://choemiyb2p42x"]
 
 [ext_resource type="Texture2D" uid="uid://b201bup8485l8" path="res://assets/town-8665187_1280.jpg" id="1_s4wx4"]
 [ext_resource type="Script" path="res://scripts/homescreen.gd" id="2_aocts"]
+[ext_resource type="FontFile" uid="uid://ckysx248ayviu" path="res://assets/fonts/Eagle_Lake/EagleLake-Regular.ttf" id="3_t07by"]
+[ext_resource type="FontFile" uid="uid://desarknyflrgx" path="res://assets/fonts/Fondamento/Fondamento-Regular.ttf" id="4_n7wmp"]
 
 [node name="homescreen" type="Sprite2D"]
 position = Vector2(576, 324)
@@ -20,7 +22,7 @@ offset_bottom = -427.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-color = Color(0, 0, 0, 0.4)
+color = Color(0, 0, 0, 0.501961)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
@@ -35,14 +37,16 @@ offset_right = -637.778
 offset_bottom = -600.006
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-text = "a formidable journey... to market"
+theme_override_fonts/font = ExtResource("3_t07by")
+theme_override_font_sizes/font_size = 55
+text = "A Formidable Journey... To Market!"
 
 [node name="startButton" type="Button" parent="."]
 offset_left = -142.222
 offset_top = 237.222
 offset_right = 133.778
 offset_bottom = 295.222
+theme_override_fonts/font = ExtResource("4_n7wmp")
 theme_override_font_sizes/font_size = 45
 text = "start game"
 

@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 SignalBus="*res://scripts/signal_bus.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[dialogue_manager]
+
+general/balloon_path="res://custom-dialogue-balloon/balloon.tscn"
+
 [display]
 
 window/stretch/mode="viewport"
