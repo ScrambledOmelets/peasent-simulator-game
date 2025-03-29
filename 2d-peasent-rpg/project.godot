@@ -24,6 +24,14 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "pink",
+"res://scenes/": "green",
+"res://scripts/": "gray"
+}
+
 [input]
 
 move_right={
