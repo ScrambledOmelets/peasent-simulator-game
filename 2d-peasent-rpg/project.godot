@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 SignalBus="*res://scripts/signal_bus.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
