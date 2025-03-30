@@ -1,0 +1,105 @@
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://df4gmwpa6hgk"]
+
+[ext_resource type="Texture2D" uid="uid://ctd1bn1jc1c1v" path="res://assets/Sprite sheet for Basic Pack.png" id="1_2eg8e"]
+[ext_resource type="FontFile" uid="uid://ckysx248ayviu" path="res://assets/fonts/Eagle_Lake/EagleLake-Regular.ttf" id="1_hgkik"]
+[ext_resource type="FontFile" uid="uid://ds1rvpqexwvgl" path="res://assets/fonts/Fondamento/Fondamento-Italic.ttf" id="2_117mc"]
+[ext_resource type="FontFile" uid="uid://desarknyflrgx" path="res://assets/fonts/Fondamento/Fondamento-Regular.ttf" id="3_6f7n0"]
+[ext_resource type="Texture2D" uid="uid://dft2dj0e8fupt" path="res://assets/Interface.png" id="4_1rdbi"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p1fxu"]
+load_path = "res://.godot/imported/Sprite sheet for Basic Pack.png-eabe7b01c3a789601ffb6404d896cf0e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsa2x"]
+atlas = SubResource("CompressedTexture2D_p1fxu")
+region = Rect2(59, 11, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ltnwo"]
+texture = SubResource("AtlasTexture_vsa2x")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_id131"]
+load_path = "res://.godot/imported/Sprite sheet for Basic Pack.png-eabe7b01c3a789601ffb6404d896cf0e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym2vo"]
+atlas = SubResource("CompressedTexture2D_id131")
+region = Rect2(59, 59, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c51vc"]
+texture = SubResource("AtlasTexture_ym2vo")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qwef2"]
+texture = SubResource("AtlasTexture_ym2vo")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hqj6"]
+atlas = ExtResource("1_2eg8e")
+region = Rect2(59, 155, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ed67n"]
+texture = SubResource("AtlasTexture_2hqj6")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ebnca"]
+load_path = "res://.godot/imported/Sprite sheet for Basic Pack.png-eabe7b01c3a789601ffb6404d896cf0e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blb08"]
+atlas = SubResource("CompressedTexture2D_ebnca")
+region = Rect2(59, 107, 26, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4evak"]
+texture = SubResource("AtlasTexture_blb08")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgots"]
+atlas = ExtResource("4_1rdbi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wf76g"]
+texture = SubResource("AtlasTexture_tgots")
+texture_margin_left = 16.0
+texture_margin_top = 17.0
+texture_margin_right = 18.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 2
+region_rect = Rect2(0, 0, 64, 64)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("3_6f7n0")
+Button/styles/disabled = SubResource("StyleBoxTexture_ltnwo")
+Button/styles/focus = SubResource("StyleBoxTexture_c51vc")
+Button/styles/hover = SubResource("StyleBoxTexture_qwef2")
+Button/styles/normal = SubResource("StyleBoxTexture_ed67n")
+Button/styles/pressed = SubResource("StyleBoxTexture_4evak")
+CharacterNameText/base_type = &"RichTextLabel"
+CharacterNameText/colors/default_color = Color(0, 0, 0, 1)
+CharacterNameText/font_sizes/normal_font_size = 20
+CharacterNameText/fonts/normal_font = ExtResource("1_hgkik")
+DialogueText/base_type = &"RichTextLabel"
+DialogueText/colors/default_color = Color(0, 0, 0, 1)
+DialogueText/font_sizes/normal_font_size = 18
+DialogueText/fonts/italics_font = ExtResource("2_117mc")
+DialogueText/fonts/normal_font = ExtResource("3_6f7n0")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+Panel/styles/panel = SubResource("StyleBoxTexture_wf76g")

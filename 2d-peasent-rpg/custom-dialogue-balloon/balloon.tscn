@@ -1,77 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dum3l2xcvsvij"]
+[gd_scene load_steps=5 format=3 uid="uid://dum3l2xcvsvij"]
 
 [ext_resource type="Script" path="res://custom-dialogue-balloon/balloon.gd" id="1_36de5"]
-[ext_resource type="Texture2D" uid="uid://cm4djau6pkw10" path="res://assets/UI/Button_52x14.png" id="2_3eftd"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="Theme" uid="uid://df4gmwpa6hgk" path="res://custom-dialogue-balloon/balloon_theme.tres" id="2_b6t3u"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.329412, 0.329412, 0.329412, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri4m3"]
-bg_color = Color(0.121569, 0.121569, 0.121569, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0njw"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.6, 0.6, 0.6, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bg21c"]
-atlas = ExtResource("2_3eftd")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_stl18"]
-texture = SubResource("AtlasTexture_bg21c")
-region_rect = Rect2(8, 7, 80, 81)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy0d5"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="Theme" id="Theme_qq3yp"]
-default_font_size = 20
-Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
-Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
-Button/styles/hover = SubResource("StyleBoxFlat_e0njw")
-Button/styles/normal = SubResource("StyleBoxFlat_e0njw")
-MarginContainer/constants/margin_bottom = 15
-MarginContainer/constants/margin_left = 30
-MarginContainer/constants/margin_right = 30
-MarginContainer/constants/margin_top = 15
-NewButtonTheme/base_type = &"Button"
-NewButtonTheme/styles/normal = SubResource("StyleBoxTexture_stl18")
-Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
@@ -85,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_qq3yp")
+theme = ExtResource("2_b6t3u")
 
 [node name="Panel" type="Panel" parent="Balloon"]
 clip_children = 2
@@ -118,6 +50,7 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
+theme_type_variation = &"CharacterNameText"
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -127,6 +60,7 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"DialogueText"
 text = "Dialogue..."
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
@@ -153,6 +87,7 @@ response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
+theme = ExtResource("2_b6t3u")
 text = "Response example"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Balloon"]
