@@ -47,7 +47,15 @@ var dialogue_line: DialogueLine:
 
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
-
+		##character image logic
+		var portrait_path : String = "res://jank_icons/%s.jpg" % dialogue_line.character.to_lower().to_snake_case()
+		#this keeps defualting to else
+		if ResourceLoader.exists(portrait_path):
+			char_image.texture = load(portrait_path)
+		else:
+			char_image.texture = load("res://assets/jank_icons/mental_talk.jpg")
+		
+		
 		dialogue_label.hide()
 		dialogue_label.dialogue_line = dialogue_line
 
