@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 	#setting up game
 	$player.resetPlayer($startPosition.position)
-	$music/travelMusic.play()
+	$music_noises/travelMusic.play()
 	
 	##checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)

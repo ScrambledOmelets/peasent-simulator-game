@@ -1,6 +1,9 @@
 extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
+##character portraite variable
+@onready var char_image: TextureRect = %charImage
+
 ## The action to use for advancing the dialogue
 @export var next_action: StringName = &"ui_accept"
 

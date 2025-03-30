@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://df4gmwpa6hgk"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://df4gmwpa6hgk"]
 
 [ext_resource type="Texture2D" uid="uid://ctd1bn1jc1c1v" path="res://assets/Sprite sheet for Basic Pack.png" id="1_2eg8e"]
 [ext_resource type="FontFile" uid="uid://ckysx248ayviu" path="res://assets/fonts/Eagle_Lake/EagleLake-Regular.ttf" id="1_hgkik"]
@@ -66,6 +66,17 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwc5o"]
+atlas = ExtResource("1_2eg8e")
+region = Rect2(153, 9, 30, 30)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6id7m"]
+texture = SubResource("AtlasTexture_uwc5o")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgots"]
 atlas = ExtResource("4_1rdbi")
 region = Rect2(0, 0, 64, 64)
@@ -93,6 +104,8 @@ CharacterNameText/base_type = &"RichTextLabel"
 CharacterNameText/colors/default_color = Color(0, 0, 0, 1)
 CharacterNameText/font_sizes/normal_font_size = 20
 CharacterNameText/fonts/normal_font = ExtResource("1_hgkik")
+CharacterPanel/base_type = &"Panel"
+CharacterPanel/styles/panel = SubResource("StyleBoxTexture_6id7m")
 DialogueText/base_type = &"RichTextLabel"
 DialogueText/colors/default_color = Color(0, 0, 0, 1)
 DialogueText/font_sizes/normal_font_size = 18
