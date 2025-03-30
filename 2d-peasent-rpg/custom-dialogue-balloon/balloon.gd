@@ -4,6 +4,10 @@ extends CanvasLayer
 ##character portraite variable
 @onready var char_image: TextureRect = %charImage
 
+##music variables
+@onready var positive_sound: AudioStreamPlayer2D = $positive_sound
+@onready var negative_sound: AudioStreamPlayer2D = $negative_sound
+
 ## The action to use for advancing the dialogue
 @export var next_action: StringName = &"ui_accept"
 
@@ -27,6 +31,7 @@ var locals: Dictionary = {}
 
 var _locale: String = TranslationServer.get_locale()
 
+
 ## The current line
 var dialogue_line: DialogueLine:
 	set(next_dialogue_line):
@@ -48,12 +53,11 @@ var dialogue_line: DialogueLine:
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
 		##character image logic
-		var portrait_path : String = "res://jank_icons/%s.jpg" % dialogue_line.character.to_lower().to_snake_case()
-		#this keeps defualting to else
+		var portrait_path : String = "res://assets/jank_icons/%s.png" % dialogue_line.character.to_lower().to_snake_case()
 		if ResourceLoader.exists(portrait_path):
 			char_image.texture = load(portrait_path)
 		else:
-			char_image.texture = load("res://assets/jank_icons/mental_talk.jpg")
+			char_image.texture = load("res://assets/jank_icons/mental_talk.png")
 		
 		
 		dialogue_label.hide()
@@ -100,6 +104,10 @@ var dialogue_line: DialogueLine:
 
 
 func _ready() -> void:
+	#setting audiovariables
+	SignalBus.posSound = positive_sound
+	SignalBus.negSound = negative_sound
+	
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 

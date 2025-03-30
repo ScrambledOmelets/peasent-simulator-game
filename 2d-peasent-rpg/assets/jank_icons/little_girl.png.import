@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt772krq76i8i"
-path="res://.godot/imported/ferry_runner.jpg-63e34cb5f54a0f37dc6918a06b589e47.ctex"
+uid="uid://b7llpnbjf183p"
+path="res://.godot/imported/little_girl.png-3a0706f95d954451cc6f27d0eacb6f1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jank_icons/ferry_runner.jpg"
-dest_files=["res://.godot/imported/ferry_runner.jpg-63e34cb5f54a0f37dc6918a06b589e47.ctex"]
+source_file="res://assets/jank_icons/little_girl.png"
+dest_files=["res://.godot/imported/little_girl.png-3a0706f95d954451cc6f27d0eacb6f1d.ctex"]
 
 [params]
 

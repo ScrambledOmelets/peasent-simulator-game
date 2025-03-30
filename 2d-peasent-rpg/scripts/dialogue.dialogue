@@ -4,29 +4,35 @@ You are going to market today to sell some of the excess produce from your farm.
 The recent rainstorms have changed up the path and you need to proceed carefully.
 You feel...
 - Nervous
-	Who wouldn't be nervous? You'll get the hang of it soon enough though.
+	Your Consciousness: I mean, who wouldn't be nervous? There's bandits around here!
+	do! SignalBus.playSound(SignalBus.posSound)
 	set SignalBus.luck = 1
 - Determined
-	That's the spirit!
+	Your Consciousness: I'm going to make it to market and make a ton of money!
+	do! SignalBus.playSound(SignalBus.posSound)
 	set SignalBus.luck = 1
 - Bored
-	Your Consciousness: You don't really want to be out here anyways...
-	set SignalBus.luck = -1
-Oh! You almost forgot to double check your item pouch. You remember packing...
+	Your Consciousness: I don't really want to be out here anyways... [do! SignalBus.playSound(SignalBus.negSound)]
+	set SignalBus.luck = 0
+=>< luck_explain
+You almost forgot to double check your item pouch. You remember packing...
 - Lightly
 	set SignalBus.food = 4
 	set SignalBus.gold = 5
 	set SignalBus.playerSpeedMultiplier = 1.5
 	This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
+	You feel a bit lighter.
 - Moderately
 	set SignalBus.food = 5
 	set SignalBus.gold = 8
 	This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
+	Your pack weighs you down a moderate amount.
 - Heavily
 	set SignalBus.food = 10
 	set SignalBus.gold = 10
 	set SignalBus.playerSpeedMultiplier = 0.8
 	This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
+	You find it difficult to move with the weight of your pack.
 Follow the path to get to a village safetly and sell your produce.
 There is a counter at the top left corner to help you rememember your items.
 You won’t be able to make it if you run out of food, so keep an eye on your resources.
@@ -34,33 +40,63 @@ Hopefully your journey is a successful one!
 
 => END
 
-~ ferry_man
-Ferry Runner: Hello there. Looking to cross the river?
-- Yes
-	Ferry Runner: Ah, well, that would be 1 gold.
-	- Okay
-		You pay the Ferry Runner 1 gold and he takes you across the river.
-		do SignalBus.farried.emit()
-		You're one step closer to a village!
-		set SignalBus.luck += 1
-	- Actually nevermind
-		Ferry Runner: I'll still be here if you change your mind. My ferry is the only way to cross the river.
-		=> END
-	- Could I trade you some of my food instead? [if SignalBus.gold <= 1]
-		if SignalBus.luck >= 2
-			Ferry Runner: Hmm, perhaps. I could use some lunch.
-			You trade 1 food with the Ferry Runner for a ride across the river.
-			do SignalBus.farried.emit()
-			You're one step closer to a village!
-			set SignalBus.food  -= 1
-		else
-			Ferry Runner: Do you take me for some starving old man? I got a profit to make.
-			Ferry Runner: If you can't pay up then leave me be.
-			=> END
-- No
-	Ferry Runner: Feel free to come back if you change your mind.
-	=> END
+~ luck_explain
+if luck >= 1
+	Oh, what's that? You feel a little bit luckier!
+	Whenever you hear that sound, it means you've made a good decision.
+else
+	Oh, what was that noise? You feel a little less lucky.
+	Whenever you hear that sound, it means you made a questionable decision.
+Keep making choices and see what happens.
+=> END
 
+
+~ ferry_man
+if not beenFarried
+	Ferry Runner: Hello there. Looking to cross the river?
+	- Yes
+		Ferry Runner: Ah, well, that would be 1 gold.
+		- Okay
+			You pay the Ferry Runner 1 gold and he takes you across the river.
+			do SignalBus.farried.emit()
+			do playSound(posSound)
+			You're one step closer to a village!
+			set SignalBus.luck += 1
+		- Actually nevermind
+			Ferry Runner: I'll still be here if you change your mind. My ferry is the only way to cross the river.
+			=> END
+		- Could I trade you some of my food instead? [if SignalBus.gold <= 1]
+			if SignalBus.luck >= 2
+				Ferry Runner: Hmm, perhaps. I could use some lunch.
+				You trade 1 food with the Ferry Runner for a ride across the river.
+				do SignalBus.farried.emit()
+				You're one step closer to a village!
+				set SignalBus.food  -= 1
+			else
+				Ferry Runner: Do you take me for some starving old man? I got a profit to make.
+				Ferry Runner: If you can't pay up then leave me be.
+				=> END
+	- No
+		Ferry Runner: Feel free to come back if you change your mind.
+		=> END
+elif beenFarried
+	Ferry Runner: Want to go back already?
+	- Yes
+		Ferry Runner: Okay. Just a moment.
+		do unFarry.emit()
+	- No
+		Ferry Runner: Come back if you change your mind.
+		=> END
+	- Do I have to pay again?
+		Ferry Runner: No... I only charge one way.
+		Ferry Runner: So how about it?
+		- Yes, take me back.
+			Ferry Runner: Okay. Just a moment.
+			do unFarry.emit()
+		- No, nevermind.
+			Ferry Runner: Come back if you change your mind.
+			=> END
+	Ferry Runner: Visit me again if you want to cross the river. Farewell.
 => END
 
 ~ merchant
@@ -138,6 +174,13 @@ Traveling Merchant: [[Hello there!|Welcome!]] Looking to buy anything? I offer 1
 	
 => END
 
+~ village_confirm
+Do you want to enter this village?
+- Yes
+	do SignalBus.villageEnterConfirm.emit()
+- No
+	Your Consciousness: Yeah... This one might be infected with plague. Let's try to find another.
+=> END
 
 
 ~ randomizer

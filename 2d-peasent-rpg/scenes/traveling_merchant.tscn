@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://dya8x7lbkk707"]
+[gd_scene load_steps=26 format=3 uid="uid://dya8x7lbkk707"]
 
 [ext_resource type="Script" path="res://scripts/traveling_merchant.gd" id="1_gh2xp"]
 [ext_resource type="Texture2D" uid="uid://b3i4rx4rqg7nb" path="res://assets/MinifolksVillagers/Blue/Outline/MiniMerchantB.png" id="2_ih26j"]
+[ext_resource type="Theme" uid="uid://df4gmwpa6hgk" path="res://custom-dialogue-balloon/balloon_theme.tres" id="3_3121v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jvtob"]
 atlas = ExtResource("2_ih26j")
@@ -161,6 +162,7 @@ size = Vector2(30.25, 44.5)
 radius = 112.0
 
 [node name="merchant" type="CharacterBody2D"]
+position = Vector2(150, 129)
 script = ExtResource("1_gh2xp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -185,7 +187,10 @@ offset_left = -72.0
 offset_top = 80.0
 offset_right = 70.0
 offset_bottom = 103.0
+theme = ExtResource("3_3121v")
+theme_type_variation = &"ToolTip"
 text = "press enter to talk"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="conversationRange" to="." method="_on_conversation_range_body_entered"]
 [connection signal="body_exited" from="conversationRange" to="." method="_on_conversation_range_body_exited"]

@@ -9,9 +9,6 @@ var dialouge
 var hazard
 var chatting = false
 
-#game values
-#might need to make these global...
-#mde them global
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,10 +22,12 @@ func _ready() -> void:
 	##checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)
 	SignalBus.farried.connect(_on_player_farried)
+	SignalBus.unFarry.connect(_on_player_brought_back)
 
 	#all the village entered signals going to the same function
 	$villageTransition2.villageEntered.connect(_on_village_transition_village_entered)
 	$villageTransition3.villageEntered.connect(_on_village_transition_village_entered)
+	SignalBus.villageEnterConfirm.connect(_on_village_enter_confirm)
 	
 	#ok this is properly connected
 	DialogueManager.dialogue_ended.connect(_on_dialouge_ended)
@@ -56,18 +55,25 @@ func _on_dialouge_ended(resource: DialogueResource):
 	$foodTimer.start()
 	chatting = false
 	
-	
 	if resource == load("res://scripts/bandit_dialouge.dialogue"):
 		remove_child(hazard)
 		$hud.update_foodCounter(SignalBus.food)
 		$hud.update_goldCounter(SignalBus.gold)
+		$hazardTimer.start()
 	
 #ingame event of player farry
 #this is currently not set up for the player to go back from the farried location!
 func _on_player_farried():
-	$player.position = $ferryLocation.position
-	$ferryMan.position = $newFerryGuySpot.position
+	$player.position = $ferryMarkers/ferryLocation.position
+	$ferryMan.position = $ferryMarkers/newFerryGuySpot.position
+	SignalBus.beenFarried = true
+
+func _on_player_brought_back():
+	SignalBus.beenFarried = false
+	$player.position = $ferryMarkers/unferryLocation.position
+	$ferryMan.position = $ferryMarkers/newFerryGuySpot2.position
 	
+
 #this works
 func _on_player_hit() -> void:
 	#so mobs dont spawn when ur in choice
@@ -79,7 +85,7 @@ func _on_player_hit() -> void:
 	SignalBus.foodReduction = randi_range(1,2)
 	
 	DialogueManager.show_dialogue_balloon(load("res://scripts/bandit_dialouge.dialogue"), "bandit_attack")
-	#dialougeSpawn("oh no a bandit", "pay what they demand", "attempt escape")
+
 	
 #this also works fine
 func _on_hazard_timer_timeout() -> void:
@@ -150,24 +156,20 @@ func is_game_over(food):
 		gameOver.emit() #this works. connect signal
 		print("NO FOOD")
 	
-	##this is glitchy, i don't like it
-	#elif gold < 0:
-		#$choiceTimer.start()
-		#await $choiceTimer.timeout
-		#gameOver.emit()
-		#print("RAN OUT OF GOLD")
 
 #when player enters a village
 func _on_village_transition_village_entered() -> void:
-	
-	$hud.update_message("now entering a village")
+	DialogueManager.show_dialogue_balloon(load("res://scripts/dialogue.dialogue"), "village_confirm")
+
+
+func _on_village_enter_confirm() -> void:
+	pass
+	$hud.update_message("Now entering a village...")
 	$player.set_physics_process(false)
 	
 	#waiting for timer
 	await get_tree().create_timer(3).timeout
-	#this would change to the village scene when i expand the game
 	get_tree().change_scene_to_file("res://scenes/transition_scene.tscn")
-	
 
 #when the game ends
 func _on_game_over() -> void:
@@ -181,7 +183,6 @@ func _on_game_over() -> void:
 	
 	await get_tree().create_timer(3).timeout
 	
-
 	get_tree().change_scene_to_file("res://scenes/transition_scene2.tscn")
 
 

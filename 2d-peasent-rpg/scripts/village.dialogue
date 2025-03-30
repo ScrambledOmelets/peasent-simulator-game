@@ -2,47 +2,21 @@
 Your Consciousness: You've finally made it! Now it is time to sell your produce.
 Your Consciousness: You can stay in a village for as long as you have gold, or else the innkeeper will kick you out!
 Your Consciousness: Make sure you keep an eye on it.
+
+~ village_day
 Your Consciousness: Now... Where should you set up shop?
 - In the village center
 	Your Consciousness: This looks like a nice spot... Right at the center of everything!
 	Your Consciousness: Look, here comes your first interested person.
-	Little Girl: Hi. What are you doing?
-	- Selling produce
-		Little Girl: Oh. Do you have anything good?
-		You describe what you're selling, including wheat and potatoes. The little girl seems to light up.
-		Little Girl: I think my mom could use some of those. Here!
-		set SignalBus.gold += 1
-		She hands you 1 gold coin in exchange for 1 potato.
-		- Thank you so much!
-			Little Girl: You're welcome! I'll tell everyone else about you too. Bye bye!
-			Your Consciousness: Success! You feel better about having traveled to the market.
-			
-	- I don't know
-		Little Girl: Well I don't either. That's why I asked you.
-		Little Girl: You're silly! You can have this.
-		She hands you 1 gold coin.
-		- Please take it back.
-			Little Girl: No it's ok! Silly people deserve it.
-			Your Consciousness: You gain 1 gold.
-			set SignalBus.gold += 1
-			set SignalBus.luck += 1
-			Your Consciousness: Aw that was sweet of her. It really brightened your day!
-		- Oh thanks.
-			You take her gold coin and she smiles before skipping off.
-			Your Consciousness: You gain 1 gold.
-			set SignalBus.gold += 1
-			Your Consciousness: Did you just scam a little girl? Maybe you should have tried harder to tell her to keep it.
-			set SignalBus.luck -= 1
-			=> END
-	- Where's your parents?
-		Little Girl: I'm big enough to get around on my own!
-		Little Girl: I had even brought some gold with me today. But I don't want your stinky veggies now anyways!
-		Your Consciousness: Oh no... You feel kind of bad about offending her, but she's already stomped off.
-		=> END
+	
 	=> end_of_day
 		#change the background of the scene depending on where you choose
 		#determine how well sales are depending on your luck
 - At the village entrance
+	Your Consciousness: You set up everything right by the village entrance. Many weary travelers pass you by.
+	Your Consciousness: You begin to wonder if anyone cares to buy anything.
+	if luck >= 2
+		Your Consciousness: Wait, here comes someone now!
 - Tucked into a corner at the market
 - In a good spot at the market [if SignalBus.luck >= 3]
 I'm sorry these other options don't do anything yet!
@@ -59,8 +33,75 @@ Your Consciousness: Should you leave the village tomorrow morning or stay to try
 	do SignalBus.leftVillage.emit()
 	=> END
 - I want to try tomorrow
-	this would start another day with meeting more people in the village to sell
+	You tuck into bed with plans of where to sell tomorrow.
+	It's the next day already.
+	=> village_day
 	=> END
+
+~ merchant_guy
+Traveling Merchant: Ah you again. The same peasent from the roads.
+- Hi
+- Can you please stop calling me a peasent?
+	Traveling Merchant: Why would I stop calling you what you are? How foolish of you.
+	set luck -= 1
+	do playSound(negSound)
+	Traveling Merchant: I wanted to buy more of your produce, but it appears you have developed an attitude.
+	Traveling Merchant: Goodbye.
+	Your Consciousness: Yikes...
+- Yes it's me.
+Traveling Merchant: Hello! Please allow me to buy more of your produce.
+- Yes, of course!
+	The merchant buys some of your produce for 3 gold.
+	set gold += 3
+	Traveling Merchant: It is truly so lovely doing business with you. Farewell.
+- No...
+	Traveling Merchant: No? I'm sorry? How can you dare to reject my business when you obviously need the money?
+	Traveling Merchant: I'm afraid you have gone mad. Goodbye.
+	Your Consciousness: Why did you say no anyways???
+
+=> END
+
+~ angry_chef
+Petulant Chef: I need 10 parsnips.
+
+
+~ little_girl
+Little Girl: Hi. What are you doing?
+- Selling produce
+	Little Girl: Oh. Do you have anything good?
+	You describe what you're selling, including wheat and parsnips. The little girl seems to light up.
+	Little Girl: I think my mom could use some of those. Here!
+	set SignalBus.gold += 1
+	She hands you 1 gold coin in exchange for 1 potato.
+	- Thank you so much!
+		Little Girl: You're welcome! I'll tell everyone else about you too. Bye bye!
+		Your Consciousness: Success! You feel better about having traveled to the market.
+		
+- I don't know
+	Little Girl: Well I don't either. That's why I asked you.
+	Little Girl: You're silly! You can have this.
+	She hands you 1 gold coin.
+	- Please take it back.
+		Little Girl: No it's ok! Silly people deserve it.
+		Your Consciousness: You gain 1 gold.
+		set SignalBus.gold += 1
+		set SignalBus.luck += 1
+		Your Consciousness: Aw that was sweet of her. It really brightened your day!
+		
+	- Oh thanks.
+		You take her gold coin and she smiles before skipping off.
+		Your Consciousness: You gain 1 gold.
+		set SignalBus.gold += 1
+		Your Consciousness: Did you just scam a little girl? Maybe you should have tried harder to tell her to keep it.
+		set SignalBus.luck -= 1
+			
+	- Where's your parents?
+		Little Girl: I'm big enough to get around on my own!
+		Little Girl: I had even brought some gold with me today. But I don't want your stinky veggies now anyways!
+		Your Consciousness: Oh no... You feel kind of bad about offending her, but she's already stomped off.
+		=> END
+=> END
+
 
 ~ village_scene_scrapped
 Your Consciousness: You've made it to a village!
@@ -91,3 +132,4 @@ else
 		=> END
 			
 => END
+

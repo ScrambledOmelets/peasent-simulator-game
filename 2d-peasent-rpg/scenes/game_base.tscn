@@ -2897,7 +2897,7 @@ wait_time = 90.0
 one_shot = true
 
 [node name="foodTimer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 30.0
 
 [node name="banditSpawn" type="Marker2D" parent="."]
 position = Vector2(2036, -155)
@@ -2965,11 +2965,19 @@ text = "North: Heartsteed Village
 East: Riverside Village
 South: Whetfiel Village"
 
-[node name="ferryLocation" type="Marker2D" parent="."]
+[node name="ferryMarkers" type="Node" parent="."]
+
+[node name="ferryLocation" type="Marker2D" parent="ferryMarkers"]
 position = Vector2(4053, 527)
 
-[node name="newFerryGuySpot" type="Marker2D" parent="."]
+[node name="unferryLocation" type="Marker2D" parent="ferryMarkers"]
+position = Vector2(3017, 567)
+
+[node name="newFerryGuySpot" type="Marker2D" parent="ferryMarkers"]
 position = Vector2(3933, 390)
+
+[node name="newFerryGuySpot2" type="Marker2D" parent="ferryMarkers"]
+position = Vector2(2927, 352)
 
 [connection signal="gameOver" from="." to="." method="_on_game_over"]
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]

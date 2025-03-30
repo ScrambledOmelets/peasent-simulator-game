@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl3ouht3t7d6t"]
+[gd_scene load_steps=11 format=3 uid="uid://dl3ouht3t7d6t"]
 
 [ext_resource type="Script" path="res://scripts/ferry_man.gd" id="1_8nfm6"]
 [ext_resource type="Texture2D" uid="uid://vvfqsb3165av" path="res://assets/MinifolksVillagers/MinifolksVillagers/Outline/MiniOldMan.png" id="2_lbb72"]
+[ext_resource type="Theme" uid="uid://df4gmwpa6hgk" path="res://custom-dialogue-balloon/balloon_theme.tres" id="3_u5e3i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4kxb"]
 atlas = ExtResource("2_lbb72")
@@ -46,9 +47,11 @@ size = Vector2(30.25, 44.5)
 radius = 112.0
 
 [node name="ferryMan" type="CharacterBody2D"]
+position = Vector2(152, 72)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_8nfm6")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -72,7 +75,10 @@ offset_left = -72.0
 offset_top = 80.0
 offset_right = 70.0
 offset_bottom = 103.0
+theme = ExtResource("3_u5e3i")
+theme_type_variation = &"ToolTip"
 text = "press enter to talk"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="conversationRange" to="." method="_on_conversation_range_body_entered"]
 [connection signal="body_exited" from="conversationRange" to="." method="_on_conversation_range_body_exited"]

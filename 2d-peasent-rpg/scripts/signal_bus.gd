@@ -3,6 +3,7 @@ extends Node
 
 #village signals
 signal leftVillage
+signal villageEnterConfirm
 
 #game signals
 signal farried
@@ -30,5 +31,12 @@ var foodReduction : int
 var metBeggar : bool
 var beggarsFavor : bool
 var gaveGift : bool
-var beenFarried : bool
+var beenFarried : bool = false
 var playerSpeedMultiplier : int = 1
+
+#music variables
+var negSound : AudioStreamPlayer2D
+var posSound : AudioStreamPlayer2D
+#music function
+func playSound(sound : AudioStreamPlayer2D):
+	sound.play()

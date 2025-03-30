@@ -117,3 +117,6 @@ MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 Panel/styles/panel = SubResource("StyleBoxTexture_wf76g")
+ToolTip/base_type = &"Label"
+ToolTip/font_sizes/font_size = 16
+ToolTip/fonts/font = ExtResource("3_6f7n0")
