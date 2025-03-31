@@ -2,7 +2,7 @@ extends Node
 #holds all signals..
 
 #village signals
-signal leftVillage
+signal leftVillage(case : String)
 signal villageEnterConfirm
 signal dayEnded
 

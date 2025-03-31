@@ -167,6 +167,9 @@ func _on_village_enter_confirm() -> void:
 	$hud.update_message("Now entering a village...")
 	$player.set_physics_process(false)
 	
+	#random chance for the town having plague
+	SignalBus.randomizer()
+	
 	#waiting for timer
 	await get_tree().create_timer(3).timeout
 	get_tree().change_scene_to_file("res://scenes/transition_scene.tscn")

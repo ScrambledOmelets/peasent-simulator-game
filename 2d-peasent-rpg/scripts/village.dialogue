@@ -1,7 +1,33 @@
 ~ village_entrance
-Your Consciousness: You've finally made it! Now it is time to sell your produce.
-Your Consciousness: You can stay in a village for as long as you have gold, or else the innkeeper will kick you out!
-Your Consciousness: Make sure you keep an eye on it.
+if randomChance == true
+	Your Consciousness: You've finally made it! Now it is time to sell your produce.
+	Your Consciousness: You can stay in a village for as long as you have gold, or else the innkeeper will kick you out!
+	Your Consciousness: Make sure you keep an eye on it.
+	=> village_day
+else
+	Your Consciousness: A stench hangs in the air of this village... It appears they have the plague.
+	Your Consciousness: The black death is a terrible sickness that leaves awful boils on someone's body. 
+	Your Consciousness: You can barely bear to think about it.
+	Your Consciousness: Should you leave?
+	- No, they could use some extra produce and help.
+		if luck == 3
+			Your Consciousness: You hand out your wares for free, helping to brighten a few people's days.
+			Your Consciousness: You are very careful when you hand them items as to not catch the plague.
+			Your Consciousness: You have given away all your wares, made 0 gold, and are not sick.
+			do leftVillage.emit("escape_sickness")
+		elif luck == 2
+			Your Consciousness: You attempt to sell your items. You take gold from patrons.
+			Your Consciousness: One of the coins was contaiminated and before long, you catch the plague.
+			do leftVillage.emit("dead")
+		else
+			Your Consciousness: You enter the village and immedieately trip over a body.
+			Your Consciousness: The very ground is cursed and you feel yourself become sick.
+			do leftVillage.emit("dead")
+			=> END
+	- Yes I am getting out of here.
+		do leftVillage.emit("plague_leave")
+			
+=> END
 
 ~ village_day
 Your Consciousness: Now... Where should you set up shop?
@@ -10,27 +36,31 @@ Your Consciousness: Now... Where should you set up shop?
 	Your Consciousness: Look, here comes your first interested person.
 	% =>< little_girl
 	% =>< merchant_guy
-	
 		#change the background of the scene depending on where you choose
 		#determine how well sales are depending on your luck
 - At the village entrance
 	Your Consciousness: You set up everything right by the village entrance. Many weary travelers pass you by.
 	Your Consciousness: You begin to wonder if anyone cares to buy anything.
-	if luck >= 2
+	if randomChance
 		Your Consciousness: Wait, here comes someone now!
 		=>< merchant_guy
+		=> end_of_day
 	Your Consciousness: Aw, it looked like everyone has passed you by...
 	Your Consciousness: They didn't take well to someone shilling right by the entrance.
 - Tucked into a corner at the market
 	Your Consciousness: You wonder if anyone will be able to see you here.
 	Your Consciousness: The other stalls look so flashy and large compared to your own.
-	
+	if randomChance
+		Your Consciousness: Oh, here comes someone now.
+		=>< angry_chef
+		=> end_of_day
+	Your Consciousness: Oh no, it looks like everyone passed you up...
+	Your Consciousness: Maybe you could try for a better spot next time.
 - In a good spot at the market [if SignalBus.luck >= 3]
 	Your Consciousness: You manage to find the perfect spot at the market. 
 	Your Consciousness: You've sold all your produce in one day!
 	set soldEverything = true
 => end_of_day
-
 
 ~ end_of_day
 do dayEnded.emit()
@@ -39,14 +69,14 @@ set SignalBus.gold -= 1
 if soldEverything
 	Your Consciousness: You've sold all your produce, so there's no reason for you to stay anymore.
 	Your Consciousness: You tuck into bed and smile with plans of returning home tomorrow.
-	do leftVillage.emit()
+	do leftVillage.emit("sold_everything")
 	=> END
 	
 Your Consciousness: Should you leave the village tomorrow morning or stay to try selling one more time?
 - I'm leaving
 	You tuck into bed with plans to leave the village tomorrow.
 	Early next morning, you pack everything up and leave.
-	do SignalBus.leftVillage.emit()
+	do SignalBus.leftVillage.emit("normal_leave")
 	=> END
 - I want to try tomorrow
 	You tuck into bed with plans of where to sell tomorrow.
@@ -64,6 +94,7 @@ Traveling Merchant: Ah you again. The same peasent from the roads.
 	Traveling Merchant: I wanted to buy more of your produce, but it appears you have developed an attitude.
 	Traveling Merchant: Goodbye.
 	Your Consciousness: Yikes...
+	=> END
 - Yes it's me.
 Traveling Merchant: Hello! Please allow me to buy more of your produce.
 - Yes, of course!
@@ -73,7 +104,7 @@ Traveling Merchant: Hello! Please allow me to buy more of your produce.
 - No...
 	Traveling Merchant: No? I'm sorry? How can you dare to reject my business when you obviously need the money?
 	Traveling Merchant: I'm afraid you have gone mad. Goodbye.
-	Your Consciousness: Why did you say no anyways???
+	Your Consciousness: Bruh...
 
 => END
 
@@ -83,6 +114,8 @@ Petulant Chef: I need 10 parsnips. Now.
 	Petulant Chef: Don't dilly dally. Hurry up!
 	Petulant Chef: I've got dozens of mouths to feed at the inn and I'm fresh out of parsnips.
 	Your Consciousness: You rush to get the chef his parsnips.
+	You gain 10 gold.
+	set gold += 10
 - I don't know if I have that many. [if daysInVillage >= 1]
 	Petulant Chef: What do you mean? What kind of merchant are you?
 	- You should have got here sooner, then.
@@ -91,6 +124,8 @@ Petulant Chef: I need 10 parsnips. Now.
 		Petulant Chef: Plague upon your crops. I'll buy them elsewhere.
 		
 	- I'm sorry, but I already sold a lot of them.
+		He kind of just gets mad and  walks off. Oops.
+=> END
 
 ~ little_girl
 Little Girl: Hi. What are you doing?

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwtcr4yo0iq4"]
+[gd_scene load_steps=3 format=3 uid="uid://bwtcr4yo0iq4"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_hrlt3"]
+[ext_resource type="FontFile" uid="uid://desarknyflrgx" path="res://assets/fonts/Fondamento/Fondamento-Regular.ttf" id="2_vok4p"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_hrlt3")
@@ -10,16 +11,18 @@ offset_left = 20.0
 offset_top = 16.0
 offset_right = 299.0
 offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("2_vok4p")
 theme_override_font_sizes/font_size = 30
-text = "food remaining: 0"
+text = "Food Remaining: 0"
 
 [node name="goldCounter" type="Label" parent="."]
 offset_left = 19.0
 offset_top = 61.0
 offset_right = 298.0
 offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("2_vok4p")
 theme_override_font_sizes/font_size = 30
-text = "gold remaining: 0"
+text = "Gold Remaining: 0"
 
 [node name="gameMessage" type="Label" parent="."]
 anchors_preset = 5
@@ -29,5 +32,6 @@ offset_left = -139.5
 offset_right = 139.5
 offset_bottom = 42.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_vok4p")
 theme_override_font_sizes/font_size = 30
 text = "aaaaaa"
