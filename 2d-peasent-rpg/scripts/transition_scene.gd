@@ -13,7 +13,7 @@ func _ready() -> void:
 	game_text.hide()
 	nopeout_button.hide()
 	DialogueManager.show_dialogue_balloon(load("res://scripts/village.dialogue"), "village_entrance")
-	SignalBus.randomizer()
+	
 	SignalBus.dayEnded.connect(_on_day_ended)
 	SignalBus.leftVillage.connect(_on_village_left)
 	
