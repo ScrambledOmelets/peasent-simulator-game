@@ -4,6 +4,7 @@ extends Node
 #village signals
 signal leftVillage
 signal villageEnterConfirm
+signal dayEnded
 
 #game signals
 signal farried
@@ -26,6 +27,15 @@ var food : int
 var luck : int
 var goldReduction :int
 var foodReduction : int
+var daysInVillage : int
+var soldEverything : bool
+
+#small randomizer
+var randomChance : bool
+
+func randomizer():
+	var list = [true, false]
+	randomChance = list.pick_random()
 
 #character variables
 var metBeggar : bool
@@ -37,6 +47,7 @@ var playerSpeedMultiplier : int = 1
 #music variables
 var negSound : AudioStreamPlayer2D
 var posSound : AudioStreamPlayer2D
+
 #music function
 func playSound(sound : AudioStreamPlayer2D):
 	sound.play()

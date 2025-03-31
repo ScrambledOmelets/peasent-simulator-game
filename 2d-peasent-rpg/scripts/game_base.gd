@@ -62,12 +62,12 @@ func _on_dialouge_ended(resource: DialogueResource):
 		$hazardTimer.start()
 	
 #ingame event of player farry
-#this is currently not set up for the player to go back from the farried location!
 func _on_player_farried():
 	$player.position = $ferryMarkers/ferryLocation.position
 	$ferryMan.position = $ferryMarkers/newFerryGuySpot.position
 	SignalBus.beenFarried = true
 
+#can now go back too
 func _on_player_brought_back():
 	SignalBus.beenFarried = false
 	$player.position = $ferryMarkers/unferryLocation.position

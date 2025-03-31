@@ -6,13 +6,15 @@ func _ready() -> void:
 	$hud.update_foodCounter(SignalBus.food)
 	$hud.update_goldCounter(SignalBus.gold)
 	DialogueManager.show_dialogue_balloon(load("res://scripts/village.dialogue"), "village_entrance")
-
+	SignalBus.dayEnded.connect(_on_day_ended)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$hud.update_foodCounter(SignalBus.food)
 	$hud.update_goldCounter(SignalBus.gold)
 
-
+func _on_day_ended():
+	SignalBus.daysInVillage += 1
+	SignalBus.randomizer()
 
 func _from_gameover(foodAmount, goldAmount):
 	print("game hs been lost")
