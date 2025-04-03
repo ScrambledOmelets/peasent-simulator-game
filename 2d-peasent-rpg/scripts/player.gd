@@ -16,7 +16,6 @@ func get_input():
 	var input_direction = Input.get_vector("move_left","move_right","move_up","move_down")
 	var newSpeed = speed * SignalBus.playerSpeedMultiplier
 	velocity = input_direction * newSpeed
-	print(SignalBus.playerSpeedMultiplier)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

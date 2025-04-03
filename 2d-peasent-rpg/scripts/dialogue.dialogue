@@ -102,7 +102,7 @@ elif beenFarried
 
 ~ merchant
 Traveling Merchant: [[Hello there!|Welcome!]] Looking to buy anything? I offer 1 food per 1 gold coin.
-% Traveling Merchant: I think my prices are much better than that other merchant's across the river, ugh. [[Curses upon him.|Simply highway robbery.]]
+Traveling Merchant: I think my prices are much better than that other merchant's across the river, ugh. [[Curses upon him.|Simply highway robbery.]]
 - I'd like some more food.
 	Traveling Merchant: [[Of course!|Certainly!]] How many?
 	- One
@@ -116,9 +116,9 @@ Traveling Merchant: [[Hello there!|Welcome!]] Looking to buy anything? I offer 1
 		set SignalBus.food += 3
 	Traveling Merchant: Here you go. You're all set.
 	- Thank you!
-	Traveling Merchant: Nice doing business with you. You're a well mannered peasent!
-	Your Consciousness: ???
-	=> END
+		Traveling Merchant: Nice doing business with you. You're a well mannered peasent!
+		Your Consciousness: ???
+		=> END
 	
 - Can I trade food for gold?
 	if SignalBus.luck >= 1
@@ -156,9 +156,9 @@ Traveling Merchant: [[Hello there!|Welcome!]] Looking to buy anything? I offer 1
 			set SignalBus.food += 3
 		Traveling Merchant: Here you go. You're all set.
 		- Thank you!
-		Traveling Merchant: Nice doing business with you. You're a well mannered peasent!
-		Your Consciousness: ???
-		=> END
+			Traveling Merchant: Nice doing business with you. You're a well mannered peasent!
+			Your Consciousness: ???
+			=> END
 	- No
 		Traveling Merchant: Okay, well come back later. And to me only, not the other merchant.
 		=> END
