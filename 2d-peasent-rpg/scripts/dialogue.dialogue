@@ -27,6 +27,7 @@ You almost forgot to double check your item pouch. You remember packing...
 	set SignalBus.gold = 8
 	This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
 	Your pack weighs you down a moderate amount.
+	set SignalBus.playerSpeedMultiplier = 1
 - Heavily
 	set SignalBus.food = 10
 	set SignalBus.gold = 10

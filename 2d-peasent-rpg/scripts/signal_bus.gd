@@ -42,7 +42,7 @@ var metBeggar : bool
 var beggarsFavor : bool
 var gaveGift : bool
 var beenFarried : bool = false
-var playerSpeedMultiplier : int = 1
+var playerSpeedMultiplier : float
 
 #music variables
 var negSound : AudioStreamPlayer2D
