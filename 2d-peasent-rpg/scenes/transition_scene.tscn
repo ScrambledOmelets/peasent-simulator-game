@@ -42,9 +42,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("3_pa1ut")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "sdfsdfs"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="hud" parent="." instance=ExtResource("3_8yvc3")]
 
