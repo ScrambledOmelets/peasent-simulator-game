@@ -34,8 +34,13 @@ var soldEverything : bool
 var randomChance : bool
 
 func randomizer():
-	var list = [true, false]
-	randomChance = list.pick_random()
+	var value
+	var ranNum = randi() % 101
+	if ranNum >= 60:
+		value = true
+	else:
+		value = false
+	return value
 
 #character variables
 var metBeggar : bool

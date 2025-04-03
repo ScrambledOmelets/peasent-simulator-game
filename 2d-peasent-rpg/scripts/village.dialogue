@@ -1,5 +1,5 @@
 ~ village_entrance
-if randomChance == true
+if randomizer()
 	Your Consciousness: You've finally made it! Now it is time to sell your produce.
 	Your Consciousness: You can stay in a village for as long as you have gold, or else the innkeeper will kick you out!
 	Your Consciousness: Make sure you keep an eye on it.
@@ -41,7 +41,7 @@ Your Consciousness: Now... Where should you set up shop?
 - At the village entrance
 	Your Consciousness: You set up everything right by the village entrance. Many weary travelers pass you by.
 	Your Consciousness: You begin to wonder if anyone cares to buy anything.
-	if randomChance
+	if randomizer()
 		Your Consciousness: Wait, here comes someone now!
 		=>< merchant_guy
 		=> end_of_day
@@ -50,7 +50,7 @@ Your Consciousness: Now... Where should you set up shop?
 - Tucked into a corner at the market
 	Your Consciousness: You wonder if anyone will be able to see you here.
 	Your Consciousness: The other stalls look so flashy and large compared to your own.
-	if randomChance
+	if randomizer()
 		Your Consciousness: Oh, here comes someone now.
 		=>< angry_chef
 		=> end_of_day
