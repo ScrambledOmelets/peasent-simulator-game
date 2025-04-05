@@ -17,5 +17,5 @@ func _process(delta: float) -> void:
 
 
 func _on_homescreen_start() -> void:
-	print("hello")
+	
 	get_tree().change_scene_to_file("res://scenes/game_base.tscn")

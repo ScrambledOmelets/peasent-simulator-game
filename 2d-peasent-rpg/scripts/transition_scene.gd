@@ -52,4 +52,6 @@ func _on_village_left(case):
 
 	
 func _on_nopeout_button_pressed() -> void:
+	$sfx.play()
+	await $sfx.finished
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
