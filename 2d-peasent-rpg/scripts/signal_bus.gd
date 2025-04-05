@@ -50,9 +50,9 @@ var beenFarried : bool = false
 var playerSpeedMultiplier : float
 
 #music variables
-var negSound : AudioStreamPlayer2D
-var posSound : AudioStreamPlayer2D
+var negSound : AudioStreamPlayer
+var posSound : AudioStreamPlayer
 
 #music function
-func playSound(sound : AudioStreamPlayer2D):
+func playSound(sound : AudioStreamPlayer):
 	sound.play()

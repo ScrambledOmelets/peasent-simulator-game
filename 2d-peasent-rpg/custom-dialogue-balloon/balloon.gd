@@ -5,8 +5,10 @@ extends CanvasLayer
 @onready var char_image: TextureRect = %charImage
 
 ##music variables
-@onready var positive_sound: AudioStreamPlayer2D = $positive_sound
-@onready var negative_sound: AudioStreamPlayer2D = $negative_sound
+@onready var positive_sound: AudioStreamPlayer = $positive_sound
+@onready var negative_sound: AudioStreamPlayer = $negative_sound
+@onready var button_press: AudioStreamPlayer = $button_press
+
 
 ## The action to use for advancing the dialogue
 @export var next_action: StringName = &"ui_accept"
@@ -183,6 +185,8 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
+	button_press.play()
+	
 
 
 #endregion

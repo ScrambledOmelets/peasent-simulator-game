@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dum3l2xcvsvij"]
+[gd_scene load_steps=8 format=3 uid="uid://dum3l2xcvsvij"]
 
 [ext_resource type="Script" path="res://custom-dialogue-balloon/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 [ext_resource type="AudioStream" uid="uid://q67b4yls8mvc" path="res://assets/positive-sound.mp3" id="5_82isf"]
 [ext_resource type="AudioStream" uid="uid://dk4vp6df24j3v" path="res://assets/negative-noise.mp3" id="6_fqpgk"]
+[ext_resource type="AudioStream" uid="uid://u3atlqwmnc8t" path="res://assets/page-turn-sound.mp3" id="7_js6qi"]
 
 [node name="CustomBalloon" type="CanvasLayer"]
 layer = 100
@@ -127,6 +128,9 @@ volume_db = 15.0
 [node name="negative_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_fqpgk")
 volume_db = 15.0
+
+[node name="button_press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_js6qi")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfpbc7sk4rq6j"]
+[gd_scene load_steps=5 format=3 uid="uid://cfpbc7sk4rq6j"]
 
 [ext_resource type="Texture2D" uid="uid://dx50ie4ans2sf" path="res://assets/image-removebg-preview.png" id="1_yj1sy"]
 [ext_resource type="Script" path="res://scripts/random_sign.gd" id="1_ymvax"]
+[ext_resource type="FontFile" uid="uid://desarknyflrgx" path="res://assets/fonts/Fondamento/Fondamento-Regular.ttf" id="3_kqdye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rx1uh"]
 radius = 92.1358
@@ -25,6 +26,7 @@ offset_left = -160.837
 offset_top = -217.393
 offset_right = 170.163
 offset_bottom = -106.393
+theme_override_fonts/font = ExtResource("3_kqdye")
 theme_override_font_sizes/font_size = 25
 text = "village entrance"
 horizontal_alignment = 1

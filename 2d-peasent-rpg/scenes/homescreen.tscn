@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://choemiyb2p42x"]
+[gd_scene load_steps=7 format=3 uid="uid://choemiyb2p42x"]
 
 [ext_resource type="Texture2D" uid="uid://b201bup8485l8" path="res://assets/town-8665187_1280.jpg" id="1_s4wx4"]
 [ext_resource type="Script" path="res://scripts/homescreen.gd" id="2_aocts"]
 [ext_resource type="FontFile" uid="uid://ckysx248ayviu" path="res://assets/fonts/Eagle_Lake/EagleLake-Regular.ttf" id="3_t07by"]
 [ext_resource type="FontFile" uid="uid://desarknyflrgx" path="res://assets/fonts/Fondamento/Fondamento-Regular.ttf" id="4_n7wmp"]
 [ext_resource type="Theme" uid="uid://df4gmwpa6hgk" path="res://custom-dialogue-balloon/balloon_theme.tres" id="4_tpn24"]
+[ext_resource type="AudioStream" uid="uid://u3atlqwmnc8t" path="res://assets/page-turn-sound.mp3" id="6_6rc5d"]
 
 [node name="homescreen" type="Sprite2D"]
 position = Vector2(576, 324)
@@ -51,5 +52,8 @@ theme = ExtResource("4_tpn24")
 theme_override_fonts/font = ExtResource("4_n7wmp")
 theme_override_font_sizes/font_size = 45
 text = "start game"
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_6rc5d")
 
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]

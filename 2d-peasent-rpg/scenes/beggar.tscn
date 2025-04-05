@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://coglbcstsgt2p"]
+[gd_scene load_steps=17 format=3 uid="uid://coglbcstsgt2p"]
 
 [ext_resource type="Script" path="res://scripts/beggar.gd" id="1_6xerf"]
 [ext_resource type="Texture2D" uid="uid://bj46euctw5uhk" path="res://assets/MinifolksVillagers/Blue/Outline/MiniSuspiciousMerchantB.png" id="2_hosnf"]
+[ext_resource type="FontFile" uid="uid://ckysx248ayviu" path="res://assets/fonts/Eagle_Lake/EagleLake-Regular.ttf" id="3_nvpki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_840eq"]
 atlas = ExtResource("2_hosnf")
@@ -115,11 +116,14 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_2xcvr")
 
 [node name="toolTip" type="Label" parent="."]
-offset_left = -72.0
+offset_left = -80.0
 offset_top = 80.0
-offset_right = 70.0
-offset_bottom = 103.0
+offset_right = 83.0
+offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("3_nvpki")
 text = "press enter to talk"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="conversationRange" to="." method="_on_conversation_range_body_entered"]
 [connection signal="body_exited" from="conversationRange" to="." method="_on_conversation_range_body_exited"]
