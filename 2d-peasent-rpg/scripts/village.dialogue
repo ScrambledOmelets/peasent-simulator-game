@@ -10,12 +10,12 @@ else
 	Your Consciousness: You can barely bear to think about it.
 	Your Consciousness: Should you leave?
 	- No, they could use some extra produce and help.
-		if luck == 3
+		if luck >= 2
 			Your Consciousness: You hand out your wares for free, helping to brighten a few people's days.
 			Your Consciousness: You are very careful when you hand them items as to not catch the plague.
 			Your Consciousness: You have given away all your wares, made 0 gold, and are not sick.
 			do leftVillage.emit("escape_sickness")
-		elif luck == 2
+		elif luck == 1
 			Your Consciousness: You attempt to sell your items. You take gold from patrons.
 			Your Consciousness: One of the coins was contaiminated and before long, you catch the plague.
 			do leftVillage.emit("dead")
@@ -60,6 +60,15 @@ Your Consciousness: Now... Where should you set up shop?
 	Your Consciousness: You manage to find the perfect spot at the market. 
 	Your Consciousness: You've sold all your produce in one day!
 	set soldEverything = true
+- I want to explore the village instead
+	Your Consciousness: You decide to explore the village instead of selling your produce.
+	Your Consciousness: Where do you want to go?
+	- The Inn
+	- The market
+	- The farms/homes??? vro idk 
+		thees options don't do anything yet ! sorry
+		=> village_day
+
 => end_of_day
 
 ~ end_of_day
