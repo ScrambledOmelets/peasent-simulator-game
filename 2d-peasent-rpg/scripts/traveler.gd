@@ -1,4 +1,5 @@
 extends CharacterBody2D
+##ok lets just scrap this lmo
 
 var inChat1 = false
 var inRange1 = false
@@ -17,22 +18,19 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	#don't move
-	velocity = Vector2.ZERO
+	#want to move when player not in range
+	velocity = Vector2.LEFT
+	move_and_slide()
 	
-	#if in range, then calculate distance between player and beggar
-	#if that distance is greater than 5, then approach player
-	#else, then don't move
+	#if in range, then stop moving
 	if inRange1 == true:
-		#var direction = (SignalBus.player_location - global_position).normalized()		
-		if position.distance_to(SignalBus.player_location) > 50:
-			velocity = position.direction_to(SignalBus.player_location) * speed
-			move_and_slide()
-			
-		else:
-			velocity = Vector2.ZERO
-	else:
 		velocity = Vector2.ZERO
+		#var direction = (SignalBus.player_location - global_position).normalized()		
+		#if position.distance_to(SignalBus.player_location) > 50:
+			#velocity = position.direction_to(SignalBus.player_location) * speed
+			
+			
+	
 	
 	
 	
