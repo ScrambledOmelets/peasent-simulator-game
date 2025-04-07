@@ -13,5 +13,6 @@ func _process(delta: float) -> void:
 
 func _on_restart_button_pressed() -> void:
 	$sfx.play()
-	await $sfx.finished
+	FadingTransition.fade_transition()
+	await FadingTransition.onFadeFinished
 	get_tree().change_scene_to_file("res://scenes/main.tscn")

@@ -60,7 +60,7 @@ offset_right = 680.0
 offset_bottom = 560.0
 theme = ExtResource("5_gkj31")
 theme_override_font_sizes/font_size = 35
-text = "To title"
+text = "Play again"
 autowrap_mode = 2
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]

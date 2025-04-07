@@ -1,9 +1,10 @@
-[gd_scene load_steps=42 format=4 uid="uid://3hs2il4leyks"]
+[gd_scene load_steps=43 format=4 uid="uid://3hs2il4leyks"]
 
 [ext_resource type="Script" path="res://scripts/game_base.gd" id="1_mxyj4"]
 [ext_resource type="PackedScene" uid="uid://deitd64bd7qqx" path="res://scenes/player.tscn" id="2_q3i5o"]
 [ext_resource type="PackedScene" uid="uid://mkigtmd6tj2b" path="res://scenes/hazard_2.tscn" id="3_fcjpk"]
 [ext_resource type="PackedScene" uid="uid://by1vx5a716qwf" path="res://scenes/dialouge_box.tscn" id="3_vag2n"]
+[ext_resource type="AudioStream" uid="uid://vky8vwhfpi6n" path="res://assets/game-over.mp3" id="4_6qwtk"]
 [ext_resource type="Texture2D" uid="uid://6n8ph074qpnq" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Floors_Tiles.png" id="6_repwv"]
 [ext_resource type="PackedScene" uid="uid://bwtcr4yo0iq4" path="res://scenes/hud.tscn" id="6_vimn4"]
 [ext_resource type="Texture2D" uid="uid://c12bbabjx1yxi" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Walls.png" id="7_d7qkx"]
@@ -2848,7 +2849,8 @@ choiceWindow = ExtResource("3_vag2n")
 [node name="travelMusic" type="AudioStreamPlayer" parent="music_noises"]
 stream = SubResource("AudioStreamMP3_lrois")
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="music_noises"]
+[node name="game_over" type="AudioStreamPlayer" parent="music_noises"]
+stream = ExtResource("4_6qwtk")
 
 [node name="maps" type="Node" parent="."]
 

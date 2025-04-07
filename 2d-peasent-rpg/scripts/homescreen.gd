@@ -14,6 +14,8 @@ func _process(delta: float) -> void:
 
 func _on_start_button_pressed() -> void:
 	$sfx.play()
-	await $sfx.finished
+	FadingTransition.fade_transition()
+	await FadingTransition.onFadeFinished
+	
 	start.emit()
 	

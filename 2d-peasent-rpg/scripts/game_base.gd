@@ -177,14 +177,16 @@ func _on_village_enter_confirm() -> void:
 #when the game ends
 func _on_game_over() -> void:
 	$foodTimer.stop()
-	$music/travelMusic.stop()
+	$music_noises/travelMusic.stop()
 	#$music/gameOverMusic.play() don't play whole music. just a sound effect - which i don't have rn
 	
 	
 	$hud.update_message("you've run out of food...")
 	$player.set_physics_process(false)
 	
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(2).timeout
+	FadingTransition.fade_transition()
+	await FadingTransition.onFadeFinished
 	
 	get_tree().change_scene_to_file("res://scenes/transition_scene2.tscn")
 
