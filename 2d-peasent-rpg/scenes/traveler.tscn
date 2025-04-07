@@ -1,0 +1,210 @@
+[gd_scene load_steps=28 format=3 uid="uid://bwcoscfb7f505"]
+
+[ext_resource type="Script" path="res://scripts/traveler.gd" id="1_8egw5"]
+[ext_resource type="Texture2D" uid="uid://bwebggliom52g" path="res://assets/MinifolksVillagers/Original/Outline/MiniGraveDigger.png" id="2_o7yqu"]
+[ext_resource type="FontFile" uid="uid://ckysx248ayviu" path="res://assets/fonts/Eagle_Lake/EagleLake-Regular.ttf" id="3_j1lwd"]
+[ext_resource type="Texture2D" uid="uid://ye3s4w3mueu4" path="res://assets/MinifolksVillagers/Original/Outline/MiniGatherer.png" id="3_ttm5q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1bfb"]
+atlas = ExtResource("2_o7yqu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bltb5"]
+atlas = ExtResource("2_o7yqu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd8j7"]
+atlas = ExtResource("2_o7yqu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7cjj"]
+atlas = ExtResource("2_o7yqu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mancs"]
+atlas = ExtResource("2_o7yqu")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju1v0"]
+atlas = ExtResource("2_o7yqu")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5gce"]
+atlas = ExtResource("2_o7yqu")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2d3t"]
+atlas = ExtResource("2_o7yqu")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mepc4"]
+atlas = ExtResource("2_o7yqu")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jry5r"]
+atlas = ExtResource("2_o7yqu")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq8xx"]
+atlas = ExtResource("3_ttm5q")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuqkn"]
+atlas = ExtResource("3_ttm5q")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d88fm"]
+atlas = ExtResource("3_ttm5q")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1os1r"]
+atlas = ExtResource("3_ttm5q")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma1jh"]
+atlas = ExtResource("3_ttm5q")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx2ir"]
+atlas = ExtResource("3_ttm5q")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4tep"]
+atlas = ExtResource("3_ttm5q")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t423j"]
+atlas = ExtResource("3_ttm5q")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b137"]
+atlas = ExtResource("3_ttm5q")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_162sg"]
+atlas = ExtResource("3_ttm5q")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kfu48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1bfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bltb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd8j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7cjj")
+}],
+"loop": true,
+"name": &"death_guy",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mancs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju1v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5gce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2d3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mepc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jry5r")
+}],
+"loop": true,
+"name": &"death_guyR",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq8xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuqkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d88fm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1os1r")
+}],
+"loop": true,
+"name": &"flower_person",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma1jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx2ir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4tep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t423j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b137")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_162sg")
+}],
+"loop": true,
+"name": &"flower_personR",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jn7u"]
+size = Vector2(30.25, 44.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xcvr"]
+radius = 112.0
+
+[node name="fellowTraveler" type="CharacterBody2D"]
+script = ExtResource("1_8egw5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_kfu48")
+animation = &"death_guy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.875, 33.75)
+shape = SubResource("RectangleShape2D_4jn7u")
+
+[node name="conversationRange" type="Area2D" parent="."]
+position = Vector2(0, 32)
+collision_layer = 2
+collision_mask = 2
+
+[node name="convoRangeCollision" type="CollisionShape2D" parent="conversationRange"]
+visible = false
+shape = SubResource("CircleShape2D_2xcvr")
+
+[node name="toolTip" type="Label" parent="."]
+offset_left = -80.0
+offset_top = 80.0
+offset_right = 83.0
+offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("3_j1lwd")
+text = "press enter to talk"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="conversationRange" to="." method="_on_conversation_range_body_entered"]
+[connection signal="body_exited" from="conversationRange" to="." method="_on_conversation_range_body_exited"]
