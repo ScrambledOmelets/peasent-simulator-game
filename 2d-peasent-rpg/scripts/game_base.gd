@@ -188,11 +188,13 @@ func _on_village_enter_confirm() -> void:
 	get_tree().change_scene_to_file("res://scenes/transition_scene.tscn")
 
 #when the game ends
+#this function is being called multiple times which is making the change tree thing freak out
+##make sure it is only called once for this to work
 func _on_game_over() -> void:
 	$foodTimer.stop()
 	$music_noises/travelMusic.stop()
 	#$music/gameOverMusic.play() don't play whole music. just a sound effect - which i don't have rn
-	
+	print("r you running twice")
 	$hud.update_message("You've run out of food...")
 	$player.set_physics_process(false)
 	
