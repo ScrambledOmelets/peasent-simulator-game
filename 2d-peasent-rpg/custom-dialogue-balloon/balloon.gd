@@ -59,7 +59,7 @@ var dialogue_line: DialogueLine:
 		if ResourceLoader.exists(portrait_path):
 			char_image.texture = load(portrait_path)
 		else:
-			char_image.texture = load("res://assets/jank_icons/mental_talk.png")
+			char_image.texture = load("res://assets/jank_icons/guy_speaking.png")
 		
 		
 		dialogue_label.hide()

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://6gmvr1nhwlnf"
+path="res://.godot/imported/storms.dialogue-920aa02ba677941c68d83b847e57f114.tres"
+
+[deps]
+
+source_file="res://scripts/storms.dialogue"
+dest_files=["res://.godot/imported/storms.dialogue-920aa02ba677941c68d83b847e57f114.tres"]
+
+[params]
+
+defaults=true

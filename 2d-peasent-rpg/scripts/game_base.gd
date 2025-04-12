@@ -8,6 +8,7 @@ signal gameOver
 var dialouge
 var hazard
 var chatting = false
+var hasRained = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +19,7 @@ func _ready() -> void:
 	#setting up game
 	$player.resetPlayer($startPosition.position)
 	$music_noises/travelMusic.play()
+	$stormTimers/stormStart.start(randi() % 51)
 	
 	##checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)
@@ -47,6 +49,15 @@ func _on_dialouge_started(resource: DialogueResource):
 	SignalBus.goldReduction = randi_range(1, 5)
 	$foodTimer.stop()
 	chatting = true
+	
+	if resource == load("res://scripts/storms.dialogue"):
+		$music_noises/travelMusic.stop()
+		$music_noises/thunder.play()
+		$music_noises/rain.play()
+		#another thunder
+		await get_tree().create_timer(15).timeout
+		$music_noises/thunder.play()
+
 
 func _on_dialouge_ended(resource: DialogueResource):
 	$player.set_physics_process(true)
@@ -167,9 +178,6 @@ func _on_village_enter_confirm() -> void:
 	$hud.update_message("Now entering a village...")
 	$player.set_physics_process(false)
 	
-	#random chance for the town having plague
-	SignalBus.randomizer()
-	
 	#waiting for timer
 	await get_tree().create_timer(3).timeout
 	get_tree().change_scene_to_file("res://scenes/transition_scene.tscn")
@@ -194,3 +202,27 @@ func _on_game_over() -> void:
 func _on_food_timer_timeout() -> void:
 	SignalBus.food -= 1
 	$hud.update_foodCounter(SignalBus.food)
+
+
+func _on_storm_start_timeout() -> void:
+	if chatting == false:
+		DialogueManager.show_dialogue_balloon(load("res://scripts/storms.dialogue"), "storm")
+		$stormTimers/stormDuration.start()
+	else:
+		if not hasRained:
+			$stormTimers/stormStart.start(10)
+
+
+func _on_storm_duration_timeout() -> void:
+	SignalBus.rainOver.emit()
+	$music_noises/rain.stop()
+	$music_noises/travelMusic.play()
+	$hud.update_message("The storm has cleared!")
+	
+	#fixing player movement
+	SignalBus.playerSpeedMultiplier += 0.7
+	
+	await get_tree().create_timer(3).timeout
+	$hud.update_message("")
+	hasRained = true
+	

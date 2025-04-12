@@ -13,6 +13,9 @@ signal unFarry
 #hazard signal
 signal playerHit
 
+#rain signal
+signal rainOver
+
 #player global variable
 var player_location : Vector2
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bwcoscfb7f505"]
+[gd_scene load_steps=28 format=3 uid="uid://v32muu1mtja0"]
 
 [ext_resource type="Script" path="res://scripts/traveler.gd" id="1_8egw5"]
 [ext_resource type="Texture2D" uid="uid://bwebggliom52g" path="res://assets/MinifolksVillagers/Original/Outline/MiniGraveDigger.png" id="2_o7yqu"]
@@ -178,9 +178,11 @@ radius = 112.0
 script = ExtResource("1_8egw5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 3)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kfu48")
 animation = &"death_guy"
+frame_progress = 0.559222
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -197,10 +199,15 @@ visible = false
 shape = SubResource("CircleShape2D_2xcvr")
 
 [node name="toolTip" type="Label" parent="."]
-offset_left = -80.0
-offset_top = 80.0
-offset_right = 83.0
-offset_bottom = 107.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_top = 76.0
+offset_right = 82.0
+offset_bottom = 103.0
+grow_horizontal = 2
+size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("3_j1lwd")
 text = "press enter to talk"
 horizontal_alignment = 1

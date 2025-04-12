@@ -1,12 +1,14 @@
-[gd_scene load_steps=43 format=4 uid="uid://3hs2il4leyks"]
+[gd_scene load_steps=45 format=4 uid="uid://3hs2il4leyks"]
 
 [ext_resource type="Script" path="res://scripts/game_base.gd" id="1_mxyj4"]
 [ext_resource type="PackedScene" uid="uid://deitd64bd7qqx" path="res://scenes/player.tscn" id="2_q3i5o"]
 [ext_resource type="PackedScene" uid="uid://mkigtmd6tj2b" path="res://scenes/hazard_2.tscn" id="3_fcjpk"]
 [ext_resource type="PackedScene" uid="uid://by1vx5a716qwf" path="res://scenes/dialouge_box.tscn" id="3_vag2n"]
 [ext_resource type="AudioStream" uid="uid://vky8vwhfpi6n" path="res://assets/game-over.mp3" id="4_6qwtk"]
+[ext_resource type="AudioStream" uid="uid://cp0wcr6uvs833" path="res://assets/calming-rain-257596.mp3" id="5_fl11u"]
 [ext_resource type="Texture2D" uid="uid://6n8ph074qpnq" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Tilesets/Floors_Tiles.png" id="6_repwv"]
 [ext_resource type="PackedScene" uid="uid://bwtcr4yo0iq4" path="res://scenes/hud.tscn" id="6_vimn4"]
+[ext_resource type="AudioStream" uid="uid://b1ilujcsm8ac5" path="res://assets/loud-thunder-192165.mp3" id="6_yyi64"]
 [ext_resource type="Texture2D" uid="uid://c12bbabjx1yxi" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Walls.png" id="7_d7qkx"]
 [ext_resource type="Texture2D" uid="uid://cyl3khxqopcx2" path="res://assets/Pixel Crawler - Free Pack 2.0.3/Pixel Crawler - Free Pack/Environment/Structures/Buildings/Shadows.png" id="8_jg4i3"]
 [ext_resource type="PackedScene" uid="uid://cfpbc7sk4rq6j" path="res://scenes/random_sign.tscn" id="8_m8a50"]
@@ -2852,6 +2854,13 @@ stream = SubResource("AudioStreamMP3_lrois")
 [node name="game_over" type="AudioStreamPlayer" parent="music_noises"]
 stream = ExtResource("4_6qwtk")
 
+[node name="rain" type="AudioStreamPlayer" parent="music_noises"]
+stream = ExtResource("5_fl11u")
+
+[node name="thunder" type="AudioStreamPlayer" parent="music_noises"]
+stream = ExtResource("6_yyi64")
+volume_db = 10.0
+
 [node name="maps" type="Node" parent="."]
 
 [node name="dirt_map" type="TileMapLayer" parent="maps"]
@@ -2981,9 +2990,18 @@ position = Vector2(3933, 390)
 [node name="newFerryGuySpot2" type="Marker2D" parent="ferryMarkers"]
 position = Vector2(2927, 352)
 
+[node name="stormTimers" type="Node" parent="."]
+
+[node name="stormStart" type="Timer" parent="stormTimers"]
+
+[node name="stormDuration" type="Timer" parent="stormTimers"]
+wait_time = 20.0
+
 [connection signal="gameOver" from="." to="." method="_on_game_over"]
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]
 [connection signal="timeout" from="foodTimer" to="." method="_on_food_timer_timeout"]
 [connection signal="villageEntered" from="villageTransition" to="." method="_on_village_transition_village_entered"]
+[connection signal="timeout" from="stormTimers/stormStart" to="." method="_on_storm_start_timeout"]
+[connection signal="timeout" from="stormTimers/stormDuration" to="." method="_on_storm_duration_timeout"]
 
 [editable path="signs/randomSign2"]
