@@ -19,12 +19,13 @@ func _ready() -> void:
 	#setting up game
 	$player.resetPlayer($startPosition.position)
 	$music_noises/travelMusic.play()
-	$stormTimers/stormStart.start(randi() % 51)
+	#$stormTimers/stormStart.start(randi() % 51)
 	
 	##checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)
 	SignalBus.farried.connect(_on_player_farried)
 	SignalBus.unFarry.connect(_on_player_brought_back)
+	SignalBus.rainOver.connect(_on_rain_ended)
 
 	#all the village entered signals going to the same function
 	$villageTransition2.villageEntered.connect(_on_village_transition_village_entered)
@@ -54,9 +55,9 @@ func _on_dialouge_started(resource: DialogueResource):
 		$music_noises/travelMusic.stop()
 		$music_noises/thunder.play()
 		$music_noises/rain.play()
-		#another thunder
-		await get_tree().create_timer(15).timeout
-		$music_noises/thunder.play()
+		##another thunder
+		#await get_tree().create_timer(5).timeout
+		#$music_noises/thunder.play()
 
 
 func _on_dialouge_ended(resource: DialogueResource):
@@ -68,9 +69,10 @@ func _on_dialouge_ended(resource: DialogueResource):
 	
 	if resource == load("res://scripts/bandit_dialouge.dialogue"):
 		remove_child(hazard)
-		$hud.update_foodCounter(SignalBus.food)
-		$hud.update_goldCounter(SignalBus.gold)
 		$hazardTimer.start()
+		
+	if resource == load("res://scripts/storms.dialogue"):
+		$stormTimers/stormDuration.start()
 	
 #ingame event of player farry
 func _on_player_farried():
@@ -83,7 +85,7 @@ func _on_player_brought_back():
 	SignalBus.beenFarried = false
 	$player.position = $ferryMarkers/unferryLocation.position
 	$ferryMan.position = $ferryMarkers/newFerryGuySpot2.position
-	
+
 
 #this works
 func _on_player_hit() -> void:
@@ -178,8 +180,10 @@ func _on_village_enter_confirm() -> void:
 	$hud.update_message("Now entering a village...")
 	$player.set_physics_process(false)
 	
-	#waiting for timer
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(2).timeout
+	FadingTransition.fade_transition()
+	await FadingTransition.onFadeFinished
+	
 	get_tree().change_scene_to_file("res://scenes/transition_scene.tscn")
 
 #when the game ends
@@ -188,8 +192,7 @@ func _on_game_over() -> void:
 	$music_noises/travelMusic.stop()
 	#$music/gameOverMusic.play() don't play whole music. just a sound effect - which i don't have rn
 	
-	
-	$hud.update_message("you've run out of food...")
+	$hud.update_message("You've run out of food...")
 	$player.set_physics_process(false)
 	
 	await get_tree().create_timer(2).timeout
@@ -203,26 +206,34 @@ func _on_food_timer_timeout() -> void:
 	SignalBus.food -= 1
 	$hud.update_foodCounter(SignalBus.food)
 
-
-func _on_storm_start_timeout() -> void:
-	if chatting == false:
-		DialogueManager.show_dialogue_balloon(load("res://scripts/storms.dialogue"), "storm")
-		$stormTimers/stormDuration.start()
-	else:
-		if not hasRained:
-			$stormTimers/stormStart.start(10)
-
-
-func _on_storm_duration_timeout() -> void:
-	SignalBus.rainOver.emit()
+#when the rain ends
+func _on_rain_ended():
 	$music_noises/rain.stop()
 	$music_noises/travelMusic.play()
-	$hud.update_message("The storm has cleared!")
+	#should stop the timer from double triggering
+	$stormTimers/stormDuration.stop()
 	
-	#fixing player movement
-	SignalBus.playerSpeedMultiplier += 0.7
-	
-	await get_tree().create_timer(3).timeout
-	$hud.update_message("")
 	hasRained = true
+
+func _on_storm_start_timeout() -> void:
+	print("should be a storm")
+	if chatting == false && hasRained == false:
+		DialogueManager.show_dialogue_balloon(load("res://scripts/storms.dialogue"), "storm")
+		
+	else:
+		if hasRained == false:
+			print("should  not be hapening")
+			$stormTimers/stormStart.start(1)
+
+#how long the storm is if the player choses to walk
+func _on_storm_duration_timeout() -> void:
+	if SignalBus.hideInRain ==  false:
+		_on_rain_ended()
+		
+		$hud.update_message("The storm has cleared!")
+		await get_tree().create_timer(3).timeout
+		$hud.update_message("")
+		
+		#fixing player movement
+		SignalBus.playerSpeedMultiplier += 0.7
 	

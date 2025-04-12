@@ -24,7 +24,7 @@ FadingTransition="*res://scenes/fading_transition.tscn"
 [dialogue_manager]
 
 general/balloon_path="res://custom-dialogue-balloon/balloon.tscn"
-general/states=["GlobalNode", "SignalBus"]
+general/states=["GlobalNode", "SignalBus", "FadingTransition"]
 
 [display]
 

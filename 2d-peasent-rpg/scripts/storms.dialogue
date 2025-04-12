@@ -1,4 +1,5 @@
 ~ storm
+do rain_color()
 A rainstorm is upon you! What do you do?
 - Take shelter in the brush off the road
 	if luck >= 2
@@ -6,7 +7,8 @@ A rainstorm is upon you! What do you do?
 	else
 		The storm is harsher than you expected and you lose some of your food.
 		set gold -= goldReduction
-		do rainOver.emit()
+	do rainOver.emit()
+	set hideInRain = true
 - Continue walking
 	You trudge through the rain, but the roads are now full of mud. It is much harder to walk now.
 	set playerSpeedMultiplier -= 0.7

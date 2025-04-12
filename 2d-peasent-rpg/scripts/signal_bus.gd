@@ -33,8 +33,8 @@ var foodReduction : int
 var daysInVillage : int
 var soldEverything : bool
 
-#small randomizer
-var randomChance : bool
+#var repurposed
+var hideInRain : bool = false
 
 func randomizer():
 	var value
