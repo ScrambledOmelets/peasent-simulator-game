@@ -3000,9 +3000,7 @@ position = Vector2(2927, 352)
 [node name="stormTimers" type="Node" parent="."]
 
 [node name="stormStart" type="Timer" parent="stormTimers"]
-wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="stormDuration" type="Timer" parent="stormTimers"]
 wait_time = 20.0

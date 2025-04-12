@@ -19,7 +19,7 @@ func _ready() -> void:
 	#setting up game
 	$player.resetPlayer($startPosition.position)
 	$music_noises/travelMusic.play()
-	#$stormTimers/stormStart.start(randi() % 51)
+	$stormTimers/stormStart.start(randi() % 31)
 	
 	##checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)
@@ -48,6 +48,7 @@ func _process(delta: float) -> void:
 func _on_dialouge_started(resource: DialogueResource):
 	$player.set_physics_process(false)
 	SignalBus.goldReduction = randi_range(1, 5)
+	SignalBus.foodReduction = randi_range(1,3)
 	$foodTimer.stop()
 	chatting = true
 	
@@ -199,6 +200,7 @@ func _on_game_over() -> void:
 	FadingTransition.fade_transition()
 	await FadingTransition.onFadeFinished
 	
+	#getting an error???
 	get_tree().change_scene_to_file("res://scenes/transition_scene2.tscn")
 
 
@@ -223,7 +225,7 @@ func _on_storm_start_timeout() -> void:
 	else:
 		if hasRained == false:
 			print("should  not be hapening")
-			$stormTimers/stormStart.start(1)
+			$stormTimers/stormStart.start(5)
 
 #how long the storm is if the player choses to walk
 func _on_storm_duration_timeout() -> void:

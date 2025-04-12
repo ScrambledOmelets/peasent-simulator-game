@@ -6,7 +6,8 @@ A rainstorm is upon you! What do you do?
 		You weather the storm under your cloak and continue on your way after it finishes.
 	else
 		The storm is harsher than you expected and you lose some of your food.
-		set gold -= goldReduction
+		You lost {{foodReduction}} food.
+		set food -= foodReduction
 	do rainOver.emit()
 	set hideInRain = true
 - Continue walking
