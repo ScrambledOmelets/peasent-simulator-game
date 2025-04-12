@@ -9,8 +9,6 @@ func _ready() -> void:
 	#so that it doesnt grab attention
 	color_rect.visible = false
 
-##add new function to allow for a storm
-
 #custom transition function
 func fade_transition():
 	color_rect.visible = true

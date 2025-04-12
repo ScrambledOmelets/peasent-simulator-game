@@ -1,7 +1,7 @@
 ~ village_entrance
 if randomizer()
 	Your Consciousness: You've finally made it! Now it is time to sell your produce.
-	Your Consciousness: You can stay in a village for as long as you have gold, or else the innkeeper will kick you out!
+	Your Consciousness: You can stay in a village for as long as you have gold, or else you'll get kicked out of your room at the inn!
 	Your Consciousness: Make sure you keep an eye on it.
 	=> village_day
 else
@@ -64,8 +64,13 @@ Your Consciousness: Now... Where should you set up shop?
 	Your Consciousness: You decide to explore the village instead of selling your produce.
 	Your Consciousness: Where do you want to go?
 	- The Inn
+<<<<<<< Updated upstream
 	- The market
 	- The farms/homes??? vro idk 
+=======
+	- The Market
+	- The Village Green 
+>>>>>>> Stashed changes
 		thees options don't do anything yet ! sorry
 		=> village_day
 
@@ -73,7 +78,7 @@ Your Consciousness: Now... Where should you set up shop?
 
 ~ end_of_day
 do dayEnded.emit()
-Your Consciousness: Whew, that was a long day of selling and shilling. At least this inn is kind of comfy.
+Your Consciousness: Whew, that was a long day of selling. This bed feels pretty comfortable, hopefully there aren't any critterous tennants...
 set SignalBus.gold -= 1
 if soldEverything
 	Your Consciousness: You've sold all your produce, so there's no reason for you to stay anymore.
@@ -81,7 +86,7 @@ if soldEverything
 	do leftVillage.emit("sold_everything")
 	=> END
 	
-Your Consciousness: Should you leave the village tomorrow morning or stay to try selling one more time?
+Your Consciousness: Should you leave the village tomorrow morning or stay to try selling more?
 - I'm leaving
 	You tuck into bed with plans to leave the village tomorrow.
 	Early next morning, you pack everything up and leave.
@@ -94,25 +99,25 @@ Your Consciousness: Should you leave the village tomorrow morning or stay to try
 	
 
 ~ merchant_guy
-Traveling Merchant: Ah you again. The same peasent from the roads.
-- Hi
-- Can you please stop calling me a peasent?
-	Traveling Merchant: Why would I stop calling you what you are? How foolish of you.
+Traveling Merchant: Ah thee again. The same peasant from the roads.
+- Good Day!
+- Could thou prithee cease dubbing me a peasant?
+	Traveling Merchant: Wherefore wouldst I cease dubbing thee what thee art? How follish of thee.
 	set luck -= 1
 	do playSound(negSound)
-	Traveling Merchant: I wanted to buy more of your produce, but it appears you have developed an attitude.
+	Traveling Merchant: I wanted to buy m're of thy produce, but t appears thee has developed an attitude.
 	Traveling Merchant: Goodbye.
 	Your Consciousness: Yikes...
 	=> END
-- Yes it's me.
-Traveling Merchant: Hello! Please allow me to buy more of your produce.
-- Yes, of course!
+- Ay it's me.
+Traveling Merchant: Good morrow! Prithee allow me to buy m're of thy produce.
+- Ay, of course!
 	The merchant buys some of your produce for 3 gold.
 	set gold += 3
-	Traveling Merchant: It is truly so lovely doing business with you. Farewell.
+	Traveling Merchant: It is truly so lovely doing business with you. Give ye safe journeys.
 - No...
-	Traveling Merchant: No? I'm sorry? How can you dare to reject my business when you obviously need the money?
-	Traveling Merchant: I'm afraid you have gone mad. Goodbye.
+	Traveling Merchant: Nay? I'm s'rry? How can thee dare to reject mine own business at which hour thee obviously need the coin?
+	Traveling Merchant: I'm afraid thee has't gone mad. Farewell.
 	Your Consciousness: Bruh...
 
 => END
@@ -132,20 +137,20 @@ Petulant Chef: I need 10 parsnips. Now.
 		do playSound(negSound)
 		Petulant Chef: Plague upon your crops. I'll buy them elsewhere.
 		
-	- I'm sorry, but I already sold a lot of them.
-		He kind of just gets mad and  walks off. Oops.
+	- I'm s'rry, but I already sold a lot of them.
+		He huffs loudly and  walks off. Oops.
 => END
 
 ~ little_girl
-Little Girl: Hi. What are you doing?
+Little Girl: Good morrow. What are you doing?
 - Selling produce
 	Little Girl: Oh. Do you have anything good?
 	You describe what you're selling, including wheat and parsnips. The little girl seems to light up.
 	Little Girl: I think my mom could use some of those. Here!
 	set SignalBus.gold += 1
-	She hands you 1 gold coin in exchange for 1 potato.
+	She hands you 1 gold coin in exchange for 3 parsnips.
 	- Thank you so much!
-		Little Girl: You're welcome! I'll tell everyone else about you too. Bye bye!
+		Little Girl: You're welcome! I'll tell everyone else about you too. Bye!
 		Your Consciousness: Success! You feel better about having traveled to the market.
 		
 - I don't know
@@ -169,7 +174,7 @@ Little Girl: Hi. What are you doing?
 			
 	- Where's your parents?
 		Little Girl: I'm big enough to get around on my own!
-		Little Girl: I had even brought some gold with me today. But I don't want your stinky veggies now anyways!
+		Little Girl: I had even brought some gold with me today. But I don't want your stinky veggies anyways!
 		Your Consciousness: Oh no... You feel kind of bad about offending her, but she's already stomped off.
 		=> END
 => END
@@ -178,7 +183,11 @@ Little Girl: Hi. What are you doing?
 Your Consciousness: You encounter the town crier
 
 ~ the_inkeeper
+<<<<<<< Updated upstream
 Inkeep: Hey there! Back already?
+=======
+Inkeep: Hail and well met! Back already?
+>>>>>>> Stashed changes
 - I'm just looking around.
 - Could I get something to eat here?
 
