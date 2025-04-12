@@ -201,7 +201,10 @@ func _on_game_over() -> void:
 	await FadingTransition.onFadeFinished
 	
 	#getting an error???
-	get_tree().change_scene_to_file("res://scenes/transition_scene2.tscn")
+	#cannot call method 'chance_scene_to_file' on a null value
+	var test = get_tree()
+	print(test)
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 
 func _on_food_timer_timeout() -> void:

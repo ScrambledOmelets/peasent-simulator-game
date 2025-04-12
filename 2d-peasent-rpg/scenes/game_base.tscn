@@ -2853,6 +2853,15 @@ script = ExtResource("1_mxyj4")
 hazard2 = ExtResource("3_fcjpk")
 choiceWindow = ExtResource("3_vag2n")
 
+[node name="stormTimers" type="Node" parent="."]
+
+[node name="stormStart" type="Timer" parent="stormTimers"]
+one_shot = true
+
+[node name="stormDuration" type="Timer" parent="stormTimers"]
+wait_time = 20.0
+one_shot = true
+
 [node name="music_noises" type="Node" parent="."]
 
 [node name="travelMusic" type="AudioStreamPlayer" parent="music_noises"]
@@ -2997,20 +3006,11 @@ position = Vector2(3933, 390)
 [node name="newFerryGuySpot2" type="Marker2D" parent="ferryMarkers"]
 position = Vector2(2927, 352)
 
-[node name="stormTimers" type="Node" parent="."]
-
-[node name="stormStart" type="Timer" parent="stormTimers"]
-one_shot = true
-
-[node name="stormDuration" type="Timer" parent="stormTimers"]
-wait_time = 20.0
-one_shot = true
-
 [connection signal="gameOver" from="." to="." method="_on_game_over"]
+[connection signal="timeout" from="stormTimers/stormStart" to="." method="_on_storm_start_timeout"]
+[connection signal="timeout" from="stormTimers/stormDuration" to="." method="_on_storm_duration_timeout"]
 [connection signal="timeout" from="hazardTimer" to="." method="_on_hazard_timer_timeout"]
 [connection signal="timeout" from="foodTimer" to="." method="_on_food_timer_timeout"]
 [connection signal="villageEntered" from="villageTransition" to="." method="_on_village_transition_village_entered"]
-[connection signal="timeout" from="stormTimers/stormStart" to="." method="_on_storm_start_timeout"]
-[connection signal="timeout" from="stormTimers/stormDuration" to="." method="_on_storm_duration_timeout"]
 
 [editable path="signs/randomSign2"]
