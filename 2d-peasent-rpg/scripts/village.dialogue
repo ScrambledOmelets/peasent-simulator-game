@@ -64,22 +64,8 @@ Your Consciousness: Now... Where should you set up shop?
 	Your Consciousness: You decide to explore the village instead of selling your produce.
 	Your Consciousness: Where do you want to go?
 	- The Inn
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-	- The market
-	- The farms/homes??? vro idk 
-
 	- The Market
 	- The Village Green 
-
-=======
-	- The Market
-	- The Village Green 
->>>>>>> Stashed changes
-=======
-	- The Market
-	- The Village Green 
->>>>>>> Stashed changes
 		thees options don't do anything yet ! sorry
 		=> village_day
 
@@ -192,19 +178,7 @@ Little Girl: Good morrow. What are you doing?
 Your Consciousness: You encounter the town crier
 
 ~ the_inkeeper
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-Inkeep: Hey there! Back already?
-=======
 Inkeep: Hail and well met! Back already?
->>>>>>> Stashed changes
-=======
-Inkeep: Hail and well met! Back already?
->>>>>>> Stashed changes
-=======
-Inkeep: Hail and well met! Back already?
->>>>>>> Stashed changes
 - I'm just looking around.
 - Could I get something to eat here?
 
