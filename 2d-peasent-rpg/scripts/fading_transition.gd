@@ -22,6 +22,7 @@ func rain_color():
 
 func _onRainOver():
 	animation_player.play("rain_end")
+	await animation_player.animation_finished
 	color_rect.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

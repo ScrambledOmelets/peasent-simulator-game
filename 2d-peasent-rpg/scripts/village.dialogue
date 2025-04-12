@@ -111,7 +111,7 @@ Traveling Merchant: Good morrow! Prithee allow me to buy m're of thy produce.
 	set gold += 3
 	Traveling Merchant: It is truly so lovely doing business with you. Give ye safe journeys.
 - No...
-	Traveling Merchant: Nay? I'm s'rry? How can thee dare to reject mine own business at which hour thee obviously need the coin?
+	Traveling Merchant: Nay? I'm s'rry? How can thou dare to reject mine own business at which hour thee obviously need the coin?
 	Traveling Merchant: I'm afraid thee has't gone mad. Farewell.
 	Your Consciousness: Bruh...
 
@@ -133,7 +133,7 @@ Petulant Chef: I need 10 parsnips. Now.
 		Petulant Chef: Plague upon your crops. I'll buy them elsewhere.
 		
 	- I'm s'rry, but I already sold a lot of them.
-		He huffs loudly and  walks off. Oops.
+		He huffs loudly and walks off. Oops.
 => END
 
 ~ little_girl

@@ -19,7 +19,7 @@ func _ready() -> void:
 	#setting up game
 	$player.resetPlayer($startPosition.position)
 	$music_noises/travelMusic.play()
-	$stormTimers/stormStart.start(randi() % 31)
+	$stormTimers/stormStart.start(randi() % 51)
 	
 	##checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)
@@ -204,9 +204,10 @@ func _on_game_over() -> void:
 	
 	#getting an error???
 	#cannot call method 'chance_scene_to_file' on a null value
-	var test = get_tree()
-	print(test)
-	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	if not is_inside_tree():
+		return
+	else:
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 
 func _on_food_timer_timeout() -> void:
@@ -224,13 +225,13 @@ func _on_rain_ended():
 
 func _on_storm_start_timeout() -> void:
 	print("should be a storm")
-	if chatting == false && hasRained == false:
+	if not chatting && not hasRained:
 		DialogueManager.show_dialogue_balloon(load("res://scripts/storms.dialogue"), "storm")
 		
 	else:
-		if hasRained == false:
+		if not hasRained:
 			print("should  not be hapening")
-			$stormTimers/stormStart.start(5)
+			$stormTimers/stormStart.start(randi_range(5, 15))
 
 #how long the storm is if the player choses to walk
 func _on_storm_duration_timeout() -> void:
