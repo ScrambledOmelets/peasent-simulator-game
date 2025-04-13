@@ -52,6 +52,9 @@ var gaveGift : bool
 var beenFarried : bool = false
 var playerSpeedMultiplier : float
 
+#village variables
+var hasExplored : bool = false
+
 #music variables
 var negSound : AudioStreamPlayer
 var posSound : AudioStreamPlayer

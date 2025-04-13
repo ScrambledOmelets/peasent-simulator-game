@@ -4,6 +4,8 @@ extends Node
 @onready var game_text: Label = $Sprite2D/gameText
 @onready var nopeout_button: Button = $nopeoutButton
 
+@export var displayImage : CompressedTexture2D
+var imageList = ["res://assets/painted-village.png", "res://assets/the-fete-at-bermondsey.png"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +16,7 @@ func _ready() -> void:
 	nopeout_button.hide()
 	DialogueManager.show_dialogue_balloon(load("res://scripts/village.dialogue"), "village_entrance")
 	
+	#connecting signals
 	SignalBus.dayEnded.connect(_on_day_ended)
 	SignalBus.leftVillage.connect(_on_village_left)
 	
@@ -39,13 +42,15 @@ func _on_village_left(case):
 		"normal_leave":
 			game_text.text = str("You've left the village and returned home with " + str(SignalBus.gold) + " gold." + "\n" + "Your journey was sucessful.")
 		"sold_everything":
-			game_text.text = str("You sold everything!!! Wahoo!! You beat the game.")
+			game_text.text = str("You sold everything and return home with " + str(SignalBus.gold) + " gold.")
 		"plague_leave":
 			game_text.text = str("You managed to escape the plague. But you didn't sell anything.")
 		"escape_sickness":
 			game_text.text = str("You didn't sell anything but all your produce is gone, so you return home with nothing to show for your trip.")
 		"dead":
 			game_text.text = str("You died from plague...")
+		"no_gold":
+			game_text.text = str("You return home emptyhanded...")
 		_:
 			game_text.text = str("something happened. good job or sorry that happened.")
 

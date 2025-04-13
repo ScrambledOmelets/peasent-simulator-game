@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/transition_scene.gd" id="1_rt440"]
 [ext_resource type="Texture2D" uid="uid://d16l3hxkxlbnr" path="res://assets/painted-village.png" id="2_1icie"]
 [ext_resource type="PackedScene" uid="uid://bwtcr4yo0iq4" path="res://scenes/hud.tscn" id="3_8yvc3"]
-[ext_resource type="FontFile" uid="uid://desarknyflrgx" path="res://assets/fonts/Fondamento/Fondamento-Regular.ttf" id="3_pa1ut"]
+[ext_resource type="FontFile" uid="uid://ckysx248ayviu" path="res://assets/fonts/Eagle_Lake/EagleLake-Regular.ttf" id="3_6333x"]
 [ext_resource type="AudioStream" uid="uid://qni3afdjkb6n" path="res://assets/villaege-scene-music.mp3" id="5_dxbdb"]
 [ext_resource type="Theme" uid="uid://df4gmwpa6hgk" path="res://custom-dialogue-balloon/balloon_theme.tres" id="5_gkj31"]
 [ext_resource type="AudioStream" uid="uid://u3atlqwmnc8t" path="res://assets/page-turn-sound.mp3" id="7_vio3i"]
@@ -35,18 +35,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -567.5
-offset_top = -284.0
-offset_right = -56.5
-offset_bottom = -141.0
+offset_left = -548.0
+offset_top = -285.0
+offset_right = -76.0
+offset_bottom = -140.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("3_pa1ut")
-theme_override_font_sizes/font_size = 35
-text = "sdfsdfs"
+theme_override_fonts/font = ExtResource("3_6333x")
+theme_override_font_sizes/font_size = 25
+text = "hello this is example text. the words are not justified"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
+justification_flags = 161
 
 [node name="hud" parent="." instance=ExtResource("3_8yvc3")]
 
@@ -54,10 +56,11 @@ autowrap_mode = 2
 stream = ExtResource("5_dxbdb")
 
 [node name="nopeoutButton" type="Button" parent="."]
-offset_left = 464.0
-offset_top = 464.0
-offset_right = 680.0
-offset_bottom = 560.0
+offset_left = 457.0
+offset_top = 489.0
+offset_right = 673.0
+offset_bottom = 585.0
+size_flags_horizontal = 8
 theme = ExtResource("5_gkj31")
 theme_override_font_sizes/font_size = 35
 text = "Play again"
@@ -65,5 +68,7 @@ autowrap_mode = 2
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_vio3i")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="pressed" from="nopeoutButton" to="." method="_on_nopeout_button_pressed"]

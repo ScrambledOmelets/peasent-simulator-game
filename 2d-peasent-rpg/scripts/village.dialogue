@@ -30,6 +30,7 @@ else
 => END
 
 ~ village_day
+set hasExplored = false
 Your Consciousness: Now... Where should you set up shop?
 - In the village center
 	Your Consciousness: This looks like a nice spot... Right at the center of everything!
@@ -62,33 +63,61 @@ Your Consciousness: Now... Where should you set up shop?
 	set soldEverything = true
 - I want to explore the village instead
 	Your Consciousness: You decide to explore the village instead of selling your produce.
-	Your Consciousness: Where do you want to go?
-	- The Inn
-	- The Market
-	- The Village Green 
-		thees options don't do anything yet ! sorry
-		=> village_day
+	=>< explore_town
 
 => end_of_day
 
 ~ end_of_day
 do dayEnded.emit()
-Your Consciousness: Whew, that was a long day of selling. This bed feels pretty comfortable, hopefully there aren't any critterous tennants...
+Nothing else notable happened that day and you return back to the inn for the night.
+if gold <= 0
+	Your Consciousness: What? I'm fresh out of gold?
+	Your Consciousness: The inkeep won't let me stay like this!
+	- Ask the inkeep if you can stay one more night.
+		if luck >= 3
+			The inkeep is kind enough to let you stay one more night.
+			You sleep in bed riddled with anxiety and quickly leave the village the next morning.
+			do leftVillage.emit("no_gold")
+			=> END
+		else
+			Inkeep: This isn't a charity! Scram!
+			You are kicked out onto the streets and forced to journey home.
+			do leftVillage.emit("shame")
+			=> END
+	- Leave the village to avoid shame
+		Your Consciousness: You quickly leave the village in the night with no gold.
+		do leftVillage.emit("no_gold")
+		=> END
+	
+The inkeep takes one of your gold for lodging.
 set SignalBus.gold -= 1
+if hasExplored == false
+	Your Consciousness: Whew, that was a long day of selling. This bed feels pretty comfortable, hopefully there aren't any critterous tennants...
+else
+	Your Consciousness: Exploring the village was quite the experience.
+
 if soldEverything
-	Your Consciousness: You've sold all your produce, so there's no reason for you to stay anymore.
-	Your Consciousness: You tuck into bed and smile with plans of returning home tomorrow.
-	do leftVillage.emit("sold_everything")
+	Your Consciousness: You've sold all your produce, so there's no reason for you to stay unless you want to explore the village.
+	Your Consciousness: Should you explore tomorrow?
+	- Yes
+		Your Consciousness: You tuck into bed with plans of exploring the village tomorrow.
+		set hasExplored = true
+		It is already the next day in the village.
+		=> explore_town
+	- No
+		Your Consciousness: You do feel rather tired from all the excitement of leaving your small farm.
+		Your Consciousness: You tuck into bed and smile with plans of returning home tomorrow.
+		do leftVillage.emit("sold_everything")
 	=> END
 	
-Your Consciousness: Should you leave the village tomorrow morning or stay to try selling more?
+Your Consciousness: Should I leave the village tomorrow morning or stay one more day?
 - I'm leaving
 	You tuck into bed with plans to leave the village tomorrow.
 	Early next morning, you pack everything up and leave.
 	do SignalBus.leftVillage.emit("normal_leave")
 	=> END
-- I want to try tomorrow
-	You tuck into bed with plans of where to sell tomorrow.
+- I want to stay
+	You tuck into bed with dreams of what to do tomorrow.
 	It's the next day already.
 	=> village_day
 	
@@ -182,3 +211,12 @@ Inkeep: Hail and well met! Back already?
 - I'm just looking around.
 - Could I get something to eat here?
 
+~ explore_town
+set hasExplored = true
+Your Consciousness: Where do you want to go?
+- The Inn
+	=>< the_inkeeper
+- The Market
+- The Village Green 
+	This option doesn't do anything yet. Sorry.
+=> end_of_day
