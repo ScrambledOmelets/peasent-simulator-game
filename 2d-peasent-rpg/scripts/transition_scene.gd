@@ -3,6 +3,7 @@ extends Node
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var game_text: Label = $Sprite2D/gameText
 @onready var nopeout_button: Button = $nopeoutButton
+@onready var game_over_music: AudioStreamPlayer2D = $"game-over-music"
 
 @export var displayImage : CompressedTexture2D
 var imageList = ["res://assets/painted-village.png", "res://assets/the-fete-at-bermondsey.png"]
@@ -46,11 +47,13 @@ func _on_village_left(case):
 		"plague_leave":
 			game_text.text = str("You managed to escape the plague. But you didn't sell anything.")
 		"escape_sickness":
-			game_text.text = str("You didn't sell anything but all your produce is gone, so you return home with nothing to show for your trip.")
+			game_text.text = str("You didn't sell anything, all your produce is gone, but you helped people.")
 		"dead":
 			game_text.text = str("You died from plague...")
+			game_over_music.play()
 		"no_gold":
-			game_text.text = str("You return home emptyhanded...")
+			game_text.text = str("You return home empty handed...")
+			game_over_music.play()
 		_:
 			game_text.text = str("something happened. good job or sorry that happened.")
 
