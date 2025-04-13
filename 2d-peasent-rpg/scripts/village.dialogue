@@ -5,6 +5,7 @@ if randomizer()
 	Your Consciousness: Make sure you keep an eye on it.
 	=> village_day
 else
+	do currentLocation.emit("plague")
 	Your Consciousness: A stench hangs in the air of this village... It appears they have the plague.
 	Your Consciousness: The black death is a terrible sickness that leaves awful boils on someone's body. 
 	Your Consciousness: You can barely bear to think about it.
@@ -31,6 +32,7 @@ else
 
 ~ village_day
 set hasExplored = false
+do currentLocation.emit("normal")
 Your Consciousness: Now... Where should you set up shop?
 - In the village center
 	Your Consciousness: This looks like a nice spot... Right at the center of everything!
@@ -49,6 +51,7 @@ Your Consciousness: Now... Where should you set up shop?
 	Your Consciousness: Aw, it looked like everyone has passed you by...
 	Your Consciousness: They didn't take well to someone shilling right by the entrance.
 - Tucked into a corner at the market
+	do currentLocation.emit("market")
 	Your Consciousness: You wonder if anyone will be able to see you here.
 	Your Consciousness: The other stalls look so flashy and large compared to your own.
 	if randomizer()
@@ -58,6 +61,7 @@ Your Consciousness: Now... Where should you set up shop?
 	Your Consciousness: Oh no, it looks like everyone passed you up...
 	Your Consciousness: Maybe you could try for a better spot next time.
 - In a good spot at the market [if SignalBus.luck >= 3]
+	do currentLocation.emit("market")
 	Your Consciousness: You manage to find the perfect spot at the market. 
 	Your Consciousness: You've sold all your produce in one day!
 	set soldEverything = true
@@ -209,7 +213,53 @@ Your Consciousness: You encounter the town crier
 ~ the_inkeeper
 Inkeep: Hail and well met! Back already?
 - I'm just looking around.
+	Inkeep: Alright.
+	There is a group of workers playing draughts at one of the tables.
+	- Watch the game
+		It's obvious that the group knows each other well. Various jokes and insults are thrown across the board as they play.
+		You learn some new playing strategies and a few inside jokes.
+	- Ask to join
+		if luck < 1
+			The group stares at you awkwardly before declining.
+			You quickly scuttle out of the inn.
+		else
+			The group stares at you before one of the workers heartily agrees.
+			You sit down and play 
 - Could I get something to eat here?
+	Inkeep: Yeah, just talk to the chef over there.
+	Across the room is another counter behind which a man rushes wildly through a kitchen.
+	You approach hesitantly.
+	- Hello?
+		Petulant Chef: ...
+		Your Consciousness: Is he going to say anything? Maybe I should try again.
+		- *Louder* Hello??
+			Petulant Chef: I heard you the first time. I don't have time for small talk and I wouldn't want to have it with you anyways.
+			Petulant Chef: He turns back to the several boiling pots.
+			- I just want some food...
+				Petulant Chef: He sneers at you over his shoulder.
+				=> food_ask
+			- Maybe I should leave him alone
+				
+		- May I have some food?
+			=> food_ask
+	- May I have some food?
+		=> food_ask
+		
+~ food_ask
+Petulant Chef: He tosses a bowl of hot gruel onto the counter without saying a word.
+Your Consciousness: I wonder if I have to pay for this...
+- Leave a coin
+	do playSound(posSound)
+	set gold -= 1
+	set luck += 1
+	You leave 1 gold on the counter before taking your food.
+	Petulant Chef: He hastily swipes the coin into his pocket and returns to cooking.
+- Take it without paying
+	do playSound(negSound)
+	set luck -= 1
+	You take the gruel without paying and eat at a nearby table.
+	Despite the chef continuing to work rapidly, you can feel his eyes boring into you.
+=> END
 
 ~ explore_town
 set hasExplored = true
