@@ -35,3 +35,4 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_vok4p")
 theme_override_font_sizes/font_size = 30
 text = "aaaaaa"
+horizontal_alignment = 1

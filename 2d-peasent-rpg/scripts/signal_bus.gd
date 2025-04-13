@@ -5,6 +5,7 @@ extends Node
 signal leftVillage(case : String)
 signal villageEnterConfirm
 signal dayEnded
+signal currentLocation(location : String)
 
 #game signals
 signal farried
@@ -41,6 +42,9 @@ func randomizer():
 	var ranNum = randi() % 101
 	if ranNum >= 60:
 		value = true
+	##this might break my current logic
+	#elif ranNum < 59 and ranNum > 20:
+		#value = 1
 	else:
 		value = false
 	return value

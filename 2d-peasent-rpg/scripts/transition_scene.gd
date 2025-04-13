@@ -1,11 +1,12 @@
 extends Node
 @onready var moosic: AudioStreamPlayer2D = $moosic
-@onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var game_text: Label = $Sprite2D/gameText
+@onready var background: TextureRect = $background
+@onready var game_text: Label = $background/gameText
 @onready var nopeout_button: Button = $nopeoutButton
 @onready var game_over_music: AudioStreamPlayer2D = $"game-over-music"
 
-@export var displayImage : CompressedTexture2D
+var startingImage
+var currentImage
 var imageList = ["res://assets/painted-village.png", "res://assets/the-fete-at-bermondsey.png"]
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +14,11 @@ func _ready() -> void:
 	moosic.play()
 	$hud.update_foodCounter(SignalBus.food)
 	$hud.update_goldCounter(SignalBus.gold)
+	#setting background
+	startingImage = imageList[randi() % imageList.size()]
+	background.texture = load(startingImage)
+	#print(startingImage)
+	
 	game_text.hide()
 	nopeout_button.hide()
 	DialogueManager.show_dialogue_balloon(load("res://scripts/village.dialogue"), "village_entrance")
@@ -20,6 +26,7 @@ func _ready() -> void:
 	#connecting signals
 	SignalBus.dayEnded.connect(_on_day_ended)
 	SignalBus.leftVillage.connect(_on_village_left)
+	SignalBus.currentLocation.connect(_on_scene_change)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -57,7 +64,16 @@ func _on_village_left(case):
 		_:
 			game_text.text = str("something happened. good job or sorry that happened.")
 
-
+func _on_scene_change(location):
+	match location:
+		"normal":
+			#ensures that the image is consistent the entire time
+			#despite being randomized at first
+			background.texture = load(startingImage)
+			
+		"plague": #if map has plague, it should change to this
+			background.texture = load("res://assets/destroyed-village.jpg")
+		
 	
 func _on_nopeout_button_pressed() -> void:
 	$sfx.play()

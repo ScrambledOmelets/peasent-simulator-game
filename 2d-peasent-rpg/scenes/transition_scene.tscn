@@ -12,34 +12,34 @@
 [node name="transitionScene" type="Node2D"]
 script = ExtResource("1_rt440")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
+[node name="background" type="TextureRect" parent="."]
+offset_right = 624.0
+offset_bottom = 425.0
 scale = Vector2(1.84615, 1.52471)
 texture = ExtResource("2_1icie")
+expand_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+[node name="ColorRect" type="ColorRect" parent="background"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -312.001
-offset_top = -212.499
-offset_right = -312.001
-offset_bottom = -212.499
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 color = Color(0, 0, 0, 0.207843)
 
-[node name="gameText" type="Label" parent="Sprite2D"]
+[node name="gameText" type="Label" parent="background"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -548.0
-offset_top = -285.0
-offset_right = -76.0
-offset_bottom = -140.0
+offset_left = -236.0
+offset_top = -72.5
+offset_right = 236.0
+offset_bottom = 72.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
