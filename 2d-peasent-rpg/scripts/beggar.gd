@@ -13,23 +13,24 @@ func _ready() -> void:
 	SignalBus.metBeggar = false
 	SignalBus.gaveGift = false
 
-func _physics_process(delta: float) -> void:
-	#don't move
+func _physics_process(delta: float) -> void:	
+	if SignalBus.metBeggar and not SignalBus.beggarsFavor:
+		velocity = Vector2.ZERO
+	elif SignalBus.metBeggar and SignalBus.gaveGift:
+		velocity = Vector2.ZERO
+	else:
+		#if in range, then calculate distance between player and beggar
+		#if that distance is greater than 5, then approach player
+		#else, then don't move
+		if inRange1 == true:
+			#var direction = (SignalBus.player_location - global_position).normalized()		
+			if position.distance_to(SignalBus.player_location) > 50:
+				velocity = position.direction_to(SignalBus.player_location) * speed
+				move_and_slide()
+	
+	#don't move if none of above conditinos are met
 	velocity = Vector2.ZERO
 	
-	#if in range, then calculate distance between player and beggar
-	#if that distance is greater than 5, then approach player
-	#else, then don't move
-	if inRange1 == true:
-		#var direction = (SignalBus.player_location - global_position).normalized()		
-		if position.distance_to(SignalBus.player_location) > 50:
-			velocity = position.direction_to(SignalBus.player_location) * speed
-			move_and_slide()
-			
-		else:
-			velocity = Vector2.ZERO
-	else:
-		velocity = Vector2.ZERO
 	
 	
 	
