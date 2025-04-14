@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://drwf3ndao4ep5" path="res://assets/MinifolksVillagers/Blue/Outline/MiniThief.png" id="4_l85wk"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q24ao"]
-load_path = "res://.godot/imported/slime_green.png-7537a22022111bb8764aa544858b4d35.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1htj"]
 atlas = SubResource("CompressedTexture2D_q24ao")
@@ -23,7 +22,6 @@ atlas = SubResource("CompressedTexture2D_q24ao")
 region = Rect2(71, 8, 23, 21)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2mcvj"]
-load_path = "res://.godot/imported/coin.png-44fc65ab7ac9365293e147f39c452906.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5n22b"]
 atlas = SubResource("CompressedTexture2D_2mcvj")
