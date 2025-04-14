@@ -40,14 +40,16 @@ var hideInRain : bool = false
 func randomizer():
 	var value
 	var ranNum = randi() % 101
-	if ranNum >= 60:
+	if ranNum >= 30:
 		value = true
 	##this might break my current logic
 	#elif ranNum < 59 and ranNum > 20:
 		#value = 1
 	else:
 		value = false
+	print(ranNum)
 	return value
+
 
 #character variables
 var metBeggar : bool

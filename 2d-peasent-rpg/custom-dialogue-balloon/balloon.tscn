@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Theme" uid="uid://df4gmwpa6hgk" path="res://custom-dialogue-balloon/balloon_theme.tres" id="2_b6t3u"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
-[ext_resource type="AudioStream" uid="uid://q67b4yls8mvc" path="res://assets/positive-sound.mp3" id="5_82isf"]
-[ext_resource type="AudioStream" uid="uid://dk4vp6df24j3v" path="res://assets/negative-noise.mp3" id="6_fqpgk"]
-[ext_resource type="AudioStream" uid="uid://u3atlqwmnc8t" path="res://assets/page-turn-sound.mp3" id="7_js6qi"]
+[ext_resource type="AudioStream" uid="uid://i8gw54tb7r7" path="res://assets/sounds/positive-sound.mp3" id="5_o072y"]
+[ext_resource type="AudioStream" uid="uid://baamgvt84y2i2" path="res://assets/sounds/negative-noise.mp3" id="6_qanll"]
+[ext_resource type="AudioStream" uid="uid://bbh5tqpdnj0fv" path="res://assets/sounds/page-turn-sound.mp3" id="7_jnywh"]
 
 [node name="CustomBalloon" type="CanvasLayer"]
 layer = 100
@@ -122,15 +122,15 @@ theme = ExtResource("2_b6t3u")
 text = "Response example"
 
 [node name="positive_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_82isf")
+stream = ExtResource("5_o072y")
 volume_db = 15.0
 
 [node name="negative_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_fqpgk")
+stream = ExtResource("6_qanll")
 volume_db = 15.0
 
 [node name="button_press" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_js6qi")
+stream = ExtResource("7_jnywh")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

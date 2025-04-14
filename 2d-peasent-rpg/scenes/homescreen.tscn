@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://ckysx248ayviu" path="res://assets/fonts/Eagle_Lake/EagleLake-Regular.ttf" id="3_t07by"]
 [ext_resource type="FontFile" uid="uid://desarknyflrgx" path="res://assets/fonts/Fondamento/Fondamento-Regular.ttf" id="4_n7wmp"]
 [ext_resource type="Theme" uid="uid://df4gmwpa6hgk" path="res://custom-dialogue-balloon/balloon_theme.tres" id="4_tpn24"]
-[ext_resource type="AudioStream" uid="uid://u3atlqwmnc8t" path="res://assets/page-turn-sound.mp3" id="6_6rc5d"]
+[ext_resource type="AudioStream" uid="uid://bbh5tqpdnj0fv" path="res://assets/sounds/page-turn-sound.mp3" id="6_6o4ot"]
 
 [node name="homescreen" type="Sprite2D"]
 position = Vector2(576, 324)
@@ -54,6 +54,6 @@ theme_override_font_sizes/font_size = 45
 text = "start game"
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_6rc5d")
+stream = ExtResource("6_6o4ot")
 
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]

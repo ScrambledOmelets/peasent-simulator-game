@@ -73,6 +73,7 @@ Your Consciousness: Now... Where should you set up shop?
 
 ~ end_of_day
 do dayEnded.emit()
+do currentLocation.emit("inn")
 Nothing else notable happened that day and you return back to the inn for the night.
 if gold <= 0
 	Your Consciousness: What? I'm fresh out of gold?
@@ -91,7 +92,7 @@ if gold <= 0
 	- Leave the village to avoid shame
 		Your Consciousness: You quickly leave the village in the night with no gold.
 		do leftVillage.emit("no_gold")
-		=> END
+		=> END!
 	
 The inkeep takes one of your gold for lodging.
 set SignalBus.gold -= 1
@@ -208,12 +209,23 @@ Little Girl: Good morrow. What are you doing?
 => END
 
 ~ town_crier
-Your Consciousness: You encounter the town crier
+You encounter the town crier shouting out the latest news.
+Your Consciousness: This guy is so loud, gosh.
+% Town Crier: [shake rate=20.0 level=5 connected=1]HEAR YE, HEAR YE![/shake] Francis Drake completes voyage around the world!
+% Town Crier: [shake rate=20.0 level=5 connected=1]HEAR YE, HEAR YE![/shake] Bailiffs crack down on draughts gambling!
+% Town Crier: [shake rate=20.0 level=5 connected=1]HEAR YE, HEAR YE![/shake] Rumors of the Queen's secret lover afloat! Will our country gain a king?  
+- Continue walking
+	You walk away but you can still hear him in the distance.
+- Stay to listen more
+	do playSound(posSound)
+	set luck += 1
+	You learn more about the current events of the time, feeling well informed.
+=> END
 
 ~ the_inkeeper
 Inkeep: Hail and well met! Back already?
 - I'm just looking around.
-	Inkeep: Alright.
+	Inkeep: Alright. Try not to make a ruckus.
 	There is a group of workers playing draughts at one of the tables.
 	- Watch the game
 		It's obvious that the group knows each other well. Various jokes and insults are thrown across the board as they play.
@@ -221,10 +233,14 @@ Inkeep: Hail and well met! Back already?
 	- Ask to join
 		if luck < 1
 			The group stares at you awkwardly before declining.
-			You quickly scuttle out of the inn.
+			You sit down at another table and occasionally glance back at them.
 		else
+			do playSound(posSound)
+			set luck += 1
 			The group stares at you before one of the workers heartily agrees.
-			You sit down and play 
+			You sit down and play, joining the banter and enjoying the game.
+			You learn a bit more about current events and the atmosphere of the village.
+			
 - Could I get something to eat here?
 	Inkeep: Yeah, just talk to the chef over there.
 	Across the room is another counter behind which a man rushes wildly through a kitchen.
@@ -244,7 +260,8 @@ Inkeep: Hail and well met! Back already?
 			=> food_ask
 	- May I have some food?
 		=> food_ask
-		
+=> END
+
 ~ food_ask
 Petulant Chef: He tosses a bowl of hot gruel onto the counter without saying a word.
 Your Consciousness: I wonder if I have to pay for this...
@@ -265,8 +282,14 @@ Your Consciousness: I wonder if I have to pay for this...
 set hasExplored = true
 Your Consciousness: Where do you want to go?
 - The Inn
+	do currentLocation.emit("inn")
 	=>< the_inkeeper
 - The Market
+	do currentLocation.emit("market")
+	You walk to the market in the village center. It is busy and bustling.
+	Various stalls and carts litter the square while others lay their wares out directly on the ground before them.
+	=>< town_crier 
 - The Village Green 
 	This option doesn't do anything yet. Sorry.
+	=> explore_town
 => end_of_day

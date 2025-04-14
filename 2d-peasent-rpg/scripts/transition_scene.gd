@@ -53,6 +53,7 @@ func _on_village_left(case):
 			game_text.text = str("You sold everything and return home with " + str(SignalBus.gold) + " gold.")
 		"plague_leave":
 			game_text.text = str("You managed to escape the plague. But you didn't sell anything.")
+			game_over_music.play()
 		"escape_sickness":
 			game_text.text = str("You didn't sell anything, all your produce is gone, but you helped people.")
 		"dead":
@@ -60,6 +61,9 @@ func _on_village_left(case):
 			game_over_music.play()
 		"no_gold":
 			game_text.text = str("You return home empty handed...")
+			game_over_music.play()
+		"shame":
+			game_text.text = str("You return home empty handed and shamed...")
 			game_over_music.play()
 		_:
 			game_text.text = str("something happened. good job or sorry that happened.")
@@ -73,8 +77,14 @@ func _on_scene_change(location):
 			
 		"plague": #if map has plague, it should change to this
 			background.texture = load("res://assets/destroyed-village.jpg")
+		"market":
+			background.texture = load("res://assets/market-scene.png")
+		"inn":
+			background.texture = load("res://assets/tavern-image-from-bing.jpg")
+		_:
+			background.texture = load(startingImage)
 		
-	
+
 func _on_nopeout_button_pressed() -> void:
 	$sfx.play()
 	FadingTransition.fade_transition()
