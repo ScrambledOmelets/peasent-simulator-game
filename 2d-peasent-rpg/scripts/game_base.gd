@@ -1,4 +1,7 @@
-extends Node #must handle all game code here
+extends Node 
+##update ui to be icons instead of text
+##add profit in hud scene to calculate how much money you actually make in the village
+##this profit amt determines if you win the game
 
 @export var hazard2: PackedScene
 @export var choiceWindow: PackedScene
@@ -74,6 +77,7 @@ func _on_dialouge_ended(resource: DialogueResource):
 		
 	if resource == load("res://scripts/storms.dialogue"):
 		$stormTimers/stormDuration.start()
+		
 	
 #ingame event of player farry
 func _on_player_farried():
@@ -237,7 +241,8 @@ func _on_storm_start_timeout() -> void:
 func _on_storm_duration_timeout() -> void:
 	if SignalBus.hideInRain ==  false:
 		_on_rain_ended()
-		
+		#stops the rain screen
+		SignalBus.rainOver.emit()
 		$hud.update_message("The storm has cleared!")
 		await get_tree().create_timer(3).timeout
 		$hud.update_message("")

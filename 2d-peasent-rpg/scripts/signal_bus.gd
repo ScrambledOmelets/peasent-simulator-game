@@ -31,6 +31,8 @@ var food : int
 var luck : int
 var goldReduction :int
 var foodReduction : int
+##collects how much gold you make in the village
+var goldGrowth : int
 var daysInVillage : int
 var soldEverything : bool
 
