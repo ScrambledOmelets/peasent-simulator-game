@@ -176,7 +176,9 @@ func is_game_over(food):
 	
 
 #when player enters a village
-func _on_village_transition_village_entered() -> void:
+func _on_village_transition_village_entered(village) -> void:
+	#assigning number to village so player can exit the village
+	SignalBus.whichVillageEntered = village
 	DialogueManager.show_dialogue_balloon(load("res://scripts/dialogue.dialogue"), "village_confirm")
 
 

@@ -1,7 +1,7 @@
 extends Area2D
 
-signal villageEntered
-
+##made village entered variable global
+@export var village_number : int
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		villageEntered.emit()
+		SignalBus.villageEntered.emit(village_number)

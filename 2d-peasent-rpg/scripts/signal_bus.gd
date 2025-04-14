@@ -2,6 +2,7 @@ extends Node
 #holds all signals..
 
 #village signals
+signal villageEntered(village)
 signal leftVillage(case : String)
 signal villageEnterConfirm
 signal dayEnded
@@ -36,9 +37,10 @@ var goldGrowth : int
 var daysInVillage : int
 var soldEverything : bool
 
-#var repurposed
+#rain variable
 var hideInRain : bool = false
 
+#60% for true 
 func randomizer():
 	var value
 	var ranNum = randi() % 101
@@ -62,6 +64,7 @@ var playerSpeedMultiplier : float
 
 #village variables
 var hasExplored : bool = false
+var whichVillageEntered : int
 
 #music variables
 var negSound : AudioStreamPlayer
