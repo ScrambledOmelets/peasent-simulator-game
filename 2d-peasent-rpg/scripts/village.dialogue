@@ -67,8 +67,7 @@ Your Consciousness: Now... Where should you set up shop?
 	set soldEverything = true
 - I want to explore the village instead
 	Your Consciousness: You decide to explore the village instead of selling your produce.
-	=>< explore_town
-
+	=> explore_town
 => end_of_day
 
 ~ end_of_day
@@ -92,8 +91,8 @@ if gold <= 0
 	- Leave the village to avoid shame
 		Your Consciousness: You quickly leave the village in the night with no gold.
 		do leftVillage.emit("no_gold")
-		=> END!
-	
+	=> END!
+
 The inkeep takes one of your gold for lodging.
 set SignalBus.gold -= 1
 if hasExplored == false
@@ -125,7 +124,7 @@ Your Consciousness: Should I leave the village tomorrow morning or stay one more
 	You tuck into bed with dreams of what to do tomorrow.
 	It's the next day already.
 	=> village_day
-	
+=> END!
 
 ~ merchant_guy
 Traveling Merchant: Ah thee again. The same peasant from the roads.
@@ -289,7 +288,7 @@ Your Consciousness: Where do you want to go?
 	You walk to the market in the village center. It is busy and bustling.
 	Various stalls and carts litter the square while others lay their wares out directly on the ground before them.
 	=>< town_crier 
-- The Village Green 
-	This option doesn't do anything yet. Sorry.
-	=> explore_town
+#- The Village Green 
+#	This option doesn't do anything yet. Sorry.
+	
 => end_of_day
