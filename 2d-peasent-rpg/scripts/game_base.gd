@@ -31,8 +31,8 @@ func _ready() -> void:
 	SignalBus.rainOver.connect(_on_rain_ended)
 
 	#all the village entered signals going to the same function
-	$villageTransition2.villageEntered.connect(_on_village_transition_village_entered)
-	$villageTransition3.villageEntered.connect(_on_village_transition_village_entered)
+	#changed the signal to signalbus but never updated here, so it was crashing game
+	SignalBus.villageEntered.connect(_on_village_transition_village_entered)
 	SignalBus.villageEnterConfirm.connect(_on_village_enter_confirm)
 	
 	#ok this is properly connected
@@ -46,6 +46,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if chatting == false:
 		is_game_over(SignalBus.food)
+	print(SignalBus.food)
 
 #start and stop player movement when dialouge
 func _on_dialouge_started(resource: DialogueResource):
@@ -212,8 +213,8 @@ func _on_game_over() -> void:
 	#cannot call method 'chance_scene_to_file' on a null value
 	if not is_inside_tree():
 		return
-	else:
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 
 func _on_food_timer_timeout() -> void:
