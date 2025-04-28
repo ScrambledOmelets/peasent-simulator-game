@@ -1,25 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwtcr4yo0iq4"]
+[gd_scene load_steps=5 format=3 uid="uid://bwtcr4yo0iq4"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_hrlt3"]
 [ext_resource type="FontFile" uid="uid://desarknyflrgx" path="res://assets/fonts/Fondamento/Fondamento-Regular.ttf" id="2_vok4p"]
+[ext_resource type="PackedScene" uid="uid://dnm3b85naf3q1" path="res://scenes/food_gui.tscn" id="3_3ie7y"]
+[ext_resource type="PackedScene" uid="uid://doiwwyoexmwlh" path="res://scenes/gold_gui.tscn" id="4_x4aa0"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_hrlt3")
 
 [node name="foodCounter" type="Label" parent="."]
-offset_left = 20.0
-offset_top = 16.0
-offset_right = 299.0
-offset_bottom = 56.0
+offset_left = 173.0
+offset_top = 148.0
+offset_right = 452.0
+offset_bottom = 191.0
 theme_override_fonts/font = ExtResource("2_vok4p")
 theme_override_font_sizes/font_size = 30
 text = "Food Remaining: 0"
 
 [node name="goldCounter" type="Label" parent="."]
-offset_left = 19.0
-offset_top = 61.0
-offset_right = 298.0
-offset_bottom = 103.0
+offset_left = 510.0
+offset_top = 156.0
+offset_right = 789.0
+offset_bottom = 199.0
 theme_override_fonts/font = ExtResource("2_vok4p")
 theme_override_font_sizes/font_size = 30
 text = "Gold Remaining: 0"
@@ -36,3 +38,25 @@ theme_override_fonts/font = ExtResource("2_vok4p")
 theme_override_font_sizes/font_size = 30
 text = "aaaaaa"
 horizontal_alignment = 1
+
+[node name="foodRow" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="foodGui" parent="foodRow" instance=ExtResource("3_3ie7y")]
+layout_mode = 2
+
+[node name="foodGui2" parent="foodRow" instance=ExtResource("3_3ie7y")]
+layout_mode = 2
+
+[node name="goldRow" type="HBoxContainer" parent="."]
+offset_left = 1.0
+offset_top = 52.0
+offset_right = 41.0
+offset_bottom = 92.0
+
+[node name="goldGui" parent="goldRow" instance=ExtResource("4_x4aa0")]
+layout_mode = 2
+
+[node name="goldGui2" parent="goldRow" instance=ExtResource("4_x4aa0")]
+layout_mode = 2

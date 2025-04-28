@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnm3b85naf3q1"]
+
+[ext_resource type="Texture2D" uid="uid://l0s1h6q44hvi" path="res://assets/Food_1.png" id="1_u2d7p"]
+
+[node name="foodGui" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(45, 44)
+offset_right = 45.0
+offset_bottom = 44.0
+scale = Vector2(20, 20)
+size_flags_horizontal = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_u2d7p")
+centered = false
