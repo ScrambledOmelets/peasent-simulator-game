@@ -1,37 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5xqvtxmbwury"]
+[gd_scene load_steps=3 format=3 uid="uid://b5xqvtxmbwury"]
 
 [ext_resource type="Script" path="res://scripts/dialouge_box.gd" id="1_d0eqt"]
+[ext_resource type="Theme" uid="uid://df4gmwpa6hgk" path="res://custom-dialogue-balloon/balloon_theme.tres" id="2_suytm"]
 
-[node name="dialougeBox" type="CanvasLayer"]
+[node name="inventoryMenu" type="CanvasLayer"]
 script = ExtResource("1_d0eqt")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="choiceMessage" type="RichTextLabel" parent="."]
 anchors_preset = -1
-anchor_left = 0.205
-anchor_top = 0.597
-anchor_right = 0.82
-anchor_bottom = 0.981
-offset_left = -105.16
-offset_top = 114.144
-offset_right = 90.3599
-offset_bottom = 8.31195
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="choiceMessage" type="RichTextLabel" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.072
-anchor_top = 0.104
-anchor_right = 0.938
-anchor_bottom = 0.912
-offset_left = -0.0480042
-offset_top = 0.104
-offset_right = -0.0419922
-offset_bottom = -0.0881195
-theme_override_font_sizes/normal_font_size = 35
-text = "graaaaa"
+offset_left = 457.0
+offset_top = 114.0
+offset_right = 767.0
+offset_bottom = 395.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_suytm")
+theme_type_variation = &"DialogueText"
+theme_override_font_sizes/normal_font_size = 300
+text = "helloosdfsdf
+"
 scroll_following = true
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -210.0
+offset_right = 204.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_suytm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="choice1" type="Button" parent="."]
 offset_left = 730.0
