@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://doiwwyoexmwlh"]
+[gd_scene load_steps=7 format=3 uid="uid://doiwwyoexmwlh"]
 
 [ext_resource type="Texture2D" uid="uid://248hanclo6as" path="res://assets/MonedaD.png" id="1_c0lq5"]
+[ext_resource type="Script" path="res://scripts/gold_gui.gd" id="1_yh10l"]
 [ext_resource type="Texture2D" uid="uid://d3gkjjoj8rwm" path="res://assets/used_coins.png" id="2_icymb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_esc4e"]
@@ -36,6 +37,7 @@ custom_minimum_size = Vector2(40, 40)
 offset_right = 40.0
 offset_bottom = 40.0
 size_flags_horizontal = 4
+script = ExtResource("1_yh10l")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.5, 2.5)
