@@ -5,6 +5,9 @@ extends CanvasLayer
 @onready var food_row: HBoxContainer = $foodRow
 @onready var gold_row: HBoxContainer = $goldRow
 
+var startingFood
+var StartingGold
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.startingAmounts.connect(_onGameStart)
@@ -13,6 +16,9 @@ func _ready() -> void:
 #sets max amt of food and gold icons
 #this works
 func _onGameStart(food, gold):
+	startingFood = food
+	StartingGold = gold
+	
 	setMaxFood(food)
 	setMaxGold(gold)
 
@@ -30,6 +36,11 @@ func setMaxGold(max : int):
 func update_foodCounter(number : int):
 	var foods = food_row.get_children()
 	
+	#should hopefully add more if you go over the amount
+	if number > foods.size():
+		setMaxFood(number - foods.size())
+		foods = food_row.get_children()
+	
 	#should update all the food to be normal colored
 	for i in range(number):
 		foods[i].update(true)
@@ -42,6 +53,10 @@ func update_foodCounter(number : int):
 
 func update_goldCounter(number):
 	var golds = gold_row.get_children()
+	
+	if number > golds.size():
+		setMaxGold(number - golds.size())
+		golds = gold_row.get_children()
 	
 	for i in range(number):
 		golds[i].update(true)
