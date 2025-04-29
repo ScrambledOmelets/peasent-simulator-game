@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var food_row: HBoxContainer = $foodRow
 @onready var gold_row: HBoxContainer = $goldRow
 @onready var game_message: Label = $gameMessage
+@onready var bar_shake: AnimationPlayer = $barShake
 
 var startingFood
 var StartingGold
@@ -50,6 +51,10 @@ func update_foodCounter(number : int):
 	#updates the food between current value and max value to be grey
 	for i in range(number, foods.size()):
 		foods[i].update(false)
+	
+	#hopefully animates
+	#it works!
+	playAnim("food_shake")
 
 func update_goldCounter(number):
 	var golds = gold_row.get_children()
@@ -64,8 +69,17 @@ func update_goldCounter(number):
 	for i in range(number, golds.size()):
 		golds[i].update(false)
 	
+	playAnim("gold_shake")
+	
 func update_message(text):
 	game_message.show()
 	game_message.text = str(text)
 	await get_tree().create_timer(3).timeout
 	game_message.hide()
+
+#plays animations forwards and backwards for the shaek effect
+func playAnim(name):
+	bar_shake.play(name)
+	await bar_shake.animation_finished
+	bar_shake.play_backwards(name)
+	
