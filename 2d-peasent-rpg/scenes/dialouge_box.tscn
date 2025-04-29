@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5xqvtxmbwury"]
+
+[ext_resource type="Script" path="res://scripts/dialouge_box.gd" id="1_d0eqt"]
+
+[node name="dialougeBox" type="CanvasLayer"]
+script = ExtResource("1_d0eqt")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.205
+anchor_top = 0.597
+anchor_right = 0.82
+anchor_bottom = 0.981
+offset_left = -105.16
+offset_top = 114.144
+offset_right = 90.3599
+offset_bottom = 8.31195
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="choiceMessage" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.072
+anchor_top = 0.104
+anchor_right = 0.938
+anchor_bottom = 0.912
+offset_left = -0.0480042
+offset_top = 0.104
+offset_right = -0.0419922
+offset_bottom = -0.0881195
+theme_override_font_sizes/normal_font_size = 35
+text = "graaaaa"
+scroll_following = true
+
+[node name="choice1" type="Button" parent="."]
+offset_left = 730.0
+offset_top = 380.0
+offset_right = 1036.0
+offset_bottom = 425.0
+theme_override_font_sizes/font_size = 25
+text = "this is choice one"
+
+[node name="choice2" type="Button" parent="."]
+offset_left = 730.0
+offset_top = 436.0
+offset_right = 1036.0
+offset_bottom = 481.0
+theme_override_font_sizes/font_size = 25
+text = "this is choice 2"
+
+[connection signal="pressed" from="choice1" to="." method="_on_choice_1_pressed"]
+[connection signal="pressed" from="choice2" to="." method="_on_choice_2_pressed"]
