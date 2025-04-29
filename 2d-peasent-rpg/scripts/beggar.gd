@@ -27,6 +27,17 @@ func _physics_process(delta: float) -> void:
 			if position.distance_to(SignalBus.player_location) > 50:
 				velocity = position.direction_to(SignalBus.player_location) * speed
 				move_and_slide()
+					#sprite animation
+				if velocity.length() > 0:
+					$AnimatedSprite2D.play("running")
+				else:
+					$AnimatedSprite2D.play("standing")
+				#sprite animation direction
+				if velocity.x < 0:
+					#if walk left, then flip sprite to turn left
+					$AnimatedSprite2D.flip_h = true
+				elif velocity.x > 0:
+					$AnimatedSprite2D.flip_h = false
 	
 	#don't move if none of above conditinos are met
 	velocity = Vector2.ZERO
@@ -34,22 +45,12 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	#sprite animation
-	if velocity.length() > 0:
-		$AnimatedSprite2D.play("running")
-	else:
-		$AnimatedSprite2D.play("standing")
-	#sprite animation direction
-	if velocity.x < 0:
-		#if walk left, then flip sprite to turn left
-		$AnimatedSprite2D.flip_h = true
-	elif velocity.x > 0:
-		$AnimatedSprite2D.flip_h = false
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#speaking logic
-	if Input.is_action_just_pressed("ui_accept") and inChat1 == false and inRange1 == true:
+	if Input.is_action_just_pressed("interact") and inChat1 == false and inRange1 == true:
 		$toolTip.hide()
 		DialogueManager.show_dialogue_balloon(load("res://scripts/beggar_scene.dialogue"), "beggar_speak")
 		inChat1 = true

@@ -77,7 +77,7 @@ offset_right = 70.0
 offset_bottom = 103.0
 theme = ExtResource("3_u5e3i")
 theme_type_variation = &"ToolTip"
-text = "press enter to talk"
+text = "Press T to talk"
 horizontal_alignment = 1
 
 [connection signal="body_entered" from="conversationRange" to="." method="_on_conversation_range_body_entered"]
