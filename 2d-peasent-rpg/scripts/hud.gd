@@ -4,6 +4,7 @@ extends CanvasLayer
 @export var goldBar : PackedScene
 @onready var food_row: HBoxContainer = $foodRow
 @onready var gold_row: HBoxContainer = $goldRow
+@onready var game_message: Label = $gameMessage
 
 var startingFood
 var StartingGold
@@ -11,7 +12,7 @@ var StartingGold
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.startingAmounts.connect(_onGameStart)
-	$gameMessage.text = str("")
+	game_message.hide()
 
 #sets max amt of food and gold icons
 #this works
@@ -64,4 +65,7 @@ func update_goldCounter(number):
 		golds[i].update(false)
 	
 func update_message(text):
-	$gameMessage.text = str(text)
+	game_message.show()
+	game_message.text = str(text)
+	await get_tree().create_timer(3).timeout
+	game_message.hide()

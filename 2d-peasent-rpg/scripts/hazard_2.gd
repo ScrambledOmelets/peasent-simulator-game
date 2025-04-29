@@ -19,10 +19,6 @@ func _process(delta: float) -> void:
 		velocity = speed * direction * delta 
 		position += velocity
 	
-		
-		
-		
-			
 	
 	#scrapped patrolling animations	
 	#else:

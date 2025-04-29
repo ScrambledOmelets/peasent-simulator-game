@@ -4,11 +4,10 @@ extends Node
 ##this profit amt determines if you win the game
 
 @export var hazard2: PackedScene
-@export var choiceWindow: PackedScene
+
 
 signal gameOver
 #instanced scene variables
-var dialouge
 var hazard
 var chatting = false
 var hasRained = false
@@ -111,19 +110,7 @@ func _on_hazard_timer_timeout() -> void:
 	banditSpawn()
 
 
-#spawning of new choice
-#this also works???
-func dialougeSpawn(header: String, option1: String, option2: String):
-	#handle logic for each choice in different area when i start adding different types of events
-	
-	#instance
-	dialouge = choiceWindow.instantiate()
-	add_child(dialouge)
-	
-	#functions to update new choice
-	dialouge.newChoiceWindow()
-	dialouge.updateHeader(header)
-	dialouge.updatedChoices(option1, option2)
+
 
 func banditSpawn():
 	#instance
@@ -147,26 +134,14 @@ func goldLogic(gold, randomNum):
 	if gold <= 0:
 		$hud.update_goldCounter(0)
 		gold = 0
-		$hud.update_message("oh no! you've lost all your gold...")
-		dialouge.updateHeader(value)
+		$hud.update_message("Oh no! You've lost all your gold...")
 	else:
 		#update values and continue game
 		$hud.update_goldCounter(gold)
 	
 	return value
 
-func foodLogic(food, randomNum):
-	var value = str(randomNum) + " food..."
-	
-	if food <= 0:
-		food = 0
-		$hud.update_message("you cannot continue this journey...")
-		dialouge.updateHeader("you've lost all your food!")
-		$hud.update_foodCounter(food)
-	else:
-		$hud.update_foodCounter(food)
-		
-	return value
+
 
 func is_game_over(food):
 	if food <= 0:
@@ -201,7 +176,6 @@ func _on_game_over() -> void:
 	$foodTimer.stop()
 	$music_noises/travelMusic.stop()
 	#$music/gameOverMusic.play() don't play whole music. just a sound effect - which i don't have rn
-	print("r you running twice")
 	$hud.update_message("You've run out of food...")
 	$player.set_physics_process(false)
 	
@@ -247,8 +221,7 @@ func _on_storm_duration_timeout() -> void:
 		#stops the rain screen
 		SignalBus.rainOver.emit()
 		$hud.update_message("The storm has cleared!")
-		await get_tree().create_timer(3).timeout
-		$hud.update_message("")
+		
 		
 		#fixing player movement
 		SignalBus.playerSpeedMultiplier += 0.7
