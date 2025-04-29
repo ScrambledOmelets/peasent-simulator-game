@@ -1,6 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnm3b85naf3q1"]
+[gd_scene load_steps=7 format=3 uid="uid://dnm3b85naf3q1"]
 
+[ext_resource type="Script" path="res://scripts/food_gui.gd" id="1_5hlm2"]
 [ext_resource type="Texture2D" uid="uid://l0s1h6q44hvi" path="res://assets/Food_1.png" id="1_u2d7p"]
+[ext_resource type="Texture2D" uid="uid://co2volmc080m4" path="res://assets/used_food.png" id="2_uqvjm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atyjk"]
+atlas = ExtResource("1_u2d7p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03r5d"]
+atlas = ExtResource("2_uqvjm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0x02e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atyjk")
+}],
+"loop": true,
+"name": &"base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03r5d")
+}],
+"loop": true,
+"name": &"used",
+"speed": 5.0
+}]
 
 [node name="foodGui" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -9,8 +38,10 @@ offset_right = 45.0
 offset_bottom = 44.0
 scale = Vector2(20, 20)
 size_flags_horizontal = 0
+script = ExtResource("1_5hlm2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
-texture = ExtResource("1_u2d7p")
+sprite_frames = SubResource("SpriteFrames_0x02e")
+animation = &"base"
 centered = false

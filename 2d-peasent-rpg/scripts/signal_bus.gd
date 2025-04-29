@@ -12,6 +12,9 @@ signal currentLocation(location : String)
 signal farried
 signal unFarry
 
+#game setup signal
+signal startingAmounts(food, gold)
+
 #hazard signal
 signal playerHit
 

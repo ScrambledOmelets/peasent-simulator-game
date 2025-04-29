@@ -7,6 +7,8 @@
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_hrlt3")
+foodBar = ExtResource("3_3ie7y")
+goldBar = ExtResource("4_x4aa0")
 
 [node name="foodCounter" type="Label" parent="."]
 offset_left = 173.0
@@ -43,20 +45,8 @@ horizontal_alignment = 1
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="foodGui" parent="foodRow" instance=ExtResource("3_3ie7y")]
-layout_mode = 2
-
-[node name="foodGui2" parent="foodRow" instance=ExtResource("3_3ie7y")]
-layout_mode = 2
-
 [node name="goldRow" type="HBoxContainer" parent="."]
 offset_left = 1.0
 offset_top = 52.0
 offset_right = 41.0
 offset_bottom = 92.0
-
-[node name="goldGui" parent="goldRow" instance=ExtResource("4_x4aa0")]
-layout_mode = 2
-
-[node name="goldGui2" parent="goldRow" instance=ExtResource("4_x4aa0")]
-layout_mode = 2

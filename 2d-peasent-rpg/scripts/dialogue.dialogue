@@ -19,19 +19,22 @@ You almost forgot to double check your item pouch. You remember packing...
 - Lightly
 	set SignalBus.food = 4
 	set SignalBus.gold = 5
+	do startingAmounts.emit(food, gold)
 	set SignalBus.playerSpeedMultiplier = 1.5
 	This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
 	You feel a bit lighter.
 - Moderately
 	set SignalBus.food = 5
 	set SignalBus.gold = 8
+	do startingAmounts.emit(food, gold)
 	This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
 	Your pack weighs you down a moderate amount.
 	set SignalBus.playerSpeedMultiplier = 1
 - Heavily
 	set SignalBus.food = 10
 	set SignalBus.gold = 10
-	set SignalBus.playerSpeedMultiplier = 0.8
+	do startingAmounts.emit(food, gold)
+	set SignalBus.playerSpeedMultiplier = 0.85
 	This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
 	You find it difficult to move with the weight of your pack.
 Follow the path to get to a village safetly and sell your produce.

@@ -1,15 +1,30 @@
 extends CanvasLayer
 
+@export var foodBar : PackedScene
+@export var goldBar : PackedScene
+@onready var food_row: HBoxContainer = $foodRow
+@onready var gold_row: HBoxContainer = $goldRow
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	SignalBus.startingAmounts.connect(_onGameStart)
 	$gameMessage.text = str("")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
+#sets max amt of food and gold icons
+func _onGameStart(food, gold):
+	setMaxFood(food)
+	setMaxGold(gold)
+
+func setMaxFood(max : int):
+	for i in range(max):
+		var oneFood = foodBar.instantiate()
+		food_row.add_child(oneFood)
+		
+func setMaxGold(max : int):
+	for i in range(max):
+		var oneGold = goldBar.instantiate()
+		gold_row.add_child(oneGold)
+
 func update_foodCounter(number):
 	$foodCounter.text = str("food remaining: ", number)
 
