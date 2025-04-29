@@ -9,3 +9,4 @@
 
 [node name="beggarGuy" parent="." instance=ExtResource("2_5ynqm")]
 position = Vector2(184, 56)
+speed = 200

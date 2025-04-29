@@ -27,11 +27,15 @@ func _physics_process(delta: float) -> void:
 			if position.distance_to(SignalBus.player_location) > 50:
 				velocity = position.direction_to(SignalBus.player_location) * speed
 				move_and_slide()
+				print(velocity)
 					#sprite animation
-				if velocity.length() > 0:
+				if velocity.length() > 0: ## i dont think this ever goes below zero
 					$AnimatedSprite2D.play("running")
+					print(velocity)
+					print(str(velocity.length()) + "the length")
 				else:
 					$AnimatedSprite2D.play("standing")
+					print("did u stop walking")
 				#sprite animation direction
 				if velocity.x < 0:
 					#if walk left, then flip sprite to turn left
