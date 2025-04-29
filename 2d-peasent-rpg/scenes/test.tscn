@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b533i8j1kivux"]
+
+[ext_resource type="PackedScene" uid="uid://deitd64bd7qqx" path="res://scenes/player.tscn" id="1_rf2or"]
+[ext_resource type="PackedScene" uid="uid://coglbcstsgt2p" path="res://scenes/beggar.tscn" id="2_5ynqm"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_rf2or")]
+
+[node name="beggarGuy" parent="." instance=ExtResource("2_5ynqm")]
+position = Vector2(184, 56)

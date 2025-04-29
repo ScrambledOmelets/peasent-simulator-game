@@ -32,13 +32,14 @@ func setMaxGold(max : int):
 		var oneGold = goldBar.instantiate()
 		gold_row.add_child(oneGold)
 
-##needs to handle logic for when player goes over max number of preexisting food
+#this works fine now
 func update_foodCounter(number : int):
 	var foods = food_row.get_children()
 	
 	#should hopefully add more if you go over the amount
 	if number > foods.size():
 		setMaxFood(number - foods.size())
+		#needs this line to reupdate the list
 		foods = food_row.get_children()
 	
 	#should update all the food to be normal colored
@@ -48,8 +49,6 @@ func update_foodCounter(number : int):
 	#updates the food between current value and max value to be grey
 	for i in range(number, foods.size()):
 		foods[i].update(false)
-	
-	#$foodCounter.text = str("food remaining: ", number)
 
 func update_goldCounter(number):
 	var golds = gold_row.get_children()
@@ -64,7 +63,5 @@ func update_goldCounter(number):
 	for i in range(number, golds.size()):
 		golds[i].update(false)
 	
-	#$goldCounter.text = str("gold remaining: ", number)
-
 func update_message(text):
 	$gameMessage.text = str(text)

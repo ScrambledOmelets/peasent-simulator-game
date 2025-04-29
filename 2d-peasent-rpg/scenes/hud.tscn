@@ -10,24 +10,6 @@ script = ExtResource("1_hrlt3")
 foodBar = ExtResource("3_3ie7y")
 goldBar = ExtResource("4_x4aa0")
 
-[node name="foodCounter" type="Label" parent="."]
-offset_left = 173.0
-offset_top = 148.0
-offset_right = 452.0
-offset_bottom = 191.0
-theme_override_fonts/font = ExtResource("2_vok4p")
-theme_override_font_sizes/font_size = 30
-text = "Food Remaining: 0"
-
-[node name="goldCounter" type="Label" parent="."]
-offset_left = 510.0
-offset_top = 156.0
-offset_right = 789.0
-offset_bottom = 199.0
-theme_override_fonts/font = ExtResource("2_vok4p")
-theme_override_font_sizes/font_size = 30
-text = "Gold Remaining: 0"
-
 [node name="gameMessage" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
