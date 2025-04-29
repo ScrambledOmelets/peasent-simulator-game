@@ -18,12 +18,11 @@ func _process(delta: float) -> void:
 		direction = (SignalBus.player_location - global_position).normalized()
 		velocity = speed * direction * delta 
 		position += velocity
+	
 		
-		#should stop moving if near player?
-		#glitchy
-		#if direction == 0:
-			#velocity = Vector2.ZERO
-			#position += velocity
+		
+		
+			
 	
 	#scrapped patrolling animations	
 	#else:
