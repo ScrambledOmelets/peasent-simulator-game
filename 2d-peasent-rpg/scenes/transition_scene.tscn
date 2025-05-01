@@ -59,6 +59,14 @@ justification_flags = 161
 
 [node name="hud" parent="." instance=ExtResource("3_8yvc3")]
 
+[node name="realGoldRow" type="HBoxContainer" parent="hud"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -94.0
+offset_bottom = 44.0
+grow_horizontal = 0
+
 [node name="moosic" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamMP3_4j3t4")
 
@@ -80,3 +88,5 @@ stream = ExtResource("7_w1g05")
 stream = SubResource("AudioStreamMP3_2egmv")
 
 [connection signal="pressed" from="nopeoutButton" to="." method="_on_nopeout_button_pressed"]
+
+[editable path="hud"]

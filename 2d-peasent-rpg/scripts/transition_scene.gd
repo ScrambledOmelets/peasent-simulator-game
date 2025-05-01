@@ -12,12 +12,12 @@ var imageList = ["res://assets/painted-village.png", "res://assets/the-fete-at-b
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	moosic.play()
-	$hud.update_foodCounter(SignalBus.food)
+	##no food here
+	#$hud.update_foodCounter(SignalBus.food)
 	$hud.update_goldCounter(SignalBus.gold)
 	#setting background
 	startingImage = imageList[randi() % imageList.size()]
 	background.texture = load(startingImage)
-	#print(startingImage)
 	
 	game_text.hide()
 	nopeout_button.hide()
@@ -30,18 +30,22 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$hud.update_foodCounter(SignalBus.food)
-	$hud.update_goldCounter(SignalBus.gold)
+	#$hud.update_foodCounter(SignalBus.food)
+	pass
 
+func updateRealGold():
+	pass
+	#function  that adds real gold  to this  hbox
 
 func _on_day_ended():
+	#so that its not constantly vibrating
+	$hud.update_goldCounter(SignalBus.gold)
+	
 	SignalBus.daysInVillage += 1
 	SignalBus.randomizer()
 
 func _on_village_left(case):
 	$hud.hide()
-	##glitchy and i dont have the time to fix it
-	#sprite_2d.texture = load("res://assets/ruins-8881488_1280.jpg")
 	moosic.stop()
 	game_text.show()
 	nopeout_button.show()

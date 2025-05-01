@@ -71,7 +71,6 @@ Your Consciousness: Now... Where should you set up shop?
 => end_of_day
 
 ~ end_of_day
-do dayEnded.emit()
 do currentLocation.emit("inn")
 Nothing else notable happened that day and you return back to the inn for the night.
 if gold <= 0
@@ -95,6 +94,7 @@ if gold <= 0
 
 The inkeep takes one of your gold for lodging.
 set SignalBus.gold -= 1
+do dayEnded.emit()
 if hasExplored == false
 	Your Consciousness: Whew, that was a long day of selling. This bed feels pretty comfortable, hopefully there aren't any critterous tennants...
 else
@@ -141,7 +141,7 @@ Traveling Merchant: Ah thee again. The same peasant from the roads.
 Traveling Merchant: Good morrow! Prithee allow me to buy m're of thy produce.
 - Ay, of course!
 	The merchant buys some of your produce for 3 gold.
-	set gold += 3
+	set goldGrowth += 3
 	Traveling Merchant: It is truly so lovely doing business with you. Give ye safe journeys.
 - No...
 	Traveling Merchant: Nay? I'm s'rry? How can thou dare to reject mine own business at which hour thee obviously need the coin?
@@ -157,7 +157,7 @@ Petulant Chef: I need 10 parsnips. Now.
 	Petulant Chef: I've got dozens of mouths to feed at the inn and I'm fresh out of parsnips.
 	Your Consciousness: You rush to get the chef his parsnips.
 	You gain 10 gold.
-	set gold += 10
+	set goldGrowth += 10
 - I don't know if I have that many. [if daysInVillage >= 1]
 	Petulant Chef: What do you mean? What kind of merchant are you?
 	- You should have got here sooner, then.
@@ -175,7 +175,7 @@ Little Girl: Good morrow. What are you doing?
 	Little Girl: Oh. Do you have anything good?
 	You describe what you're selling, including wheat and parsnips. The little girl seems to light up.
 	Little Girl: I think my mom could use some of those. Here!
-	set SignalBus.gold += 1
+	set goldGrowth += 1
 	She hands you 1 gold coin in exchange for 3 parsnips.
 	- Thank you so much!
 		Little Girl: You're welcome! I'll tell everyone else about you too. Bye!
@@ -188,7 +188,7 @@ Little Girl: Good morrow. What are you doing?
 	- Please take it back.
 		Little Girl: No it's ok! Silly people deserve it.
 		Your Consciousness: You gain 1 gold.
-		set SignalBus.gold += 1
+		set goldGrowth += 1
 		set SignalBus.luck += 1
 		Your Consciousness: Aw that was sweet of her. It really brightened your day!
 		
@@ -196,7 +196,7 @@ Little Girl: Good morrow. What are you doing?
 		You take her gold coin and she smiles before skipping off.
 		Your Consciousness: You gain 1 gold.
 		do playSound(negSound)
-		set SignalBus.gold += 1
+		set goldGrowth += 1
 		Your Consciousness: Did you just scam a little girl? Maybe you should have tried harder to tell her to keep it.
 		set SignalBus.luck -= 1
 			

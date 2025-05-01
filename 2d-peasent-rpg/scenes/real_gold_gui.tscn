@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bs8jqy0acaj08"]
+
+[ext_resource type="Script" path="res://scripts/real_gold_gui.gd" id="1_gfnoc"]
+[ext_resource type="Texture2D" uid="uid://cblsvyjusbx4g" path="res://assets/MonedaR.png" id="2_l3pv2"]
+[ext_resource type="Texture2D" uid="uid://d3gkjjoj8rwm" path="res://assets/used_coins.png" id="3_24bnk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0awb"]
+atlas = ExtResource("2_l3pv2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj7hd"]
+atlas = ExtResource("3_24bnk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oikat"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0awb")
+}],
+"loop": true,
+"name": &"base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj7hd")
+}],
+"loop": true,
+"name": &"used",
+"speed": 5.0
+}]
+
+[node name="realGoldGui" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+script = ExtResource("1_gfnoc")
+
+[node name="animatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_oikat")
+animation = &"base"
+centered = false
