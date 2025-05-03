@@ -1,6 +1,15 @@
 ~ game_start
+The System: Hey, you! I'm glad your finally awake!
+- Huh? 
+	The original owner of this body was knocked out and I need you to complete their job.
+- What!?
+	You heard me, I need you to complete their job.
+- No.
+	You don't really have a choice, I need you to complete their job. If you complete this job, I'll send you right back to where you came from. Deal?
+-Okay
+	Great!
 The year is circa 1580 and Queen Elizabeth I of England is on the throne.
-You are going to market today to sell some of the excess produce from your farm.
+You are going to market today to sell some of the excess produce from your farm. You need to make 5 gold in profit to finish the job.
 The recent rainstorms have changed up the path and you need to proceed carefully.
 You feel...
 - Nervous
@@ -34,13 +43,13 @@ You almost forgot to double check your item pouch. You remember packing...
 	set SignalBus.food = 10
 	set SignalBus.gold = 10
 	do startingAmounts.emit(food, gold)
-	set SignalBus.playerSpeedMultiplier = 0.85
+	set SignalBus.playerSpeedMultiplier = 0.8
 	This means you should have {{SignalBus.food}} food and {{SignalBus.gold}} gold!
 	You find it difficult to move with the weight of your pack.
-Follow the path to get to a village safetly and sell your produce.
+Follow the path to get to a village safetly and sell your produce. You can use the arrow keys to move.
 There is a counter at the top left corner to help you rememember your items.
 You won’t be able to make it if you run out of food, so keep an eye on your resources.
-Hopefully your journey is a successful one!
+Hopefully your journey is a successful one! 
 
 => END
 
