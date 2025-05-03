@@ -45,7 +45,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if chatting == false:
 		is_game_over(SignalBus.food)
-	print(SignalBus.food)
+	
 
 #start and stop player movement when dialouge
 func _on_dialouge_started(resource: DialogueResource):

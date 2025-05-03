@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 
 func updateRealGold():
 	pass
-	#function  that adds real gold  to this  hbox
+	updateGoldGained(SignalBus.goldGrowth)
 
 func _on_day_ended():
 	#so that its not constantly vibrating
@@ -43,6 +43,9 @@ func _on_day_ended():
 	
 	SignalBus.daysInVillage += 1
 	SignalBus.randomizer()
+
+func updateGoldGained(gg):
+	$hud/realGoldRow/Label.text = str(gg + "x")
 
 func _on_village_left(case):
 	$hud.hide()
