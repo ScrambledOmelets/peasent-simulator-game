@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://dxa81qtj8wcqu"]
+[gd_scene load_steps=11 format=4 uid="uid://dxa81qtj8wcqu"]
 
 [ext_resource type="Script" path="res://scripts/transition_scene.gd" id="1_rt440"]
 [ext_resource type="Texture2D" uid="uid://d16l3hxkxlbnr" path="res://assets/painted-village.png" id="2_1icie"]
 [ext_resource type="PackedScene" uid="uid://bwtcr4yo0iq4" path="res://scenes/hud.tscn" id="3_8yvc3"]
 [ext_resource type="FontFile" uid="uid://ckysx248ayviu" path="res://assets/fonts/Eagle_Lake/EagleLake-Regular.ttf" id="3_6333x"]
+[ext_resource type="FontFile" uid="uid://desarknyflrgx" path="res://assets/fonts/Fondamento/Fondamento-Regular.ttf" id="5_fnb8i"]
 [ext_resource type="Theme" uid="uid://df4gmwpa6hgk" path="res://custom-dialogue-balloon/balloon_theme.tres" id="5_gkj31"]
+[ext_resource type="PackedScene" uid="uid://bs8jqy0acaj08" path="res://scenes/real_gold_gui.tscn" id="6_sc7b1"]
 [ext_resource type="AudioStream" uid="uid://bbh5tqpdnj0fv" path="res://assets/sounds/page-turn-sound.mp3" id="7_w1g05"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_4j3t4"]
@@ -63,9 +65,19 @@ justification_flags = 161
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -94.0
-offset_bottom = 44.0
+offset_left = -157.0
+offset_bottom = 50.0
 grow_horizontal = 0
+alignment = 2
+
+[node name="Label" type="Label" parent="hud/realGoldRow"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_fnb8i")
+theme_override_font_sizes/font_size = 35
+text = "0x"
+
+[node name="realGoldGui" parent="hud/realGoldRow" instance=ExtResource("6_sc7b1")]
+layout_mode = 2
 
 [node name="moosic" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamMP3_4j3t4")
