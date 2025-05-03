@@ -30,8 +30,10 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#$hud.update_foodCounter(SignalBus.food)
-	pass
+	#makes it spin occasionally
+	await get_tree().create_timer(5).timeout
+	$hud/realGoldRow/realGoldGui.spin()
+	
 
 func updateRealGold():
 	pass
