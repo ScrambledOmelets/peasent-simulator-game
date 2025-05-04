@@ -61,22 +61,30 @@ func update_foodCounter(number):
 
 func update_goldCounter(number):
 	var golds = gold_row.get_children()
-	var hasChanged = false
-	
+	var previousNumber
+	var difference : bool
+	if previousNumber != SignalBus.gold:
+		difference = true
+		previousNumber = SignalBus.gold
+	else:
+		difference = false
+		
 	if number > golds.size():
 		setMaxGold(number - golds.size())
 		golds = gold_row.get_children()
-	
-	if number != (golds.size() - number):
-		hasChanged = true
 	
 	for i in range(number):
 		golds[i].update(true)
 		
 	for i in range(number, golds.size()):
 		golds[i].update(false)
+		
+	print(str(str(previousNumber) + " last numebr recorded"))
+	print(str(str(SignalBus.gold) + " current gold"))
 	
-	if hasChanged: playAnim("gold_shake")
+	#if these values change then they should be greater than 0
+	if difference:
+		playAnim("gold_shake")
 
 func update_message(text):
 	game_message.show()
