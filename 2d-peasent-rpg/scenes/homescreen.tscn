@@ -51,7 +51,7 @@ offset_bottom = 295.222
 theme = ExtResource("4_tpn24")
 theme_override_fonts/font = ExtResource("4_n7wmp")
 theme_override_font_sizes/font_size = 45
-text = "start game"
+text = "Start Game"
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_6o4ot")
