@@ -44,7 +44,7 @@ The System: There's bandits, and rainstorms, and guys trying to scam you because
 The System: You also might starve to death and you need to blend in with the locals.
 Your Consciousness: Why would I even try when all the odds are stacked against me?
 The System: Because I'm here to help you! Let's do a quick experiment right now.
-Your Consciousness: It feels like this whole thing is an expierment already...
+Your Consciousness: It feels like this whole thing is an experiment already...
 The System: *ignores you* How are you feeling!
 - Okay I guess?
 	do playSound(posSound)
