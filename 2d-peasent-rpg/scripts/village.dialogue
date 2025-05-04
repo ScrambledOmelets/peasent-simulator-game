@@ -83,7 +83,7 @@ Your Consciousness: Hmm, where should I set up shop?
 do currentLocation.emit("inn")
 Nothing else notable happened that day and you return back to the inn for the night.
 if gold <= 0
-	Your Consciousness: What? I'm fresh out of gold?
+	Your Consciousness: What? I'm fresh out of pence?
 	Your Consciousness: The inkeep won't let me stay like this!
 	- Ask the inkeep if you can stay one more night.
 		if luck >= 3
@@ -101,7 +101,7 @@ if gold <= 0
 		do leftVillage.emit("no_gold")
 	=> END!
 
-The inkeep takes one of your gold for lodging.
+The inkeep takes one of your pence for lodging.
 set SignalBus.gold -= 1
 do dayEnded.emit()
 if hasExplored == false
@@ -170,7 +170,7 @@ elif completedJob
 		do leftVillage.emit("normal_leave")
 		=> END
 	- I want to stay a bit longer.
-		The System: Okay. I guess you are having fun, hehe. Make sure to watch your gold.
+		The System: Okay. I guess you are having fun, hehe. Make sure to watch your pence.
 		You tuck into bed thinking of what you might do differently tomorrow.
 		It's the next day already.
 		=> village_day
@@ -191,7 +191,7 @@ Traveling Merchant: Ah thee again. The same peasant from the roads.
 - Aye, 'tis I.
 Traveling Merchant: Good morrow! Prithee allow me to buy m're of thy produce.
 - Aye, of course!
-	The merchant buys some of your produce for 3 gold.
+	The merchant buys some of your produce for 3 pence.
 	set goldGrowth += 3
 	Traveling Merchant: It is truly so lovely doing business with you. Give ye safe journeys.
 - No...
@@ -207,7 +207,7 @@ Petulant Chef: I need 10 parsnips. Now.
 	Petulant Chef: Don't dilly dally. Hurry up!
 	Petulant Chef: I've got dozens of mouths to feed at the inn and I'm fresh out of parsnips.
 	Your Consciousness: You rush to get the chef his parsnips.
-	You gain 10 gold.
+	You gain 10 pence.
 	set goldGrowth += 10
 - I don't know if I have that many. [if daysInVillage >= 1]
 	Petulant Chef: What do you mean? What kind of merchant are you?
@@ -235,25 +235,27 @@ Little Girl: Good morrow. What are you doing?
 - I don't know
 	Little Girl: Well I don't either. That's why I asked you.
 	Little Girl: You're silly! You can have this.
-	She hands you 1 gold coin.
+	She hands you 1 pence.
 	- Please take it back.
 		Little Girl: No it's ok! Silly people deserve it.
-		Your Consciousness: You gain 1 gold.
+		You gain 1 pence.
 		set goldGrowth += 1
 		set SignalBus.luck += 1
 		Your Consciousness: Aw that was sweet of her. It really brightened your day!
 		
 	- Oh thanks.
-		You take her gold coin and she smiles before skipping off.
-		Your Consciousness: You gain 1 gold.
+		You take her pence and she smiles before skipping off.
+		You gain 1 pence.
 		do playSound(negSound)
 		set goldGrowth += 1
-		Your Consciousness: Did you just scam a little girl? Maybe you should have tried harder to tell her to keep it.
+		The System: Did you just scam a little girl? Maybe you should have tried harder to tell her to keep it.
+		Your Consciousness: Do you really have to judge everything I do?
+		The System ignores you.
 		set SignalBus.luck -= 1
 			
 	- Where's your parents?
 		Little Girl: I'm big enough to get around on my own!
-		Little Girl: I had even brought some gold with me today. But I don't want your stinky veggies anyways!
+		Little Girl: I had even brought some pence with me today. But I don't want your stinky veggies anyways!
 		She stomps off.
 		Your Consciousness: Oh no... I've never really been the best with kids.
 		=> END
@@ -320,7 +322,7 @@ Your Consciousness: I wonder if I have to pay for this...
 	do playSound(posSound)
 	set gold -= 1
 	set luck += 1
-	You leave 1 gold on the counter before taking your food.
+	You leave 1 pence on the counter before taking your food.
 	Petulant Chef: He hastily swipes the coin into his pocket and returns to cooking.
 - Take it without paying
 	do playSound(negSound)
