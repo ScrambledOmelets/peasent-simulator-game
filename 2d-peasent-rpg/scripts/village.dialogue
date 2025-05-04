@@ -5,7 +5,7 @@ if randomizer()
 		The System: No, I meant it as in-- Whatever. You're in a village now. That's all that matters.
 	- I didn't know you had such low hopes.
 		The System: Well, you were just thrown into this. I'm a little proud of you, to be honest.
-	The System: You know what to do now right? Sell your produce and make at least 5 pence!
+	The System: You know what to do now right? Sell your produce and make at least 5 pence! There's a counter in the top right for you now.
 	The System: You're staying at the inn which takes 1 pence each night. Don't let the amount you brought with you run out or the innkeep will kick you out.
 	The System: I'll shut up now so you have space to think.
 	=> village_day
