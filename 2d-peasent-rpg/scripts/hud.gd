@@ -37,16 +37,12 @@ func setMaxGold(max : int):
 #this works fine now
 func update_foodCounter(number):
 	var foods = food_row.get_children()
-	var hasChanged = false
 	
 	#should hopefully add more if you go over the amount
 	if number > foods.size():
 		setMaxFood(number - foods.size())
 		#needs this line to reupdate the list
 		foods = food_row.get_children()
-	
-	if number != (foods.size() - number):
-		hasChanged = true
 	
 	#should update all the food to be normal colored
 	for i in range(number):
@@ -61,14 +57,7 @@ func update_foodCounter(number):
 
 func update_goldCounter(number):
 	var golds = gold_row.get_children()
-	var previousNumber
-	var difference : bool
-	if previousNumber != SignalBus.gold:
-		difference = true
-		previousNumber = SignalBus.gold
-	else:
-		difference = false
-		
+	
 	if number > golds.size():
 		setMaxGold(number - golds.size())
 		golds = gold_row.get_children()
@@ -78,13 +67,8 @@ func update_goldCounter(number):
 		
 	for i in range(number, golds.size()):
 		golds[i].update(false)
-		
-	print(str(str(previousNumber) + " last numebr recorded"))
-	print(str(str(SignalBus.gold) + " current gold"))
 	
-	#if these values change then they should be greater than 0
-	if difference:
-		playAnim("gold_shake")
+	playAnim("gold_shake")
 
 func update_message(text):
 	game_message.show()
