@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://v32muu1mtja0"]
+[gd_scene load_steps=53 format=3 uid="uid://v32muu1mtja0"]
 
 [ext_resource type="Script" path="res://scripts/traveler.gd" id="1_8egw5"]
 [ext_resource type="Texture2D" uid="uid://bwebggliom52g" path="res://assets/MinifolksVillagers/Original/Outline/MiniGraveDigger.png" id="2_o7yqu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbu7msloojn0t" path="res://assets/MinifolksVillagers/MinifolksVillagers/Outline/MiniWorker.png" id="5_wcqj6"]
 [ext_resource type="Texture2D" uid="uid://d0xxsrgp6p4g6" path="res://assets/MinifolksVillagers/Original/Outline/MiniLumberjack.png" id="6_c3rut"]
 [ext_resource type="Texture2D" uid="uid://do7e6srrfl06a" path="res://assets/MinifolksVillagers/Original/Outline/MiniMerchant.png" id="7_wwpdt"]
+[ext_resource type="Texture2D" uid="uid://bj46euctw5uhk" path="res://assets/MinifolksVillagers/Blue/Outline/MiniSuspiciousMerchantB.png" id="8_3pslq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1bfb"]
 atlas = ExtResource("2_o7yqu")
@@ -241,6 +242,22 @@ region = Rect2(160, 64, 32, 32)
 atlas = ExtResource("7_wwpdt")
 region = Rect2(192, 64, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa85m"]
+atlas = ExtResource("8_3pslq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k16tv"]
+atlas = ExtResource("8_3pslq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ht504"]
+atlas = ExtResource("8_3pslq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irnr8"]
+atlas = ExtResource("8_3pslq")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_w1pcu"]
 animations = [{
 "frames": [{
@@ -310,6 +327,23 @@ animations = [{
 "loop": true,
 "name": &"new_animation_2",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa85m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k16tv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ht504")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irnr8")
+}],
+"loop": true,
+"name": &"new_animation_3",
+"speed": 5.0
 }]
 
 [node name="fellowTraveler" type="CharacterBody2D"]
@@ -355,8 +389,7 @@ vertical_alignment = 1
 position = Vector2(365, 122.5)
 scale = Vector2(8, 7.415)
 sprite_frames = SubResource("SpriteFrames_w1pcu")
-animation = &"new_animation_2"
-frame = 1
+animation = &"new_animation_3"
 
 [connection signal="body_entered" from="conversationRange" to="." method="_on_conversation_range_body_entered"]
 [connection signal="body_exited" from="conversationRange" to="." method="_on_conversation_range_body_exited"]

@@ -39,6 +39,7 @@ var foodReduction : int
 var goldGrowth : int
 var daysInVillage : int
 var soldEverything : bool
+var completedJob : bool = false
 
 #rain variable
 var hideInRain : bool = false

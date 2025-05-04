@@ -16,6 +16,12 @@ func _process(delta: float) -> void:
 		DialogueManager.show_dialogue_balloon(load("res://scripts/dialogue.dialogue"), "ferry_man")
 		inChat = true
 		
+	#direction turning
+	if position.direction_to(SignalBus.player_location).x < 0:
+		$AnimatedSprite2D.flip_h = true
+	elif position.direction_to(SignalBus.player_location).x > 0:
+		$AnimatedSprite2D.flip_h = false
+		
 func _on_dialouge_ended(resource: DialogueResource):
 	inChat = false
 	

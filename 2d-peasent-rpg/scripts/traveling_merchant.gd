@@ -15,7 +15,14 @@ func _process(delta: float) -> void:
 		$toolTip.hide()
 		DialogueManager.show_dialogue_balloon(load("res://scripts/dialogue.dialogue"), "merchant")
 		inChat = true
+	#he now turns to face the player
+	if position.direction_to(SignalBus.player_location).x < 0:
+		$AnimatedSprite2D.flip_h = true
+	elif position.direction_to(SignalBus.player_location).x > 0:
+		$AnimatedSprite2D.flip_h = false
 		
+		
+	
 func _on_dialouge_ended(resource: DialogueResource):
 	inChat = false
 	
