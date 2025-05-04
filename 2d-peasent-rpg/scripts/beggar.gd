@@ -16,8 +16,15 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:	
 	if SignalBus.metBeggar and not SignalBus.beggarsFavor:
 		velocity = Vector2.ZERO
+		$AnimatedSprite2D.play("standing")
 	elif SignalBus.metBeggar and SignalBus.gaveGift:
 		velocity = Vector2.ZERO
+		$AnimatedSprite2D.play("standing")
+		#look at player
+		if position.direction_to(SignalBus.player_location).x < 0:
+			$AnimatedSprite2D.flip_h = true
+		elif position.direction_to(SignalBus.player_location).x > 0:
+			$AnimatedSprite2D.flip_h = false
 	else:
 		#if in range, then calculate distance between player and beggar
 		#if that distance is greater than 5, then approach player
@@ -29,20 +36,22 @@ func _physics_process(delta: float) -> void:
 				move_and_slide()
 				$AnimatedSprite2D.play("running")
 				
+			else:
+				$AnimatedSprite2D.play("standing")
 					#sprite animation. it works not
 				#if position.distance_to(SignalBus.player_location) > 50: ## i dont think this ever goes below zero
 					#
 					#print(velocity)
 					#print(str(velocity.length()) + "the length")
-			else:
-				$AnimatedSprite2D.play("standing")
-				print("did u stop walking")
-				#sprite animation direction
-				if velocity.x < 0:
-					#if walk left, then flip sprite to turn left
-					$AnimatedSprite2D.flip_h = true
-				elif velocity.x > 0:
-					$AnimatedSprite2D.flip_h = false
+		else:
+			$AnimatedSprite2D.play("standing")
+			print("did u stop walking")
+			#sprite animation direction
+		if velocity.x < 0:
+			#if walk left, then flip sprite to turn left
+			$AnimatedSprite2D.flip_h = true
+		elif velocity.x > 0:
+			$AnimatedSprite2D.flip_h = false
 	
 	#don't move if none of above conditinos are met
 	velocity = Vector2.ZERO

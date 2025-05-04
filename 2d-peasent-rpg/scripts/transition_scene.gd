@@ -4,6 +4,7 @@ extends Node
 @onready var game_text: Label = $background/gameText
 @onready var nopeout_button: Button = $nopeoutButton
 @onready var game_over_music: AudioStreamPlayer2D = $"game-over-music"
+@onready var victory_music: AudioStreamPlayer2D = $"victory-music"
 
 var startingImage
 var currentImage
@@ -42,7 +43,7 @@ func _on_day_ended():
 	SignalBus.randomizer()
 
 func updateGoldGained(gg):
-	$hud/realGoldRow/Label.text = str(gg + "x")
+	$hud/realGoldRow/Label.text = str(str(gg) + "x")
 
 func _on_village_left(case):
 	$hud.hide()
@@ -53,28 +54,35 @@ func _on_village_left(case):
 	match case:
 		"normal_leave":
 			game_text.text = str("You completed the job with " + str(SignalBus.goldGrowth) + " pence!")
+			victory_music.play()
 		"sold_everything":
 			game_text.text = str("You sold everything and completed the job  with " + str(SignalBus.goldGrowth) + " pence.")
+			victory_music.play()
 		"plague_leave":
 			game_text.text = str("You managed to escape the plague, but you failed the job.")
 			game_over_music.play()
 		"escape_sickness":
 			game_text.text = str("You didn't sell anything, all your produce is gone, but you helped people. You failed the job.")
+			
 		"dead":
 			game_text.text = str("You died from plague...")
 			game_over_music.play()
 		"no_gold":
 			if SignalBus.goldGrowth >= 5:
-				game_text.text = str("Despite a close call at the inn, you completed the job with" + str(SignalBus.goldGrowth) + " pence!")
+				game_text.text = str("Despite a close call at the inn, you completed the job with " + str(SignalBus.goldGrowth) + " pence!")
+				victory_music.play()
 			else:
-				game_text.text = str("You were kicked out the inn and failed the job by " + str(5 - SignalBus.goldGrowth) + " pence.")
+				game_text.text = str("You left the village and failed the job by " + str(5 - SignalBus.goldGrowth) + " pence.")
 				game_over_music.play()
+				SignalBus.currentLocation.emit("roads")
 		"shame":
 			if SignalBus.goldGrowth >= 5:
-				game_text.text = str("Despite being shamed, you completed the job with" + str(SignalBus.goldGrowth) + " pence!")
+				game_text.text = str("Despite being shamed, you completed the job with " + str(SignalBus.goldGrowth) + " pence!")
+				victory_music.play()
 			else:
 				game_text.text = str("You were shamed and failed the job by " + str(5 - SignalBus.goldGrowth) + " pence.")
 				game_over_music.play()
+				SignalBus.currentLocation.emit("roads")
 		_:
 			game_text.text = str("something happened. good job or sorry that happened.")
 
@@ -91,6 +99,8 @@ func _on_scene_change(location):
 			background.texture = load("res://assets/market-scene.png")
 		"inn":
 			background.texture = load("res://assets/tavern-image-from-bing.jpg")
+		"roads":
+			background.texture = load("res://assets/ruins-8881488_1280.jpg")
 		_:
 			background.texture = load(startingImage)
 		
