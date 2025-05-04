@@ -82,7 +82,7 @@ The System: Right, right. Accessing the previous occupant's memories, what kind 
 	set SignalBus.playerSpeedMultiplier = 0.8
 	The System: Ah, they often packed too heavily for their own good. They could barely walk with this weight.
 	
-The System: A counter keeping track of your {{food}} food and {{gold}} pence will appear in the top left corner.
+The System: A counter keeping track of your {{food}} food and {{gold}} pence is in the top left corner.
 The System: Pay close attention to your food because...
 - I'll starve to death if I run out.
 	The System: Exactly!
@@ -111,15 +111,16 @@ The System: These are just my suggestions, though. You're free to act as you ple
 ~ ferry_man
 if not beenFarried
 	Ferry Runner: Good Day. Looking to cross the river?
-	- Yes
+	- Yes.
 		Ferry Runner: Ah, well, that would be 1 pence.
-		- Okay
+		- Okay.
 			You pay the Ferry Runner 1 pence and he takes you across the river.
 			do SignalBus.farried.emit()
 			do playSound(posSound)
 			You're one step closer to a village!
+			set gold -= 1
 			set SignalBus.luck += 1
-		- Actually nevermind
+		- Actually, nevermind.
 			Ferry Runner: I'll still be here if you change your mind. My ferry is the only way to cross the river.
 			=> END
 		- Couldst I tradeth thee some of my food instead? [if SignalBus.gold <= 1]
@@ -133,7 +134,7 @@ if not beenFarried
 				Ferry Runner: What? Do you take me for some starving old man? I need to make a profit. I have a family to feed.
 				Ferry Runner: If you can't pay then leave me be.
 				=> END
-	- No
+	- No.
 		Ferry Runner: Come back if thee changeth thine mind.
 		=> END
 elif beenFarried
@@ -141,7 +142,7 @@ elif beenFarried
 	- Yes
 		Ferry Runner: Well enow, just a moment.
 		do unFarry.emit()
-	- No
+	- No.
 		Ferry Runner: Come back if thee changeth thine mind.
 		=> END
 	- Do I have to pay again?

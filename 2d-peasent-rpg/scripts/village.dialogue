@@ -128,6 +128,9 @@ if goldGrowth < 5
 	The System: Get some more sleep. You still have to complete the job. You're {{5 - goldGrowth}} pence away from being finished.
 	Your Consciousness: Yeah I know.
 	The System: Good! Just making sure.
+	You tuck into bed thinking of what you might do differently tomorrow.
+	It's the next day already.
+	=> village_day
 elif goldGrowth  >= 5 && completedJob == false
 	set completedJob = true
 	The System: Wow! You did it!

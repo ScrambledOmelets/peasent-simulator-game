@@ -35,14 +35,18 @@ func setMaxGold(max : int):
 		gold_row.add_child(oneGold)
 
 #this works fine now
-func update_foodCounter(number : int):
+func update_foodCounter(number):
 	var foods = food_row.get_children()
+	var hasChanged = false
 	
 	#should hopefully add more if you go over the amount
 	if number > foods.size():
 		setMaxFood(number - foods.size())
 		#needs this line to reupdate the list
 		foods = food_row.get_children()
+	
+	if number != (foods.size() - number):
+		hasChanged = true
 	
 	#should update all the food to be normal colored
 	for i in range(number):
@@ -51,17 +55,20 @@ func update_foodCounter(number : int):
 	#updates the food between current value and max value to be grey
 	for i in range(number, foods.size()):
 		foods[i].update(false)
-	
 	#hopefully animates
 	#it works!
 	playAnim("food_shake")
 
 func update_goldCounter(number):
 	var golds = gold_row.get_children()
+	var hasChanged = false
 	
 	if number > golds.size():
 		setMaxGold(number - golds.size())
 		golds = gold_row.get_children()
+	
+	if number != (golds.size() - number):
+		hasChanged = true
 	
 	for i in range(number):
 		golds[i].update(true)
@@ -69,8 +76,8 @@ func update_goldCounter(number):
 	for i in range(number, golds.size()):
 		golds[i].update(false)
 	
-	playAnim("gold_shake")
-	
+	if hasChanged: playAnim("gold_shake")
+
 func update_message(text):
 	game_message.show()
 	game_message.text = str(text)

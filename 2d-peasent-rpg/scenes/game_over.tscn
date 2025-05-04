@@ -44,8 +44,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_tl1m7")
 theme_override_font_sizes/font_size = 30
-text = "you ran out food :(
-would you journey again?"
+text = "You have starved to death.
+Would you try again?"
 horizontal_alignment = 1
 autowrap_mode = 2
 

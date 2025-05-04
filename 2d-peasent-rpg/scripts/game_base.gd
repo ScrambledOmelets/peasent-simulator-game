@@ -21,7 +21,6 @@ func _ready() -> void:
 	#setting up game
 	$player.resetPlayer($startPosition.position)
 	$music_noises/travelMusic.play()
-	$stormTimers/stormStart.start(randi() % 51)
 	
 	##checks for signals???
 	SignalBus.playerHit.connect(_on_player_hit)
@@ -59,9 +58,7 @@ func _on_dialouge_started(resource: DialogueResource):
 		$music_noises/travelMusic.stop()
 		$music_noises/thunder.play()
 		$music_noises/rain.play()
-		##another thunder
-		#await get_tree().create_timer(5).timeout
-		#$music_noises/thunder.play()
+	
 
 
 func _on_dialouge_ended(resource: DialogueResource):
@@ -70,6 +67,8 @@ func _on_dialouge_ended(resource: DialogueResource):
 	$hud.update_goldCounter(SignalBus.gold)
 	$foodTimer.start()
 	chatting = false
+	#this should trigger at least once
+	$stormTimers/stormStart.start(randi() % 51)
 	
 	if resource == load("res://scripts/bandit_dialouge.dialogue"):
 		remove_child(hazard)
@@ -144,9 +143,12 @@ func goldLogic(gold, randomNum):
 
 
 func is_game_over(food):
-	if food <= 0:
+	if food == 0:
+		$hud.update_message("You're out of food!")
+	elif food < 0:
 		food = 0
 		$hud.update_foodCounter(food)
+		$hud.update_message("You cannot continue this journey...")
 		gameOver.emit() #this works. connect signal
 		print("NO FOOD")
 	
@@ -159,7 +161,6 @@ func _on_village_transition_village_entered(village) -> void:
 
 
 func _on_village_enter_confirm() -> void:
-	pass
 	$hud.update_message("Now entering a village...")
 	$player.set_physics_process(false)
 	
@@ -176,7 +177,7 @@ func _on_game_over() -> void:
 	$foodTimer.stop()
 	$music_noises/travelMusic.stop()
 	#$music/gameOverMusic.play() don't play whole music. just a sound effect - which i don't have rn
-	$hud.update_message("You've run out of food...")
+	
 	$player.set_physics_process(false)
 	
 	await get_tree().create_timer(2).timeout
@@ -212,7 +213,7 @@ func _on_storm_start_timeout() -> void:
 	else:
 		if not hasRained:
 			print("should  not be hapening")
-			$stormTimers/stormStart.start(randi_range(5, 15))
+			$stormTimers/stormStart.start(randi_range(15, 35))
 
 #how long the storm is if the player choses to walk
 func _on_storm_duration_timeout() -> void:

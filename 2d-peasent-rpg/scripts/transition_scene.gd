@@ -30,12 +30,9 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	updateGoldGained(SignalBus.goldGrowth)
 	
 
-func updateRealGold():
-	pass
-	updateGoldGained(SignalBus.goldGrowth)
 
 func _on_day_ended():
 	#so that its not constantly vibrating
