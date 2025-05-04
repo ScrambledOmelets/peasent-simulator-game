@@ -225,5 +225,5 @@ func _on_storm_duration_timeout() -> void:
 		
 		
 		#fixing player movement
-		SignalBus.playerSpeedMultiplier += 0.7
+		SignalBus.playerSpeedMultiplier += 0.5
 	

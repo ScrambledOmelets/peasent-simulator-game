@@ -12,7 +12,7 @@ A rainstorm is upon you! What do you do?
 	set hideInRain = true
 - Continue walking
 	You trudge through the rain, but the roads are now full of mud. It is much harder to walk now.
-	set playerSpeedMultiplier -= 0.7
+	set playerSpeedMultiplier -= 0.5
 	Your Consciousness: Why do I feel so heavy... All this rain is bogging me down!
 
 => END
