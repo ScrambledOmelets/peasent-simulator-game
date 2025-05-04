@@ -1,31 +1,40 @@
 ~ village_entrance
 if randomizer()
-	Your Consciousness: You've finally made it! Now it is time to sell your produce.
-	Your Consciousness: You can stay in a village for as long as you have gold, or else you'll get kicked out of your room at the inn!
-	Your Consciousness: Make sure you keep an eye on it.
+	The System: Wow, I didn't think you could actually make it.
+	- Thanks for believing in me.
+		The System: No, I meant it as in-- Whatever. You're in a village now. That's all that matters.
+	- I didn't know you had such low hopes.
+		The System: Well, you were just thrown into this. I'm a little proud of you, to be honest.
+	The System: You know what to do now right? Sell your produce and make at least 5 pence!
+	The System: You're staying at the inn which takes 1 pence each night. Don't let the amount you brought with you run out or the innkeep will kick you out.
+	The System: I'll shut up now so you have space to think.
 	=> village_day
 else
 	do currentLocation.emit("plague")
-	Your Consciousness: A stench hangs in the air of this village... It appears they have the plague.
-	Your Consciousness: The black death is a terrible sickness that leaves awful boils on someone's body. 
-	Your Consciousness: You can barely bear to think about it.
-	Your Consciousness: Should you leave?
+	The System: A stench hangs in the air of this village... It appears they've been taken the plague.
+	Your Consciousness: The plague? Like that stuff that killed all the people with the rats???
+	The System: Yes. It is a terrible sickness that leaves blackened boils on someone's body.
+	- Ew I don't want to think about it.
+		The System: You're the one who asked! Just trying to keep you informed.
+	- These poor people.
+		The System: Yes... It's easy to spread especially while trying to care for the sick or working with animals.
+	The System: So, you want to get out of here right?
 	- No, they could use some extra produce and help.
 		if luck >= 2
-			Your Consciousness: You hand out your wares for free, helping to brighten a few people's days.
-			Your Consciousness: You are very careful when you hand them items as to not catch the plague.
-			Your Consciousness: You have given away all your wares, made 0 gold, and are not sick.
+			You hand out your wares for free, helping to brighten a few people's days.
+			You are very careful when you hand them items as to get contaminated.
+			You have given away all your wares, made 0 pence, and are not sick.
 			do leftVillage.emit("escape_sickness")
 		elif luck == 1
-			Your Consciousness: You attempt to sell your items. You take gold from patrons.
-			Your Consciousness: One of the coins was contaiminated and before long, you catch the plague.
+			You attempt to sell your items. You take pence from patrons.
+			One of the coins was contaiminated and before long, you catch the plague.
 			do leftVillage.emit("dead")
 		else
-			Your Consciousness: You enter the village and immedieately trip over a body.
-			Your Consciousness: The very ground is cursed and you feel yourself become sick.
+			You enter the village and immedieately trip over a body in the street.
+			The very ground is cursed and you feel yourself become sick.
 			do leftVillage.emit("dead")
 			=> END
-	- Yes I am getting out of here.
+	- Yes, I am getting out of here.
 		do leftVillage.emit("plague_leave")
 			
 => END
@@ -33,40 +42,40 @@ else
 ~ village_day
 set hasExplored = false
 do currentLocation.emit("normal")
-Your Consciousness: Now... Where should you set up shop?
-- In the village center
+Your Consciousness: Hmm, where should I set up shop?
+- In the village center.
 	Your Consciousness: This looks like a nice spot... Right at the center of everything!
 	Your Consciousness: Look, here comes your first interested person.
 	% =>< little_girl
 	% =>< merchant_guy
 		#change the background of the scene depending on where you choose
 		#determine how well sales are depending on your luck
-- At the village entrance
-	Your Consciousness: You set up everything right by the village entrance. Many weary travelers pass you by.
-	Your Consciousness: You begin to wonder if anyone cares to buy anything.
+- At the village entrance.
+	You set up everything right by the village entrance. Many weary travelers pass you by.
+	You begin to wonder if anyone cares to buy anything.
 	if randomizer()
 		Your Consciousness: Wait, here comes someone now!
 		=>< merchant_guy
 		=> end_of_day
-	Your Consciousness: Aw, it looked like everyone has passed you by...
-	Your Consciousness: They didn't take well to someone shilling right by the entrance.
-- Tucked into a corner at the market
+	The System: Aw, it looked like everyone has passed you by...
+	The System: They didn't take well to someone shilling right by the entrance.
+- Tucked into a corner at the market.
 	do currentLocation.emit("market")
-	Your Consciousness: You wonder if anyone will be able to see you here.
-	Your Consciousness: The other stalls look so flashy and large compared to your own.
+	You wonder if anyone will be able to see you here.
+	The market is packed with people, some with carts and others sitting directly on the ground.
 	if randomizer()
-		Your Consciousness: Oh, here comes someone now.
+		The System: Shape up. Here comes a customer!
 		=>< angry_chef
 		=> end_of_day
-	Your Consciousness: Oh no, it looks like everyone passed you up...
-	Your Consciousness: Maybe you could try for a better spot next time.
-- In a good spot at the market [if SignalBus.luck >= 3]
+	The System: Oh no, it looks like everyone passed you up...
+	The System: Maybe you could try for a better spot next time.
+- In a good spot at the market. [if SignalBus.luck >= 3]
 	do currentLocation.emit("market")
-	Your Consciousness: You manage to find the perfect spot at the market. 
-	Your Consciousness: You've sold all your produce in one day!
+	You manage to find the perfect spot at the market. 
+	You've sold all your produce in one day!
 	set soldEverything = true
-- I want to explore the village instead
-	Your Consciousness: You decide to explore the village instead of selling your produce.
+- I want to explore the village instead.
+	You decide to explore the village instead of selling your produce.
 	=> explore_town
 => end_of_day
 
@@ -87,8 +96,8 @@ if gold <= 0
 			You are kicked out onto the streets and forced to journey home.
 			do leftVillage.emit("shame")
 			=> END
-	- Leave the village to avoid shame
-		Your Consciousness: You quickly leave the village in the night with no gold.
+	- Leave the village to avoid shame.
+		You quickly leave the village in the night.
 		do leftVillage.emit("no_gold")
 	=> END!
 
@@ -101,50 +110,92 @@ else
 	Your Consciousness: Exploring the village was quite the experience.
 
 if soldEverything
-	Your Consciousness: You've sold all your produce, so there's no reason for you to stay unless you want to explore the village.
-	Your Consciousness: Should you explore tomorrow?
-	- Yes
-		Your Consciousness: You tuck into bed with plans of exploring the village tomorrow.
+	The System: Well, you've performed a lot better than I expected!
+	The System: There's no reason for you to stay here anymore unless you want to explore the village. So what will it be?
+	- I want to explore.
+		You tuck into bed with plans of exploring the village tomorrow.
 		set hasExplored = true
 		It is already the next day in the village.
 		=> explore_town
-	- No
-		Your Consciousness: You do feel rather tired from all the excitement of leaving your small farm.
-		Your Consciousness: You tuck into bed and smile with plans of returning home tomorrow.
+	- Send me back now.
+		The System: As you wish! Thank you for doing this. The data are pleasing.
+		Your Consciousness: What???
+		You don't bother to finish the thought, your vision turning dark as your consciousness is transfered back where it came from.
 		do leftVillage.emit("sold_everything")
 	=> END
-	
-Your Consciousness: Should I leave the village tomorrow morning or stay one more day?
-- I'm leaving
-	You tuck into bed with plans to leave the village tomorrow.
-	Early next morning, you pack everything up and leave.
-	do SignalBus.leftVillage.emit("normal_leave")
-	=> END
-- I want to stay
-	You tuck into bed with dreams of what to do tomorrow.
-	It's the next day already.
-	=> village_day
+
+if goldGrowth < 5
+	The System: Get some more sleep. You still have to complete the job. You're {{5 - goldGrowth}} pence away from being finished.
+	Your Consciousness: Yeah I know.
+	The System: Good! Just making sure.
+elif goldGrowth  >= 5 && completedJob == false
+	set completedJob = true
+	The System: Wow! You did it!
+	Your Consciousness: You didn't really leave me with a choice.
+	The System: Yes but your performance still surprises me!
+	The System: Do you want to go back now or do you want to stay and possibly make a little more pence?
+	- You love squeezing work out of me.
+		The System: I'm sorry, I just can't help it. You are very good at this.
+		The System: So what do you say?
+		- Fine.
+			The System: Hehe, thank you.
+		- I'll stay but only to explore the village.
+			The System: I'll pretend like I'm not hurt. I hope you have fun, though. As much fun as you can in Renaissance Europe.
+		- No, get me out of here.
+			The System: Aw. Okay, I can't squeeze anymore out of you. I'll send you back now. Thank you for your work.
+			Your vision goes dark as your consciousness is transfered back to where it came from.
+			do leftVillage.emit("normal_leave")
+			=> END
+		You tuck into bed thinking of what you might do differently tomorrow.
+		It's the next day already.
+		=> village_day
+	- I want to stay to look around.
+		The System: Interesting choice. I hope tomorrow treats you kindly. Know you're free to leave at any time.
+		Your Consciousness: Thanks I guess.
+		You tuck into bed thinking of where you might explore tomorrow.
+		It's the next day already.
+		=> village_day
+	- Get me out of here now.
+		The System: I'm a little sad to see you go... But thank you for your hard work. This data will be very useful.
+		Your Consciousness: You're welcome? What...
+		You don't bother to finish the thought, your vision turning dark as your consciousness is transfered back where it came from.
+		do leftVillage.emit("normal_leave")
+		=> END
+elif completedJob
+	The System: You've exceeded my expectations by making {{goldGrowth - 5}} more pence!
+	The System: Do you wish to stay or go?
+	- Send me back now.
+		The System: Okay, I will send you back now. Thank you for this.
+		You tuck into bed and your vision darkens as your consciousness is transfered back to where it came from.
+		do leftVillage.emit("normal_leave")
+		=> END
+	- I want to stay a bit longer.
+		The System: Okay. I guess you are having fun, hehe. Make sure to watch your gold.
+		You tuck into bed thinking of what you might do differently tomorrow.
+		It's the next day already.
+		=> village_day
+		
 => END!
 
 ~ merchant_guy
 Traveling Merchant: Ah thee again. The same peasant from the roads.
-- Good Day!
+- Good day!
 - Could thou prithee cease dubbing me a peasant?
+	do playSound(negSound)
 	Traveling Merchant: Wherefore wouldst I cease dubbing thee what thee art? How follish of thee.
 	set luck -= 1
-	do playSound(negSound)
-	Traveling Merchant: I wanted to buy m're of thy produce, but t appears thee has developed an attitude.
+	Traveling Merchant: I wanted to buy m're of thy produce, but it appears thee has developed an attitude.
 	Traveling Merchant: Goodbye.
 	Your Consciousness: Yikes...
 	=> END
-- Ay it's me.
+- Aye, 'tis I.
 Traveling Merchant: Good morrow! Prithee allow me to buy m're of thy produce.
-- Ay, of course!
+- Aye, of course!
 	The merchant buys some of your produce for 3 gold.
 	set goldGrowth += 3
 	Traveling Merchant: It is truly so lovely doing business with you. Give ye safe journeys.
 - No...
-	Traveling Merchant: Nay? I'm s'rry? How can thou dare to reject mine own business at which hour thee obviously need the coin?
+	Traveling Merchant: Nay? How can thou dare to reject mine own business at which hour thee obviously need the coin?
 	Traveling Merchant: I'm afraid thee has't gone mad. Farewell.
 	Your Consciousness: Bruh...
 
@@ -176,10 +227,10 @@ Little Girl: Good morrow. What are you doing?
 	You describe what you're selling, including wheat and parsnips. The little girl seems to light up.
 	Little Girl: I think my mom could use some of those. Here!
 	set goldGrowth += 1
-	She hands you 1 gold coin in exchange for 3 parsnips.
+	She hands you 1 pence in exchange for 3 parsnips.
 	- Thank you so much!
 		Little Girl: You're welcome! I'll tell everyone else about you too. Bye!
-		Your Consciousness: Success! You feel better about having traveled to the market.
+		Your Consciousness: Success!
 		
 - I don't know
 	Little Girl: Well I don't either. That's why I asked you.
@@ -203,7 +254,8 @@ Little Girl: Good morrow. What are you doing?
 	- Where's your parents?
 		Little Girl: I'm big enough to get around on my own!
 		Little Girl: I had even brought some gold with me today. But I don't want your stinky veggies anyways!
-		Your Consciousness: Oh no... You feel kind of bad about offending her, but she's already stomped off.
+		She stomps off.
+		Your Consciousness: Oh no... I've never really been the best with kids.
 		=> END
 => END
 
@@ -213,9 +265,9 @@ Your Consciousness: This guy is so loud, gosh.
 % Town Crier: [shake rate=20.0 level=5 connected=1]HEAR YE, HEAR YE![/shake] Francis Drake completes voyage around the world!
 % Town Crier: [shake rate=20.0 level=5 connected=1]HEAR YE, HEAR YE![/shake] Bailiffs crack down on draughts gambling!
 % Town Crier: [shake rate=20.0 level=5 connected=1]HEAR YE, HEAR YE![/shake] Rumors of the Queen's secret lover afloat! Will our country gain a king?  
-- Continue walking
+- Continue walking.
 	You walk away but you can still hear him in the distance.
-- Stay to listen more
+- Stay to listen more.
 	do playSound(posSound)
 	set luck += 1
 	You learn more about the current events of the time, feeling well informed.
@@ -226,10 +278,10 @@ Inkeep: Hail and well met! Back already?
 - I'm just looking around.
 	Inkeep: Alright. Try not to make a ruckus.
 	There is a group of workers playing draughts at one of the tables.
-	- Watch the game
+	- Watch the game.
 		It's obvious that the group knows each other well. Various jokes and insults are thrown across the board as they play.
 		You learn some new playing strategies and a few inside jokes.
-	- Ask to join
+	- Ask to join.
 		if luck < 1
 			The group stares at you awkwardly before declining.
 			You sit down at another table and occasionally glance back at them.

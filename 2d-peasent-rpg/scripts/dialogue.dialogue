@@ -35,7 +35,7 @@ The System: This body's original owner... [shake rate=20.0 level=5 connected=1]s
 	- What do I have to do...
 The System: You're in the European countryside in the year 1580. Elizabeth I is queen of England and you, unfortunately, are simply a peasant.
 Your Consciousness: Well that's just great.
-The System: You are traveling to a village market to sell produce! You need to make 5 gold at the market to complete the job. Sounds simple, right?
+The System: You are traveling to a village market to sell produce! You need to make 5 pence at the market to complete the job. Sounds simple, right?
 - Yeah.
 	The System: Wrong!
 - Not at all.
@@ -49,11 +49,14 @@ The System: *ignores you* How are you feeling!
 - Okay I guess?
 	do playSound(posSound)
 	The System: That's great!
+	set luck = 1
 - I don't want to be here.
 	do playSound(negSound)
+	set luck = 0
 	The System: That's not a good attitude to have...
 - I'm ready to finish this job already.
 	do playSound(posSound)
+	set luck = 1
 	The System: Good!
 =>< luck_explain
 Your Consciousness: Got it. But now what's this about starving?
@@ -79,7 +82,7 @@ The System: Right, right. Accessing the previous occupant's memories, what kind 
 	set SignalBus.playerSpeedMultiplier = 0.8
 	The System: Ah, they often packed too heavily for their own good. They could barely walk with this weight.
 	
-The System: A counter keeping track of your {{food}} food and {{gold}} gold will appear in the top left corner.
+The System: A counter keeping track of your {{food}} food and {{gold}} pence will appear in the top left corner.
 The System: Pay close attention to your food because...
 - I'll starve to death if I run out.
 	The System: Exactly!
@@ -109,9 +112,9 @@ The System: These are just my suggestions, though. You're free to act as you ple
 if not beenFarried
 	Ferry Runner: Good Day. Looking to cross the river?
 	- Yes
-		Ferry Runner: Ah, well, that would be 1 gold.
+		Ferry Runner: Ah, well, that would be 1 pence.
 		- Okay
-			You pay the Ferry Runner 1 gold and he takes you across the river.
+			You pay the Ferry Runner 1 pence and he takes you across the river.
 			do SignalBus.farried.emit()
 			do playSound(posSound)
 			You're one step closer to a village!
@@ -131,7 +134,7 @@ if not beenFarried
 				Ferry Runner: If you can't pay then leave me be.
 				=> END
 	- No
-		Ferry Runner: Come back if thee changeth thou mind.
+		Ferry Runner: Come back if thee changeth thine mind.
 		=> END
 elif beenFarried
 	Ferry Runner: Want to go back already?
@@ -139,7 +142,7 @@ elif beenFarried
 		Ferry Runner: Well enow, just a moment.
 		do unFarry.emit()
 	- No
-		Ferry Runner: Come back if thee changeth thou mind.
+		Ferry Runner: Come back if thee changeth thine mind.
 		=> END
 	- Do I have to pay again?
 		Ferry Runner: Nay... I only charge one way.
@@ -148,13 +151,13 @@ elif beenFarried
 			Ferry Runner: Well enow, just a moment.
 			do unFarry.emit()
 		- No, nevermind.
-			Ferry Runner: Come back if thee changeth thou mind.
+			Ferry Runner: Come back if thee changeth thine mind.
 			=> END
 	Ferry Runner: Visit me again if thee want to cross the riv'r. Farewell.
 => END
 
 ~ merchant
-Traveling Merchant: [[Good Day! How fare thou on thine journey?|How now!]] Art thou looking to buy anything? I offer 1 food per 1 gold coin.
+Traveling Merchant: [[Good Day! How fare thou on thine journey?|How now!]] Art thou looking to buy anything? I offer 1 food per 1 pence.
 Traveling Merchant: I bethink mine own prices art much bett'r than yond oth'r merchant's across the riv'r. [[Curses upon him.|Simply highway robbery.]]
 - I'd like some more food.
 	Traveling Merchant: [[Of course!|Certainly!]] How many?
@@ -173,7 +176,7 @@ Traveling Merchant: I bethink mine own prices art much bett'r than yond oth'r me
 		Your Consciousness: ???
 		=> END
 	
-- Can I trade food for gold?
+- Can I trade food for pence?
 	if SignalBus.luck >= 1
 		Traveling Merchant: Thou art in luck, I am in the marketeth f'r some rations.
 		Traveling Merchant: How many wouldst thee like to trade?
@@ -192,19 +195,19 @@ Traveling Merchant: I bethink mine own prices art much bett'r than yond oth'r me
 			Your Consciousness: ???
 			=> END
 			
-	Traveling Merchant: I'm sorry. I'm not looking to buy back rations currently.
-	Traveling Merchant: Yours might be a bit moldy as well.
+	Traveling Merchant: I am s'rry. I am not looking to buy back rations currently.
+	Traveling Merchant: Thy rations be a bit moldy as well.
 	Your Consciousness: Moldy? Just who does this guy think he is?
 	Traveling Merchant: Doth thee need to buyeth food 'r not?
-	- Yes
+	- Yes.
 		Traveling Merchant: How many?
-		- One
+		- One.
 			set SignalBus.gold -= 1
 			set SignalBus.food += 1
-		- Two
+		- Two.
 			set SignalBus.gold -= 2
 			set SignalBus.food += 2
-		- Three
+		- Three.
 			set SignalBus.gold -= 3
 			set SignalBus.food += 3
 		Traveling Merchant: Here you go. Thou art set.
@@ -212,27 +215,27 @@ Traveling Merchant: I bethink mine own prices art much bett'r than yond oth'r me
 			Traveling Merchant: Nice doing business with thee. Thou art v'ry well mannered!
 			Your Consciousness: ???
 			=> END
-	- No
+	- No.
 		Traveling Merchant: Well now, cometh back lat'r. And to me only, not the oth'r merchant.
 		=> END
 	
 - Want to buy some of my produce off of me? [if SignalBus.luck >= 2]
 	Traveling Merchant: Ah, how int'resting. What fine produce. Don't mind if I do.
-	The merchant buys {{SignalBus.goldReduction}} of your produce for {{SignalBus.goldReduction}} gold.
+	The merchant buys {{SignalBus.goldReduction}} of your produce for {{SignalBus.goldReduction}} pence.
 	set SignalBus.gold += SignalBus.goldReduction
 	- Thank you so much!
 		Traveling Merchant: Nay thanketh thee f'r such lovely produce! I can forsee reselling these for much higher.
 		Your Consciousness: Oh... 
-- Just browsing
+- Just browsing.
 	Traveling Merchant: I don't apprecieate "browsers." Either buyeth something 'r leave. Good day.
 	
 => END
 
 ~ village_confirm
 Do you want to enter this village?
-- Yes
+- Yes.
 	do SignalBus.villageEnterConfirm.emit()
-- No
+- No.
 	Your Consciousness: Yeah... This one might be infected with plague. Let's try to find another.
 => END
 

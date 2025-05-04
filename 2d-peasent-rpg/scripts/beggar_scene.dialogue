@@ -1,17 +1,17 @@
 ~ beggar_speak
 if SignalBus.metBeggar == false
-	Vagabond: ...Ho. Couldst thee spareth me some food?
+	Vagabond: [[...Ho.|Hail to thee...|...Well met.]] Couldst thou sparest me some food?
 	- I can't. 
-		Vagabond: Though art a cruel person... Whatev'r happened to doing good and shareing with others?
 		set SignalBus.luck -= 1
-		- I require all this food, v'ry s'rry?
+		Vagabond: Thou art cruel... Whatev'r happened to doing good and shareing with thy bretheren?
+		- I require all mine food.
 		- I'm s'rry...
 		Vagabond: *They turn away from you, saying nothing else.*
 		set SignalBus.metBeggar = true
 		=> END
 	- Certainly. [if SignalBus.food > 2]
 		Vagabond: Blesseth thee. I shall rememb'r this kindness.
-		Your Consciousness: They took 2 of your food.
+		They took 2 of your food.
 		set SignalBus.food -= 2
 		set SignalBus.luck += 1
 		set SignalBus.metBeggar = true
@@ -20,7 +20,7 @@ if SignalBus.metBeggar == false
 else
 	if SignalBus.beggarsFavor == true && SignalBus.gaveGift == false
 		Vagabond: Hail! I has't something to payeth thee backeth.
-		Vagabond: *They give you 2 gold.*
+		Vagabond: *They give you 2 pence.*
 		set SignalBus.gold += 2
 		Vagabond: Thanketh thee again f'r thy kindness.
 		set SignalBus.gaveGift = true
@@ -28,6 +28,6 @@ else
 	elif SignalBus.gaveGift == true
 		Vagabond: I just can't cease thanking thee! Most wondrous wishes on thy voyage. Fare thee well!
 		=> END
-Vagabond: Do not speak to me. Heartless heathen.
+Vagabond: Speakest not to me. Heartless heathen.
 	
 => END
