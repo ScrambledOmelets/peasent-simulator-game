@@ -30,9 +30,7 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#makes it spin occasionally
-	await get_tree().create_timer(5).timeout
-	$hud/realGoldRow/realGoldGui.spin()
+	pass
 	
 
 func updateRealGold():
@@ -57,23 +55,29 @@ func _on_village_left(case):
 	
 	match case:
 		"normal_leave":
-			game_text.text = str("You've left the village and returned home with " + str(SignalBus.gold) + " gold." + "\n" + "Your journey was sucessful.")
+			game_text.text = str("You completed the job with " + str(SignalBus.goldGrowth) + " pence!")
 		"sold_everything":
-			game_text.text = str("You sold everything and return home with " + str(SignalBus.gold) + " gold.")
+			game_text.text = str("You sold everything and completed the job  with " + str(SignalBus.goldGrowth) + " pence.")
 		"plague_leave":
-			game_text.text = str("You managed to escape the plague. But you didn't sell anything.")
+			game_text.text = str("You managed to escape the plague, but you failed the job.")
 			game_over_music.play()
 		"escape_sickness":
-			game_text.text = str("You didn't sell anything, all your produce is gone, but you helped people.")
+			game_text.text = str("You didn't sell anything, all your produce is gone, but you helped people. You failed the job.")
 		"dead":
 			game_text.text = str("You died from plague...")
 			game_over_music.play()
 		"no_gold":
-			game_text.text = str("You return home empty handed...")
-			game_over_music.play()
+			if SignalBus.goldGrowth >= 5:
+				game_text.text = str("Despite a close call at the inn, you completed the job with" + str(SignalBus.goldGrowth) + " pence!")
+			else:
+				game_text.text = str("You were kicked out the inn and failed the job by " + str(5 - SignalBus.goldGrowth) + " pence.")
+				game_over_music.play()
 		"shame":
-			game_text.text = str("You return home empty handed and shamed...")
-			game_over_music.play()
+			if SignalBus.goldGrowth >= 5:
+				game_text.text = str("Despite being shamed, you completed the job with" + str(SignalBus.goldGrowth) + " pence!")
+			else:
+				game_text.text = str("You were shamed and failed the job by " + str(5 - SignalBus.goldGrowth) + " pence.")
+				game_over_music.play()
 		_:
 			game_text.text = str("something happened. good job or sorry that happened.")
 
@@ -99,3 +103,7 @@ func _on_nopeout_button_pressed() -> void:
 	FadingTransition.fade_transition()
 	await FadingTransition.onFadeFinished
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+#for the gold spinning
+func _on_speen_timer_timeout() -> void:
+	$hud/realGoldRow/realGoldGui.spin()
