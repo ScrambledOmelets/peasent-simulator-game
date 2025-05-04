@@ -144,19 +144,13 @@ func goldLogic(gold, randomNum):
 
 func is_game_over(food):
 	var hasRan : bool = false
-	if food == 0:
-		if hasRan == false:
-			$hud.update_message("You're out of food!")
-			hasRan = true
-	elif food < 0:
-		hasRan = false
-		if hasRan == false:
-			food = 0
-			$hud.update_foodCounter(food)
-			$hud.update_message("You cannot continue this journey...")
-			gameOver.emit() #this works. connect signal
-			hasRan = true
-			print("NO FOOD")
+	if food <= 0:
+		$hud.update_message("You're out of food!")
+		food = 0
+		$hud.update_foodCounter(food)
+		gameOver.emit() #this works. connect signal
+		hasRan = true
+		print("NO FOOD")
 	
 
 #when player enters a village
