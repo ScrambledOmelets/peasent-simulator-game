@@ -15,6 +15,7 @@ Sounds
 
 https://leohpaz.itch.io/rpg-essentials-sfx-free
 https://pixabay.com/sound-effects/rustling-a-newspaper-66647/
+https://youtube.com/shorts/OZMXOfyndiw?si=Akbcf5aZJNPI7FsH 
 
 
 User Interface
